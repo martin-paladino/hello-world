@@ -1,9 +1,9 @@
 import React from 'react'
 
-const hola = () => {
+function hola() {
     return (
         <div>
-            chau!!!!
+            Hola
         </div>
     )
 }
