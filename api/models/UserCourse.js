@@ -1,4 +1,4 @@
-const S  = require("sequelize");
+/* const S  = require("sequelize");
 const db = require("../config/db");
 
 class UserCourse extends S.Model {}
@@ -10,4 +10,4 @@ UserCourse.init({
     }
 }, {sequelize: db, modelName: "UserCourse"})
 
-module.exports = UserCourse
+module.exports = UserCourse */
