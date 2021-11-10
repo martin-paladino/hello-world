@@ -12,9 +12,11 @@ return axios.get("/api/login")
 })
 
 
-export const userReducer=createReducer([], {
+const userReducer=createReducer([], {
 
 [sendLoginRequest.fulfilled]:(state,action)=>action.payload,
 [setUser]:(state,action)=>action.payload
 
 })
+
+export default userReducer
