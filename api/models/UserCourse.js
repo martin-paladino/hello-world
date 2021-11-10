@@ -9,3 +9,5 @@ UserCourse.init({
         defaultValue: false
     }
 }, {sequelize: db, modelName: "UserCourse"})
+
+module.exports = UserCourse
