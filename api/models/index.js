@@ -4,7 +4,7 @@ const Category = require("./Category")
 const Course = require("./Course")
 
 // Relaciones entre Curso y Categoria
-Course.hasMany(Category, {through: "CategoryCourse"});
+Course.belongsToMany(Category, {through: "CategoryCourse"});
 Category.belongsToMany(Course, {through: "CategoryCourse"});
 
 
