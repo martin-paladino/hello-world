@@ -3,7 +3,6 @@ const User = require("./User")
 const Cart = require("./Cart")
 const Category = require("./Category")
 const Course = require("./Course");
-const UserCourse = require("./UserCourse")
 
 
 // Relaciones entre Curso y Categoria
@@ -11,8 +10,11 @@ Course.belongsToMany(Category, {through: "CategoryCourse"});
 Category.belongsToMany(Course, {through: "CategoryCourse"});
 
 // Relaciones entre User y Course
-User.belongsToMany(Course, {through: "UserCourses"});
-Course.belongsToMany(User, {through: "UserCourses"});
+const UserCourse = S.define("UserCourse", {
+    purchased: S.BOOLEAN
+});
+User.belongsToMany(Course, {through: "UserCourse"});
+Course.belongsToMany(User, {through: "UserCourse"});
 
 // Relaciones entre User y Cart
 Cart.belongsTo(User);
@@ -22,4 +24,4 @@ Cart.belongsTo(User);
 
 
 
-module.exports = {User, Cart, Category, Course, UserCourse};
+module.exports = {User, Cart, Category, Course};
