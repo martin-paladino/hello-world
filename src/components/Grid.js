@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, Button, Container, Col, Row } from "react-bootstrap";
-import Cards from "../commons/Cards";
-
+import Cards from "../commons/Card";
 const Grid = ({ data }) => {
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>

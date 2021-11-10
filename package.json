@@ -29,7 +29,6 @@
     "redux": "^4.1.2",
     "redux-logger": "^3.0.6",
     "sequelize": "^6.9.0",
-    "tailwindcss": "^2.2.19",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

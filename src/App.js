@@ -1,16 +1,18 @@
 import Grid from "./components/Grid";
 import courses from "./utils/courses.json"
 
+
 function App() {
 
-const   {course}=courses
+const {course}=courses
 
 
   return (
     <>
-      <Grid data= {course }/>
-    </>
+    <Grid data={course} />
+      </>
   );
-}
 
+
+  }
 export default App;
