@@ -3,6 +3,7 @@ const User = require("./User")
 const Cart = require("./Cart")
 const Category = require("./Category")
 const Course = require("./Course");
+const UserCourse = require("./UserCourse")
 
 
 // Relaciones entre Curso y Categoria
@@ -21,4 +22,4 @@ Cart.belongsTo(User);
 
 
 
-module.exports = {User, Cart, Category, Course};
+module.exports = {User, Cart, Category, Course, UserCourse};
