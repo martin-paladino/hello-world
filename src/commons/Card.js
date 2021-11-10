@@ -5,7 +5,8 @@ import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import course from "../utils/course.json"
 
-function Cards() {
+
+function Cards({courses}) {
   // traemos un curso en particular //
  /*   const [course, setCourse] = useState([]);
 
@@ -20,9 +21,9 @@ function Cards() {
       <Card style={{ width: "18rem" }}>
         <Card.Img variant="top" src="/tarjetas/1.png" />
         <Card.Body className="text-center">
-          <Card.Title>Javascript</Card.Title>
-          <Card.Text>Aprende Javascripts desde 0</Card.Text>
-          <Card.Title>10 US$</Card.Title>
+          <Card.Title>{courses.name }</Card.Title>
+          <Card.Text>{courses.description}</Card.Text>
+          <Card.Title>{courses.price}</Card.Title>
             <Button variant="primary">Add to cart</Button>
           <Link to="/cart">
           <Button variant="primary">Go to cart</Button>
@@ -35,6 +36,8 @@ function Cards() {
       
     </div>
   );
+
+
 }
 
 export default Cards;

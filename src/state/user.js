@@ -12,9 +12,17 @@ return axios.get("/api/login")
 })
 
 
-const userReducer=createReducer([], {
 
+export const sendLogoutRequest=createAsyncThunk("LOGOUT",()=> {
+    return axios.get("/api/logout")
+    .then((res)=>res.data)
+})
+
+
+
+const userReducer=createReducer([], {
 [sendLoginRequest.fulfilled]:(state,action)=>action.payload,
+[sendLogoutRequest.fulfilled]:(state,action)=>action.payload,
 [setUser]:(state,action)=>action.payload
 
 })
