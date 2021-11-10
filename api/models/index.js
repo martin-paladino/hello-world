@@ -11,8 +11,8 @@ Course.belongsToMany(Category, {through: "CategoryCourse"});
 Category.belongsToMany(Course, {through: "CategoryCourse"});
 
 // Relaciones entre User y Course
-User.belongsToMany(Course, {through: "UserCourse"});
-Course.belongsToMany(User, {through: "UserCourse"});
+User.belongsToMany(Course, {through: UserCourse});
+Course.belongsToMany(User, {through: UserCourse});
 
 // Relaciones entre User y Cart
 Cart.belongsTo(User);
