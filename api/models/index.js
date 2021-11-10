@@ -1,7 +1,9 @@
+const S = require("sequelize");
 const User = require("./User")
 const Cart = require("./Cart")
 const Category = require("./Category")
-const Course = require("./Course")
+const Course = require("./Course");
+
 
 // Relaciones entre Curso y Categoria
 Course.belongsToMany(Category, {through: "CategoryCourse"});
