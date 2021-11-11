@@ -20,15 +20,16 @@ const Login = () => {
     let body = { "email": usr, "password": pass };
     setVari("primary")
     setMessage("Logueando...");
+    /* axios
 
-    axios
       .post("/api/login", body)
       .then((response) => dispatch(setUser(response.data)))
       .then((a) => {setVari("primary");setMessage("Que bueno volver a verte " + usr + ".")})
       .catch((e) => {
         setVari("danger");
         setMessage("Usuario o clave incorrecta.");
-      });
+      }); */
+
   }
   function handlerSubmit(e) {
     let comprobado =
@@ -48,7 +49,7 @@ const Login = () => {
       }
     }
 
-   
+
   }
 
   return (

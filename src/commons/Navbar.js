@@ -33,8 +33,8 @@ function Navbar( {onChangeHandler, onSubmitHandler}) {
         </div>
         <>
         <Button >Categories</Button>
-            <Link to="/cart">
-              <Button >
+            <Link to="/cart" >
+              <Button onClick={() => dispatch(getCourses(id))}>
                 Cart
               </Button>
             </Link>
