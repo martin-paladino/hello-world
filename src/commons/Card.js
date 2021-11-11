@@ -1,9 +1,10 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 //import { useState, useEffect } from "react";
 //import axios from "axios";
 import { Link } from "react-router-dom";
-import course from "../utils/course.json"
+import {addToCart} from "../state/course"
 
 
 function Cards({courses}) {
@@ -14,8 +15,8 @@ function Cards({courses}) {
     axios.get("api/course/:id").then((data) => setCourse(data));
   }, []);
 */
+const dispatch = useDispatch()
   return (
-
     
     <div>
       <Card style={{ width: "18rem" }}>
@@ -24,7 +25,8 @@ function Cards({courses}) {
           <Card.Title>{courses.name }</Card.Title>
           <Card.Text>{courses.description}</Card.Text>
           <Card.Title>{courses.price}</Card.Title>
-            <Button variant="primary">Add to cart</Button>
+
+            <Button onClick={(courses)=> {dispatch(addToCart(courses.name))}} variant="primary">Add to cart</Button>
           <Link to="/cart">
           <Button variant="primary">Go to cart</Button>
           </Link>
@@ -41,11 +43,3 @@ function Cards({courses}) {
 }
 
 export default Cards;
-
-/* 
-get --> /api/course/getall devuelve todos los cursos
-get --> api/course/:id
-post --> api/course/add/:id
-put --> api/course/:id
-delete --> api/course/:id 
-*/
