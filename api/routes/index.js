@@ -10,5 +10,6 @@ const router = express.Router()
 router.use("/auth", auth)
 router.use("/courses", courses)
 router.use("/users", users)
+router.use("/admin", admin)
 
 module.exports = router

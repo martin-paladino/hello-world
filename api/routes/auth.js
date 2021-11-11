@@ -4,11 +4,7 @@ const router = express.Router();
 const Sequalize = require("sequelize");
 const passport = require("passport");
 const AuthController = require("../controllers/auth");
-
-function isLogin(req, res, next) {
-  if (req.isAuthenticated()) next();
-  else res.sendStatus(401);
-}
+const { isLogin } = require("../middlewares")
 
 
 router.post("/register", AuthController.register);
