@@ -24,3 +24,5 @@ Course.hasMany(Cart);
 
 
 module.exports = {User, Cart, Category, Course, UserCourse};
+
+
