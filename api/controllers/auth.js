@@ -21,17 +21,13 @@ class AuthController {
     });
   }
 
-  static login(req,res) {
+  static login(req,res, next) {
         res.send(req.user)
-        .catch(next);
-
   }
 
   static logout(req, res, next) {
     req.logOut();
     res.sendStatus(200)
-    .catch(next);
-
   }
 
   static me(req, res, next) {
@@ -39,8 +35,6 @@ class AuthController {
       return res.sendStatus(401);
     }
     res.send(req.user)
-    .catch(next);
-
   }
 
   
