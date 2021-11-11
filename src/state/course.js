@@ -19,15 +19,6 @@ import {
   });
 
 
-//devuelve todos los cursos de un user (cancelado, pendiente, aprovado)//
-  export const getCourses = createAsyncThunk("COURSE", (id) =>{
-    return axios
-    .get(`api/:${id}`) //de donde sacariamos el id??
-    .then((res) => res.data)
-    .catch((err) => {
-      console.log({ err });
-    });
-  })
 //agrego al carrito y envio el curso seleccionado a la db, la db me devuelve todos los cursos de ese ID
   export const addToCart = createAsyncThunk("COURSE", (course, id) =>{
     return axios
@@ -40,7 +31,7 @@ import {
   
   const courseReducer = createReducer([], {
     [searchCourse.fulfilled]: (state, action) => action.payload,
-    [getCourses.pending]: (state, action) => action.payload,  //pending????
+   
     [addToCart.fulfilled]: (state, action) => action.payload,
   });
   
