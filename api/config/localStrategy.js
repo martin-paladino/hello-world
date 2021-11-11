@@ -15,7 +15,7 @@ const localStrategy = new LocalStrategy(
             if(!user) return done(null, false, {message: "Incorrect username."});
 
             // User found. Valido password.
-            user.generarHash(password, user.salt)
+            user.createHash(password, user.salt)
             .then(hash => {
                 // Si no coincide.
                 if(hash !== user.password) return done(null, false, {message: "Incorrect password."});

@@ -4,10 +4,9 @@ const passport = require("passport");
 const session = require("express-session") // Permite guardar sesiones de los usuarios loggeados.
 const cookieParser  = require("cookie-parser");
 const db = require("./config/db")
-const models = require("./models")
+const {User, Course, Category, Cart, UserCourse} = require("./models")
 const routes = require("./routes")
 const localStrategy = require("./config/localStrategy");
-const { User }      = require("./models");
 
 
 const app = express()
