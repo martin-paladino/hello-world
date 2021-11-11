@@ -22,7 +22,9 @@ class AuthController {
   }
 
   static login(req,res) {
-        res.send(req.user)
+        res.send(() =>{
+          console.log(req)
+          req.user})
         .catch(next);
 
   }

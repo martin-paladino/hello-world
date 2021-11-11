@@ -10,6 +10,7 @@ function isLogin(req, res, next) {
   else res.sendStatus(401);
 }
 
+
 router.post("/register", AuthController.register);
 router.post("/login", passport.authenticate("local"), AuthController.login);
 router.post("/logout", AuthController.logout);
