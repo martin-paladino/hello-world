@@ -35,7 +35,7 @@ User.init({
 
 
 // Instance Method.
-User.prototype.generarHash = function(plainPass, salt) {
+User.prototype.createHash = function(plainPass, salt) {
     return bcrypt.hash(plainPass, salt)
 };
 
@@ -44,7 +44,7 @@ User.addHook("beforeCreate", (user) => {
     return bcrypt.genSalt(16)
     .then(salt => {
         user.salt = salt;
-        return user.generarHash(user.password, user.salt);
+        return user.createHash(user.password, user.salt);
     })
     .then(hash => user.password = hash)
 });
