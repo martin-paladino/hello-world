@@ -4,6 +4,8 @@ const {isAdmin} = require("../middlewares")
 
 const router = express.Router()
 
-router.get("/", isAdmin, AdminController.getAll)
+router.put("/:id", isAdmin, AdminController.promoteAdmin)
+router.delete("/:id",isAdmin,AdminController.deleteUser)
+router.get("/",isAdmin,AdminController.getAll)
 
 module.exports = router
