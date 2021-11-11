@@ -1,11 +1,16 @@
 import React from 'react'
 import {Container, Form, Button} from "react-bootstrap"
 import {Link} from "react-router-dom"
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import {getCourses} from "../state/cart"
+import {sendLogoutRequest} from "../state/user"
+
 
 
 function Navbar( {onChangeHandler, onSubmitHandler}) {
   const user = useSelector(state => state.user)
+  console.log("userrrrrrrrrr", user)
+  const dispatch = useDispatch()
 
     return (
        <Container>
@@ -34,21 +39,22 @@ function Navbar( {onChangeHandler, onSubmitHandler}) {
         <>
         <Button >Categories</Button>
             <Link to="/cart" >
-              <Button onClick={() => dispatch(getCourses(id))}>
+              <Button onClick={() => dispatch(getCourses(/* id */))}>
                 Cart
               </Button>
             </Link>
       </>
-      {/*   {user.id ? ( */}
+        {user.id ? ( 
           
-            
+            <>
+            <Button className="boton">{user.fullname}</Button>
             <Link to="/">
-              <Button /* onClick={() => dispatch(logoutUser())} */>
+              <Button  onClick={() => dispatch(sendLogoutRequest())} >
                 Logout
               </Button>
             </Link>
-          
-     {/*    ) : ( */}
+          </>
+         ) : ( 
           <div>
             <Link to="/login">
               <Button  type="submit" as="input" value="Login" />
@@ -62,7 +68,7 @@ function Navbar( {onChangeHandler, onSubmitHandler}) {
               />
             </Link>
           </div>
-       {/*  )} */}
+         )} 
       </div>
       </Container>
     )

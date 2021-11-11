@@ -11,6 +11,7 @@ import { setUser } from "../state/user"
 
 const Login = () => {
   const [email, setEmail] = useState("");
+  
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [vari, setVari] = useState("light");
@@ -20,15 +21,15 @@ const Login = () => {
     let body = { "email": usr, "password": pass };
     setVari("primary")
     setMessage("Logueando...");
-    /* axios
+     axios
 
-      .post("/api/login", body)
+      .post("/api/auth/login", body)
       .then((response) => dispatch(setUser(response.data)))
       .then((a) => {setVari("primary");setMessage("Que bueno volver a verte " + usr + ".")})
       .catch((e) => {
         setVari("danger");
         setMessage("Usuario o clave incorrecta.");
-      }); */
+      }); 
 
   }
   function handlerSubmit(e) {
@@ -60,6 +61,7 @@ const Login = () => {
       <Form>
         <h2>Por favor, ingrese su usuario:</h2>
         <Form.Group>
+       
           <Form.Control
             onChange={(e) => setEmail(e.target.value)}
             type="email"

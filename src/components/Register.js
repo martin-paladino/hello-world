@@ -7,6 +7,7 @@ import { useState } from "react";
 // Tengo que comprobar si esta o no logueado usando Redux!
 
 const Register = () => {
+  const [fullname, setFullname] = useState("")
   const [user, setUser] = useState("");
   const [vari, setVari] = useState("light");
   const [password, setPassword] = useState("");
@@ -14,12 +15,12 @@ const Register = () => {
   const [message, setMessage] = useState("");
 
   function registrar() {
-    let body = { "email": user, "password": password };
+    let body = {"fullname": fullname,  "email": user, "password": password };
     setVari("primary")
     setMessage("Registrando...");
     
     axios
-      .post("/api/register", body)
+      .post("/api/auth/register", body)
       .then((response) => console.log(response))
       .then((a) => {setVari("primary");
       setMessage("Bienvenidx a nuestra comunidad, " + user + ".")})
@@ -67,6 +68,17 @@ const Register = () => {
       <Form>
         <h2>Crea tu cuenta en Hello, World!</h2>
         <Form.Group>
+          <Form.Control
+            onChange={(e) => setFullname(e.target.value)}
+            type="text"
+            size="lg"
+            placeholder="Fullname"
+            autoComplete="Fullname"
+            className="position-relative"
+          />
+        </Form.Group>
+        <Form.Group>
+
           <Form.Control
             onChange={(e) => setUser(e.target.value)}
             type="email"
