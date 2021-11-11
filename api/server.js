@@ -3,8 +3,10 @@ const morgan = require("morgan")
 
 
 const db = require("./config/db")
-const models = require("./models")
 const routes = require("./routes")
+const models = require("./models")
+
+
 
 const app = express()
 
@@ -12,6 +14,14 @@ app.use(morgan("tiny"))
 app.use(express.json())
 
 app.use("/api", routes)
+
+app.use((err,req,res,next)=>    {
+    console.log("ERROR");
+    console.log(err);
+    res.status(500).send(err.message);
+
+})
+
 
 db.sync({force: false})
 .then(() => {
