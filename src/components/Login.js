@@ -3,6 +3,9 @@ import { Container, Form, Button, Row, Col, Alert} from "react-bootstrap";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { setUser } from "../state/user"
 
 // Tengo que comprobar si esta o no logueado usando Redux!
 
@@ -16,10 +19,11 @@ const Login = () => {
     let body = { "email": usr, "password": pass };
     setVari("primary")
     setMessage("Logueando...");
-    
+    const dispatch = useDispatch();
+
     axios
       .post("/api/login", body)
-      .then((response) => console.log(response))
+      .then((response) => dispatch(setUser(respose.data)))
       .then((a) => {setVari("primary");setMessage("Que bueno volver a verte " + usr + ".")})
       .catch((e) => {
         setVari("danger");
