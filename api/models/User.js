@@ -1,5 +1,7 @@
-const S = require("sequelize");
-const db        = require("../config/db");
+const S      = require("sequelize");
+const db     = require("../config/db");
+const bcrypt = require("bcrypt");
+
 
 class User extends S.Model {}
 
@@ -30,6 +32,23 @@ User.init({
     }
 
 }, {sequelize: db, modelName: "user"});
+
+
+// Instance Method.
+User.prototype.generarHash = function(plainPass, salt) {
+    return bcrypt.hash(plainPass, salt)
+};
+
+// Hook.
+User.addHook("beforeCreate", (user) => {
+    return bcrypt.genSalt(16)
+    .then(salt => {
+        user.salt = salt;
+        return user.generarHash(user.password, user.salt);
+    })
+    .then(hash => user.password = hash)
+});
+
 
 
 module.exports = User;
