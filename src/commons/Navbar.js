@@ -1,8 +1,12 @@
 import React from 'react'
-import {Nav, Container, NavDropdown, Form, FormControl, Button} from "react-bootstrap"
+import {Container, Form, Button} from "react-bootstrap"
 import {Link} from "react-router-dom"
+import { useSelector } from 'react-redux'
+
 
 function Navbar( {onChangeHandler, onSubmitHandler}) {
+  const user = useSelector(state => state.user)
+
     return (
        <Container>
         <div className="navbar">
@@ -35,7 +39,7 @@ function Navbar( {onChangeHandler, onSubmitHandler}) {
               </Button>
             </Link>
       </>
-      {/*   {user.login ? ( */}
+      {/*   {user.id ? ( */}
           
             
             <Link to="/">
