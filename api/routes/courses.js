@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get("/getall", CoursesController.getAllCourses)
 router.get("/:id", CoursesController.getCourse)
-router.post("/add/:id", CoursesController.addCourse)
+router.post("/add", CoursesController.addCourse)
 router.put("/:id", CoursesController.updateCourse)
 router.delete("/:id", CoursesController.deleteCourse)
 
