@@ -1,6 +1,6 @@
-const   {User}=require("../models")
+const {User} = require("../models")
 
-class UsersController    {
+class UsersController {
 
     static editUser(req, res, next) {
         User.update(req.body, {
@@ -12,10 +12,6 @@ class UsersController    {
           .then((user) => res.send(user[1][0]))
           .catch(next);
       }
-
-
-
 }
-
 
 module.exports=UsersController

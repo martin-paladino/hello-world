@@ -1,6 +1,5 @@
 const LocalStrategy = require("passport-local").Strategy;
-const { User }      = require("../models");
-
+const { User } = require("../models");
 
 const localStrategy = new LocalStrategy(
     {
@@ -13,13 +12,11 @@ const localStrategy = new LocalStrategy(
         .then(user => {
             // User not found.
             if(!user) return done(null, false, {message: "Incorrect username."});
-
             // User found. Valido password.
             user.createHash(password, user.salt)
             .then(hash => {
                 // Si no coincide.
                 if(hash !== user.password) return done(null, false, {message: "Incorrect password."});
-
                 // Si coincide.
                 done(null, user);
             })
