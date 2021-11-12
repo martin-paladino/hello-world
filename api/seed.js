@@ -1,6 +1,6 @@
 // Run seed.
 const db = require("./config/db");
-const { User, Course } = require("./models");
+const { User, Course, Cart } = require("./models");
 
 const users = [
 
@@ -107,10 +107,37 @@ const courses = [
     }
 ];
 
+const carts = [
+
+    {
+        status: "pending",
+        userId: 1,
+    },
+    {
+        status: "pending",
+        userId: 2,
+    },
+    {
+        status: "pending",
+        userId: 3,
+    }
+];
+
 
 db.sync()
-.then(User.bulkCreate(users))
-.then(Course.bulkCreate(courses))
+.then(() => User.bulkCreate(users))
+.then((users) => Cart.bulkCreate(carts))
+.then((carts) => {
+    return {
+        coursePromise: Course.bulkCreate(courses),
+        carts
+    }
+})
+.then(({coursePromise, carts}) => {
+    return coursePromise.then(courses => {
+        return carts[0].addCourses(courses)
+    })
+})
 .then( () => process.exit(0))
 .catch(err => {
     console.log("Something went wrong on the seed process", err.message);
