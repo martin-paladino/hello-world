@@ -39,7 +39,7 @@ function Navbar( {onChangeHandler, onSubmitHandler}) {
         <>
         <Button >Categories</Button>
             <Link to="/cart" >
-              <Button onClick={() => dispatch(getCourses(/* id */))}>
+              <Button onClick={() => dispatch(getCourses(/* {user.id} */))}>
                 Cart
               </Button>
             </Link>
