@@ -4,5 +4,7 @@ const CartController = require("../controllers/cart")
 const router = express.Router()
 
 router.post("/addtocart/:userId/:courseId", CartController.addToCart)
+router.delete("/:userId/:courseId", CartController.removeCourseFromCart)
+router.get("/:userId/courses", CartController.getCoursesFromCart)
 
 module.exports = router
