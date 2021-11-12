@@ -22,8 +22,6 @@ Course.belongsToMany(Cart, {through: "CartCourse"})
 Cart.belongsToMany(Course, {through: "CartCourse"})
 
 
-
-
 module.exports = {User, Cart, Category, Course, UserCourse};
 
 

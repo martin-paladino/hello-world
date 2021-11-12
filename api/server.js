@@ -8,14 +8,10 @@ const {User, Course, Category, Cart, UserCourse} = require("./models")
 const routes = require("./routes")
 const localStrategy = require("./config/localStrategy");
 
-
-
-
 const app = express()
 
 app.use(morgan("tiny"))
 app.use(express.json())
-
 
 // Parser que transforma de STR a OBJ la info contenida en una cookie.
 app.use(cookieParser());
@@ -44,16 +40,13 @@ passport.deserializeUser(function(id, done) {
     .catch(done);
 });
 
-
 app.use("/api", routes)
 
-app.use((err,req,res,next)=>    {
+app.use((err,req,res,next)=>{
     console.log("ERROR");
     console.log(err);
     res.status(500).send(err.message);
-
 })
-
 
 db.sync({force: false})
 .then(() => {

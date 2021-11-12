@@ -5,7 +5,6 @@ class AdminController {
     User.findAll()
       .then((res) => res.data)
       .catch(next);
-    /*   res.status(200).send("funciona") */
   };
 
   static promoteAdmin = (req, res, next) => {
@@ -20,15 +19,10 @@ class AdminController {
       .catch(next);
   };
 
-
-   static deleteUser =(req,res,next)=> {
-     User.destroy(  {where: {id:req.params.id}})
-     .then((user)=>res.sendStatus(204))
-     .catch(next)
-
-
-
-
-}
+  static deleteUser = (req, res, next) => {
+    User.destroy({ where: { id: req.params.id } })
+      .then((user) => res.sendStatus(204))
+      .catch(next)
+  }
 }
 module.exports = AdminController;
