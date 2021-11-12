@@ -14,6 +14,12 @@ class CoursesController {
         .catch(next)
     }
 
+    static getCoursesFromTitle(req, res, next) {
+        Course.findAll({ where: { title: req.params.courseTitle }})
+        .then(courses => res.status(200).send(courses))
+        .catch(next)
+    }
+
     static addCourse(req, res, next) {
         Course.create(req.body)
         .then(newCourse => res.status(201).send(newCourse))

@@ -8,15 +8,15 @@ import {
   export const setCourse = createAction("SET_COURSE");
   
   // al dar click en boton busca el curso // seria mi onSubmit  {searchCourse(course)} //
-  export const searchCourse = createAsyncThunk("COURSE", (course) => {
+  export const searchCourse = createAsyncThunk("COURSE", (courseId) => {
     return axios
-      .get(`api/course/${course}`)
+      .get(`api/courses/${courseId}`)
       .then((res) => res.data)
       .catch((err) => {
         console.log({ err });
-      });
-      
+      });  
   });
+
 
 
 /* /agrego al carrito y envio el curso seleccionado a la db, la db me devuelve todos los cursos de ese ID
@@ -31,6 +31,7 @@ import {
   
   const courseReducer = createReducer([], {
     [searchCourse.fulfilled]: (state, action) => action.payload,
+    [setCourse]: (state, action) => action.payload
    
     //[addToCart.fulfilled]: (state, action) => action.payload,
   });

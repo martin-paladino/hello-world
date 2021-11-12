@@ -21,7 +21,7 @@ class CartController {
                 coursePromise //la promesa devuelve el curso encontrado
                     .then(course => {
                         cart.addCourse(course) //se le asigna el curso al carro
-                        res.status(201).send(cart) //se envia el carro
+                        res.status(201).send({cart, course}) //se envia el carro
                     })
             })
             .catch(next)
