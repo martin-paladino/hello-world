@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 //import { useState, useEffect } from "react";
 //import axios from "axios";
 import { Link } from "react-router-dom";
-import {addToCart} from "../state/course"
+//import {addToCart} from "../state/course"
 
 
 function Cards({courses}) {
@@ -26,7 +26,7 @@ const dispatch = useDispatch()
           <Card.Text>{courses.description}</Card.Text>
           <Card.Title>{courses.price}</Card.Title>
 
-            <Button onClick={(courses)=> {dispatch(addToCart(courses.name))}} variant="primary">Add to cart</Button>
+            <Button /* onClick={(courses)=> /* {dispatch(addToCart(courses.name))}} */  variant="primary">Add to cart</Button>
           <Link to="/cart">
           <Button variant="primary">Go to cart</Button>
           </Link>

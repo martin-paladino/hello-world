@@ -19,7 +19,7 @@ import {
   });
 
 
-//agrego al carrito y envio el curso seleccionado a la db, la db me devuelve todos los cursos de ese ID
+/* /agrego al carrito y envio el curso seleccionado a la db, la db me devuelve todos los cursos de ese ID
   export const addToCart = createAsyncThunk("COURSE", (course, id) =>{
     return axios
     .post(`api/:${id}`, (course)) //de donde sacariamos el id??
@@ -27,12 +27,12 @@ import {
     .catch((err) => {
       console.log({ err });
     });
-  })
+  }) */
   
   const courseReducer = createReducer([], {
     [searchCourse.fulfilled]: (state, action) => action.payload,
    
-    [addToCart.fulfilled]: (state, action) => action.payload,
+    //[addToCart.fulfilled]: (state, action) => action.payload,
   });
   
   export default courseReducer;
