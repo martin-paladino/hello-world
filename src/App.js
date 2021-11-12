@@ -13,6 +13,7 @@ import Register from "./components/Register"
 import Login from "./components/Login"
 import Home from "./commons/Home"
 import Cart from "./components/Cart"
+import SingleCourse from "./components/SingleCourse";
 
 
 function App() {
@@ -24,9 +25,9 @@ const {course}=courses
 
     <div>
       <NavbarContainer/>
-
       <Routes>
-      <Route exact path="/" element={<Home data={course}/>}/>  
+      <Route exact path="/" element={<Home data={course}/>}/>
+      <Route exact path="/course/:courseId" element={<SingleCourse />} />
       <Route exact path="/card" element={<Cards/>} />
       <Route exact path="/search" element={<Grid data={course}/>} />
       <Route exact path="/cart" element={<Cart/>}/>

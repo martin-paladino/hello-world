@@ -7,9 +7,10 @@ import axios from "axios";
 
 export const setCourses = createAction("SET_COURSES");
 
-export const getCoursesFromTitle = createAsyncThunk("COURSE", (courseTitle) => {
+
+export const getCoursesFromId = createAsyncThunk("COURSE", (courseId) => {
     return axios
-      .get(`api/courses/${courseTitle}`)
+      .get(`/api/courses/${courseId}`)
       .then((res) => res.data) //reemplaza el estado
       .catch((err) => {
         console.log({ err });
@@ -18,7 +19,7 @@ export const getCoursesFromTitle = createAsyncThunk("COURSE", (courseTitle) => {
 
   export const getAllCourses = createAsyncThunk("COURSE", () => {
     return axios
-      .get(`api/courses/getall`)
+      .get(`/api/courses/getall`)
       .then((res) => res.data) //reemplaza el estado
       .catch((err) => {
         console.log({ err });
@@ -27,7 +28,7 @@ export const getCoursesFromTitle = createAsyncThunk("COURSE", (courseTitle) => {
 
 const coursesReducer = createReducer([], {
     [setCourses]: (state, action) => action.payload,
-    [getCoursesFromTitle.fullfilled]: (state, action) => action.payload,
+    [getCoursesFromId.fullfilled]: (state, action) => action.payload,
     [getAllCourses.fullfilled]: (state, action) => action.payload
 });
   

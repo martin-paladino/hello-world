@@ -25,7 +25,9 @@ function Cards({ course }) { //M. le llega como prop toda la data de cada curso 
   return (
     <div>
         <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src="/tarjetas/1.png" />
+          <Link to={`/course/${course.id}`}>
+          <Card.Img variant="top" src={course.image} />
+          </Link>
           <Card.Body className="text-center">
             <Card.Title>{course.title}</Card.Title> {/* M. cambie name x title, no existe name */}
             <Card.Text>{course.description}</Card.Text>
