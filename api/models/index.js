@@ -18,20 +18,12 @@ Course.belongsToMany(User, {through: UserCourse});
 Cart.belongsTo(User);
 
 // Relaciones entre Course y Cart
-<<<<<<< HEAD
 Course.belongsToMany(Cart, {through: "CartCourse"})
 Cart.belongsToMany(Course, {through: "CartCourse"})
-=======
-Course.hasMany(Cart);
->>>>>>> configs
 
 
 
 
-<<<<<<< HEAD
 module.exports = {User, Cart, Category, Course, UserCourse};
 
 
-=======
-module.exports = {User, Cart, Category, Course, UserCourse};
->>>>>>> configs
