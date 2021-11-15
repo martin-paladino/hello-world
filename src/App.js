@@ -10,6 +10,7 @@ import Home from "./commons/Home";
 import Cart from "./components/Cart";
 import SingleCourse from "./components/SingleCourse";
 import Me from "./components/Me";
+import Footer from "./commons/Footer";
 
 function App() {
   
@@ -27,6 +28,7 @@ function App() {
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/me" element={<Me />} />
       </Routes>
+      <Footer/>
     </div>
   );
 }
