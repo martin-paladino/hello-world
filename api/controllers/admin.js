@@ -3,10 +3,12 @@ const { User } = require("../models");
 class AdminController {
   static getAll = (req, res, next) => {
     User.findAll()
-      .then((res) => res.data)
-      .catch(next);
+      .then((users =>{ 
+        console.log("los usuarioss", user)
+        res.status(200).send(users)})
+      .catch(next)
     /*   res.status(200).send("funciona") */
-  };
+      )};
 
   static promoteAdmin = (req, res, next) => {
     User.update(req.body, {

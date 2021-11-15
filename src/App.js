@@ -1,5 +1,8 @@
+import { useEffect } from "react"
 import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useDispatch } from "react-redux"
+import { meRequest } from "./state/user"
 
 import Card from "./commons/Card";
 import NavbarContainer from "./components/NavbarContainer";
@@ -14,6 +17,11 @@ import Footer from "./commons/Footer";
 
 function App() {
   
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(meRequest())
+  }, [])
+
   return (
     <div>
       <NavbarContainer />
@@ -28,7 +36,7 @@ function App() {
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/me" element={<Me />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
