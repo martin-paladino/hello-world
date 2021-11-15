@@ -18,9 +18,9 @@ function Card({ course }) {
     // courses queda en NULL o con un ARR con contenido
     let courses = JSON.parse(localStorage.getItem("courses"));
     if (!courses) {
-      localStorage.setItem(`courses`, JSON.stringify([course.id]));
+      localStorage.setItem(`courses`, JSON.stringify([course]));
     } else {
-      courses.push(course.id);
+      courses.push(course);
       localStorage.setItem(`courses`, JSON.stringify(courses))
     }
   };

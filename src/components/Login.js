@@ -26,7 +26,7 @@ const Login = () => {
       .then((response) => dispatch(setUser(response.data)))
       .then(() => {
         setVari("primary");setMessage("Que bueno volver a verte " + email + ".")
-        navigate("/me") //M: redirecciono
+        navigate(!localStorage.getItem("courses") ? "/me" : "/cart") //M: redirecciono
       })
       .catch(err => {
         console.log({err})

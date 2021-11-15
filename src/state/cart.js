@@ -38,6 +38,16 @@ export const addCourseToCart = createAsyncThunk(
   }
 );
 
+export const addCoursesToCart = createAsyncThunk("ADD_COURSES_TO_CART", (courses, thunkAPI) => {
+  const { user } = thunkAPI.getState()
+  return axios
+  .post(`/api/cart/addcourses/${user.id}`, courses)
+  .then(res => res.data)
+  .catch((err) => {
+    console.log({ err });
+  });
+})
+
 export const deleteCourseFromCart = createAsyncThunk(
   "COURSE",
   ({ userId, courseId }) => {
@@ -56,6 +66,7 @@ const cartReducer = createReducer([], {
   [addCourseToCart.fulfilled]: (state, action) => action.payload,
   [setCart]: (state, action) => action.payload,
   [getCourse.fulfilled] : (state, action) => action.payload,
+  [addCoursesToCart.fulfilled]: (state, action) => action.payload,
 });
 
 export default cartReducer;
