@@ -1,0 +1,29 @@
+.redondo {
+
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: yellow;
+    
+}
+.redondo:hover {
+
+    background: radial-gradient(circle, rgba(197,50,222,1) 0%, rgba(232,235,157,1) 100%);
+    transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.navbar {
+    width:100%;
+    padding: 12px 12px;
+    display: flex;
+
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(41,41,42,1) 74%, rgba(23,83,96,1) 100%);
+
+}
+
+#searchinput {
+    margin-bottom: 0px;
+    width: 500px;
+}

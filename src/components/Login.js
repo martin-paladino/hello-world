@@ -6,8 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useDispatch } from "react-redux";
 import { setUser } from "../state/user"
 
-
-// Tengo que comprobar si esta o no logueado usando Redux!
+import "../assets/styles/general.css";
+import "../assets/styles/login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -54,6 +54,7 @@ const Login = () => {
   }
 
   return (
+    <div id="contMargin">
     <Container className="d-grid h-100" id="main-container">
       <Row>
           <Col></Col>
@@ -98,6 +99,7 @@ const Login = () => {
     <Col></Col>
     </Row>
     </Container>
+    </div>
   );
 };
 
