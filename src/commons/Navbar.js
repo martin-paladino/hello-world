@@ -11,11 +11,13 @@ function Navbar({ onSubmitHandler }) {
   const category = useSelector(state => state.category)
   const dispatch = useDispatch()
   
+console.log(user.id)
+
   return (
     <Container>
       <div className="navbar">
         <div>
-          <Button href="/">Home</Button>
+         <Link to="/" >  <Button >Home</Button></Link>
         </div>
         <div>
           <Form className="d-flex" onSubmit={onSubmitHandler}>
@@ -40,7 +42,7 @@ function Navbar({ onSubmitHandler }) {
         </div>
         {user.id ? (
           <div>
-            <Button className="boton">{user.fullname}</Button>
+           <Link to="/me"> <Button className="boton">{user.fullname}</Button></Link>
             <Link to="/">
               <Button onClick={() => dispatch(sendLogoutRequest())}>
                 Logout

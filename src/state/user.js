@@ -4,6 +4,7 @@ import {
   createReducer,
 } from "@reduxjs/toolkit";
 import axios from "axios";
+import { act } from "react-dom/test-utils";
 
 export const setUser = createAction("SET_USER");
 
@@ -13,6 +14,18 @@ const initialState = {
   id: null,
   isAdmin: null
 } 
+
+
+export const meRequest=createAsyncThunk("ME",()=> {
+return axios
+.get("/api/auth/me")
+.then((res)=>res.data)
+.catch((err)=>  {console.log( {err})})
+
+
+})
+
+
 
 export const sendLogoutRequest = createAsyncThunk("LOGOUT", () => {
    return axios
@@ -29,6 +42,7 @@ export const sendLogoutRequest = createAsyncThunk("LOGOUT", () => {
 
 const userReducer = createReducer({}, {
   [sendLogoutRequest.fulfilled]: (state, action) => action.payload,
+  [meRequest.fulfilled]:(state,action)=>action.payload,
   [setUser]: (state, action) => action.payload,
 })
 

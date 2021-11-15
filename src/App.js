@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route ,Navigate} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Card from "./commons/Card";
@@ -11,9 +11,21 @@ import Cart from "./components/Cart";
 import SingleCourse from "./components/SingleCourse";
 import Me from "./components/Me";
 import Footer from "./commons/Footer";
+import { useEffect } from "react";
+import { meRequest } from "./state/user";
+import { useDispatch } from "react-redux";
 
 function App() {
+const dispatch=useDispatch()
   
+useEffect(()=>  {
+dispatch(meRequest())
+
+},[])
+
+
+
+
   return (
     <div>
       <NavbarContainer />
