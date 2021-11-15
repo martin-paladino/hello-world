@@ -57,6 +57,17 @@ function Navbar({ onSubmitHandler }) {
             </Link>
           </div>
         )}
+
+      {user.id ? (  // La idea es que pregunte user.isAdmin?
+        <>
+          <Link to="/admin">
+            <Button className="boton"> Admin </Button>
+          </Link>
+        </>
+       ) : null
+      }
+
+
       </div>
     </Container>
   );
