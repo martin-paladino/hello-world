@@ -3,7 +3,7 @@ const { User } = require("../models");
 class AdminController {
   static getAll = (req, res, next) => {
     User.findAll(  )
-      .then((admin) => res.send(admin))
+      .then((users) => res.status(200).send(users))
       .catch(next);
     /*   res.status(200).send("funciona") */
   };
@@ -11,7 +11,7 @@ class AdminController {
   static promoteAdmin = (req, res, next) => {
     User.update(req.body, {
       where: {
-        isAdmin: req.params.id,
+        id:req.params.id
       },
       returning: true,
     })
