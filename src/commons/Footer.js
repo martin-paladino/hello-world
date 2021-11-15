@@ -8,13 +8,13 @@ function Footer() {
       <Card className="bg-dark text-white">
         <div style={{ display: "flex", justifyContent: "space-around" }}>
           <Link to="/">
-            <buton>
+            <button>
               <Card.Img
                 style={{ width: "100px", height: "auto" }}
                 src="https://i.stack.imgur.com/o2dfh.png"
                 alt=""
               />
-            </buton>
+            </button>
           </Link>
           <Card.Text>© 2021 hello_world, Inc.</Card.Text>
           <Card.Text style={{textAlign: "center"}}>

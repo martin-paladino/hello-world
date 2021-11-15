@@ -1,9 +1,21 @@
-import {Button, ListGroup, Badge} from "react-bootstrap";
-import { useSelector } from "react-redux";
+import React , {useEffect} from "react";
+import { Button, ListGroup, Badge } from "react-bootstrap";
+import getCourse from "../state/cart";
+
+import { useSelector, useDispatch } from "react-redux";
 
 // Este componente sirve para Carrito y tambien para historial.
-const Cart = (history) => {
+const Cart = () => {
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+
+  // cambia el JSON al valor real del localStorage
+  let courses = JSON.parse(localStorage.getItem(`courses`));
+  useEffect(() => {
+    courses.map((course) => {
+      return dispatch(getCourse(course));
+    });
+  }, []);
 
   return (
     <div>
