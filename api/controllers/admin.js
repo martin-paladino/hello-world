@@ -5,8 +5,7 @@ class AdminController {
     User.findAll(  )
       .then((users) => res.status(200).send(users))
       .catch(next);
-    /*   res.status(200).send("funciona") */
-  };
+      } ;
 
   static promoteAdmin = (req, res, next) => {
     User.update(req.body, {

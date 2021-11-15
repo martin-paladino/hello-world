@@ -5,6 +5,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useDispatch } from "react-redux";
 import { setUser } from "../state/user"
+import { Link } from "react-router-dom";
 
 
 // Tengo que comprobar si esta o no logueado usando Redux!
@@ -26,7 +27,7 @@ const Login = () => {
       .then((response) => dispatch(setUser(response.data)))
       .then(() => {
         setVari("primary");setMessage("Que bueno volver a verte " + email + ".")
-        navigate("/me") //M: redirecciono
+        navigate(!localStorage.getItem("courses") ? "/me" : "/cart") //M: redirecciono
       })
       .catch(err => {
         console.log({err})
@@ -84,6 +85,7 @@ const Login = () => {
         </Form.Group>
       </Form>
       <div>
+        <Link to="/">
         <Button
           type="submit"
           variant="primary"
@@ -93,6 +95,7 @@ const Login = () => {
           Logueame
         </Button>
         <Alert variant={vari}>{message}</Alert>
+        </Link>
       </div>
     </Col>
     <Col></Col>

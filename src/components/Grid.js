@@ -6,6 +6,7 @@ const Grid = () => {
   
   const courses = useSelector(state => state.courses) //M. accedo a los cursos guardados en el estado global
   
+
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>
       {courses.map(course => { 
