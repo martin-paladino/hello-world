@@ -20,8 +20,9 @@ function Home({ data }) {
       <Carousel>
         {courses.map((course) => {
           return (
+
             <Carousel.Item>
-              <Container>
+              <Container >
                 <Row>
                   <Col sm={4}>
               <Link to="/cards">
@@ -31,6 +32,7 @@ function Home({ data }) {
                 </Row>
               </Container>
             </Carousel.Item>
+            
           );
         })}
       </Carousel>

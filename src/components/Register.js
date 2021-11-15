@@ -3,6 +3,7 @@ import { Container, Form, Button, Col, Row, Alert} from "react-bootstrap";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
+import {Link} from "react-router-dom"
 
 // Tengo que comprobar si esta o no logueado usando Redux!
 
@@ -109,14 +110,17 @@ const Register = () => {
         </Form.Group>
       </Form>
       <div>
+        <Link to="/login">
+
         <Button
           type="submit"
           variant="primary"
           size="lg"
           onClick={(e) => handlerSubmit(e)}
-        >
+          >
           Logueame
         </Button>
+          </Link>
         <Alert variant={vari}>{message}</Alert>
       </div>
       </Col><Col></Col></Row>

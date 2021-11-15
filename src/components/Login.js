@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { setUser } from "../state/user"
+import { Link } from "react-router-dom";
 
 // Tengo que comprobar si esta o no logueado usando Redux!
 
@@ -83,6 +84,7 @@ const Login = () => {
         </Form.Group>
       </Form>
       <div>
+        <Link to="/">
         <Button
           type="submit"
           variant="primary"
@@ -92,6 +94,7 @@ const Login = () => {
           Logueame
         </Button>
         <Alert variant={vari}>{message}</Alert>
+        </Link>
       </div>
     </Col>
     <Col></Col>

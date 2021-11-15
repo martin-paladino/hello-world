@@ -14,6 +14,7 @@ import Login from "./components/Login"
 import Home from "./commons/Home"
 import Cart from "./components/Cart"
 import SingleCourse from "./components/SingleCourse";
+import Footer from "./commons/Footer"
 
 
 function App() {
@@ -34,9 +35,8 @@ const {course}=courses
       <Route exact path="/favourites" element={<Grid data={course}/>} />
       <Route exact path="/login" element={<Login/>}/>
       <Route exact path="/register" element={<Register/>} />
-      
-        
       </Routes>
+      <Footer/>
     </div>
 
   );
