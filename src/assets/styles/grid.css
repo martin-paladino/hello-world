@@ -1,0 +1,8 @@
+#contGrid {
+    padding-top: 5%;
+    padding-left: 5%;
+    width: 100%;
+    display: flex;   
+    overflow: scroll;
+    justify-content: space-between !important
+}

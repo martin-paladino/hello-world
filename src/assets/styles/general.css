@@ -1,0 +1,53 @@
+* { 
+    
+    margin-top : 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+
+}
+
+@font-face {
+    font-family: Actor;
+    src: url('https://fonts.googleapis.com/css?family=Actor'), url('https://fonts.googleapis.com/css?family=Actor'), url('https://fonts.googleapis.com/css?family=Actor')
+}
+
+
+body {
+
+background: rgb(255,255,255);
+background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 71%, rgba(198,195,195,1) 100%);
+font-family: arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: #000000;
+    font-family: arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+h2 {
+    color: #000000;
+    font-family: arial, sans-serif;
+    font-size: 23px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+#contMargin {
+    padding-left: 50px;
+    padding-top: 30px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    
+    align-items: center;
+    justify-content: center;
+}

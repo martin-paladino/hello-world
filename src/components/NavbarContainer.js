@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getCoursesFromCategory } from "../state/courses"
-import Navbar from "../commons/Navbar";
+import NavbarFunc from "../commons/Navbar";
 import {useNavigate} from "react-router-dom"
+
 
 function NavbarContainer() {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ function NavbarContainer() {
   };
 
   return (
-    <Navbar onSubmitHandler={onSubmitHandler} />
+    <NavbarFunc onSubmitHandler={onSubmitHandler} />
   );
 }
 
