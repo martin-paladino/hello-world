@@ -2,8 +2,8 @@ const { User } = require("../models");
 
 class AdminController {
   static getAll = (req, res, next) => {
-    User.findAll()
-      .then((res) => res.data)
+    User.findAll(  )
+      .then((admin) => res.send(admin))
       .catch(next);
     /*   res.status(200).send("funciona") */
   };
