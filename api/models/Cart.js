@@ -7,6 +7,7 @@ Cart.init({
 
     status: {
         type: S.STRING,
+        defaultValue: "pending",
         allowNull: false
     }
 
