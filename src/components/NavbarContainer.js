@@ -1,26 +1,22 @@
-import React from "react";
-import Navbar from "../commons/Navbar";
-import { useState } from "react";
-import { searchCourse } from "../state/course";
 import { useDispatch, useSelector } from "react-redux";
-import { getCoursesFromId } from "../state/courses";
+import { getCoursesFromCategory } from "../state/courses"
+import Navbar from "../commons/Navbar";
+import {useNavigate} from "react-router-dom"
 
 function NavbarContainer() {
   const dispatch = useDispatch();
+  const category = useSelector(state => state.category)
+  const navigate = useNavigate()
 
-  // capturo lo que escribe el user en search
-  const onChangeHandler = (e) => {
-    dispatch(getCoursesFromId(e.target.value));
-  };
-  // hago el pedido a axios para traer cosas de la api
+  // funcion para mostrar cursos de una categoria
   const onSubmitHandler = (e) => {
-    e.preventDefault();
+    e.preventDefault()
+    dispatch(getCoursesFromCategory(category))
+    navigate("/search")
   };
+
   return (
-    <Navbar
-      onChangeHandler={onChangeHandler}
-      onSubmitHandler={onSubmitHandler}
-    />
+    <Navbar onSubmitHandler={onSubmitHandler} />
   );
 }
 

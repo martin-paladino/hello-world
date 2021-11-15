@@ -24,7 +24,7 @@ class AuthController {
 
   static logout(req, res, next) {
     req.logOut();
-    res.sendStatus(200)
+    res.status(200).send({})
   }
 
   static me(req, res, next) {

@@ -1,21 +1,9 @@
-import React, { useEffect } from "react";
 import { Image } from "react-bootstrap";
-import { useParams } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-import { getCoursesFromId } from "../state/courses";
+import { useSelector } from "react-redux";
 
 
 const SingleCourse = () => {
-    const dispatch = useDispatch()
-    const { courseId } = useParams()
-    console.log("el id", courseId)
-    console.log("el getcourse", getCoursesFromId)
-    useEffect(() => {
-        dispatch(getCoursesFromId(courseId))
-
-    }, [])
-
-    const course = useSelector((state) => state.course)
+    const course = useSelector(state => state.course)
 
     return (
         <div>

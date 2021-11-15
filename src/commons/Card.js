@@ -1,47 +1,37 @@
-import React from "react";
-import { Card, Button } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-//import { useState, useEffect } from "react";
-//import axios from "axios";
-import { Link } from "react-router-dom";
-//import {addToCart} from "../state/course"
+import { Card as Rcard, Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { useNavigate, Link } from "react-router-dom";
 import { addCourseToCart } from "../state/cart";
+import { setCourse } from "../state/course"
 
 
-function Cards({ course }) { //M. le llega como prop toda la data de cada curso individual (antes estaba en plural)
-  // traemos un curso en particular //
-  /*   const [course, setCourse] = useState([]);
+function Card({ course }) {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
  
-   useEffect(() => {
-     axios.get("api/course/:id").then((data) => setCourse(data));
-   }, []);
- */
-  //const dispatch = useDispatch()
-  //const user = useSelector((state) => state.user) 
-  //const data = {userId: user.id, courseId: course.id} 
-  //M. accedo al user
-  //M. data para el carrito
-  console.log("hola holaaaaa")
+  const handleClick = () => {
+    dispatch(setCourse(course))
+    navigate(`/course/${course.id}`)
+  }
+
   return (
     <div>
-        <Card style={{ width: "18rem" }}>
-          <Link to={`/course/${course.id}`}>
-          <Card.Img variant="top" src={course.image} />
+      <Rcard style={{ width: "18rem" }}>
+        <Rcard.Img onClick={handleClick} variant="top" src={course.image} />
+        <Rcard.Body className="text-center">
+          <Rcard.Title>{course.title}</Rcard.Title>
+          <Rcard.Text>{course.description}</Rcard.Text>
+          <Rcard.Title>{course.price}</Rcard.Title>
+          <Button /* onClick={()=> {dispatch(addCourseToCart(data))}} */ variant="primary">Add to cart</Button>
+          <Link to="/cart">
+            <Button variant="primary">Go to cart</Button>
           </Link>
-          <Card.Body className="text-center">
-            <Card.Title>{course.title}</Card.Title> {/* M. cambie name x title, no existe name */}
-            <Card.Text>{course.description}</Card.Text>
-            <Card.Title>{course.price}</Card.Title>
-            <Button /* onClick={()=> {dispatch(addCourseToCart(data))}} */ variant="primary">Add to cart</Button>
-            <Link to="/cart">
-              <Button variant="primary">Go to cart</Button>
-            </Link>
-          </Card.Body>
-        </Card>
+        </Rcard.Body>
+      </Rcard>
     </div>
   );
 
 
 }
 
-export default Cards;
+export default Card;

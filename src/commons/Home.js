@@ -1,37 +1,32 @@
-import React, {useEffect} from "react";
+import { useEffect } from "react";
 import { Carousel, Container, Row, Col } from "react-bootstrap";
-import Cards from "../commons/Card";
-import {Link} from "react-router-dom"
+import Card from "../commons/Card";
 import { useSelector, useDispatch } from "react-redux";
-import {getAllCourses} from "../state/courses"
+import { getAllCourses } from "../state/courses";
 
-function Home({ data }) {
-  const courses = useSelector((state) => state.course)
+function Home() {
+  const courses = useSelector(state => state.courses);
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(getAllCourses())
-  },
-  [])
-  console.log("los cursoooos", courses)
+  useEffect(() => dispatch(getAllCourses()), []);
+ 
   return (
     <div>
+      {/* Se podria agregar algun mensaje de bienvienida con alguna imagen antes.... o carrousel izq, registrarse der */}
+      
       <Carousel>
-        {courses.map((course) => {
+        {courses.map(course => {
           return (
-            <Carousel.Item>
+            <Carousel.Item key={course.id}>
               <Container>
                 <Row>
                   <Col sm={4}>
-              <Link to="/cards">
-                    <Cards course={course} />
-            </Link>
+                      <Card course={course} />
                   </Col>
                 </Row>
               </Container>
             </Carousel.Item>
-          );
+          )
         })}
       </Carousel>
     </div>
@@ -39,6 +34,3 @@ function Home({ data }) {
 }
 
 export default Home;
-
-
-

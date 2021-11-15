@@ -1,6 +1,6 @@
 // Run seed.
 const db = require("./config/db");
-const { User, Course, Cart } = require("./models");
+const { User, Course, Cart, Category } = require("./models");
 
 const users = [
 
@@ -107,6 +107,10 @@ const courses = [
     }
 ];
 
+const categories = [
+    {name: "javascript"}, {name: "node"}, {name: "python"}, {name: "inicial"}, {name: "avanzado"}
+]
+
 const carts = [
 
     {
@@ -126,7 +130,8 @@ const carts = [
 
 db.sync()
 .then(() => User.bulkCreate(users))
-.then((users) => Cart.bulkCreate(carts))
+.then(() => Category.bulkCreate(categories))
+.then(() => Cart.bulkCreate(carts))
 .then((carts) => {
     return {
         coursePromise: Course.bulkCreate(courses),

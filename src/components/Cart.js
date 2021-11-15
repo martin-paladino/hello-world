@@ -1,7 +1,4 @@
-import React from "react";
 import {Button, ListGroup, Badge} from "react-bootstrap";
-
-
 import { useSelector } from "react-redux";
 
 // Este componente sirve para Carrito y tambien para historial.
