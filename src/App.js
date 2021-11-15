@@ -1,9 +1,8 @@
 import { useEffect } from "react"
 import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useDispatch } from "react-redux"
-import { meRequest } from "./state/user"
-
+import {useDispatch} from "react-redux"
+import { useEffect } from "react";
 import Card from "./commons/Card";
 import NavbarContainer from "./components/NavbarContainer";
 import Grid from "./components/Grid";
@@ -14,18 +13,22 @@ import Cart from "./components/Cart";
 import SingleCourse from "./components/SingleCourse";
 import Me from "./components/Me";
 import Footer from "./commons/Footer";
+import Checkout from "./commons/Checkout";
+import {meRequest} from "./state/user"
 
 function App() {
+  const dispatch=useDispatch()
   
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(meRequest())
-  }, [])
+useEffect(()=>  {
+dispatch(meRequest())
 
+},[])
   return (
     <div>
       <NavbarContainer />
       <Routes>
+
+        <Route exact path="/checkout" element={<Checkout />} />
         <Route exact path="/" element={<Home />} />
         <Route exact path="/course/:courseId" element={<SingleCourse />} />
         <Route exact path="/card" element={<Card />} />
