@@ -20,15 +20,11 @@ class AdminController {
       .catch(next);
   };
 
+  static deleteUser = (req, res, next) => {
+    User.destroy({ where: { id: req.params.id } })
+      .then((user) => res.sendStatus(204))
+      .catch(next)
 
-   static deleteUser =(req,res,next)=> {
-     User.destroy(  {where: {id:req.params.id}})
-     .then((user)=>res.sendStatus(204))
-     .catch(next)
-
-
-
-
-}
+  }
 }
 module.exports = AdminController;
