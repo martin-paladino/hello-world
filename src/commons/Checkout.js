@@ -1,33 +1,53 @@
-import React from 'react'
-import {List, Badge, Button, ListGroup} from "react-bootstrap"
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { ListGroup, Badge, Button, Card, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import {addCoursesToUser} from "../state/user"
+import {deleteCourseFromCart} from "../state/cart"
+
 
 function Checkout() {
-    return (
-        //confirme su compra en texto
-        //map del carrito
-        //boton comprar
-        <div>
-      <ListGroup as="ol" numbered>
-        {cart.map((curso) => {
-          return (
+  const dispatch = useDispatch()
+  
+  const cart = useSelector((state) => state.cart);
+const handleConfirmClick = () => {
+  dispatch(addCoursesToUser(cart))
+  dispatch(deleteCourseFromCart())
+  }
+  return (
+    <div>
+      <Container>
+        <Card.Text>Confirme su compra</Card.Text>
+      </Container>
+      {cart.map((course) => {
+        return (
+          <Container>
             <ListGroup.Item
+              key={course.id}
               as="li"
               className="d-flex justify-content-between align-items-start"
             >
               <div className="ms-2 me-auto">
-                <div className="fw-bold">{curso.name}</div>
-                {curso.description}
+                <div className="fw-bold">{course.name}</div>
+                {course.description}
               </div>
               <Badge variant="primary" pill>
-                {curso.price}
+                {course.price}
               </Badge>
             </ListGroup.Item>
-          );
-        })}
-      </ListGroup>
-      <Button>Pagar</Button>
+          </Container>
+        );
+      })}
+      <Container>
+        <Link to="/mycourses">
+          <Button onClick={handleConfirmClick} >Confirmar</Button>
+        </Link>
+        <Link to="/me">
+          <Button>Cancelar compra</Button>
+        </Link>
+      </Container>
     </div>
-    )
+  );
 }
 
-export default Checkout
+export default Checkout;

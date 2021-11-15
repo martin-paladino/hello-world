@@ -70,6 +70,24 @@ class CartController {
             .catch(next)
     }
 
+    static removeCoursesFromCart(req, res, next){
+        Cart.findOne({ where: { userId: req.params.userId } })
+            .then(cart => { 
+                return {
+                    coursePromise: Course.findAll({ where: { [Op.or]: req.body } }),
+                    cart 
+                }
+            })
+            .then(({ coursePromise, cart }) => {
+                coursePromise
+                    .then(courses => { //la promesa devuelve el curso encontrado
+                        cart.removeCourses(courses) //y lo borra del carrito
+                        res.sendStatus(202)
+                    })
+            })
+            .catch(next)
+            
+    }
     //para encontrar todos los productos del carrito de un user
     static getCoursesFromCart(req, res, next) {
         Cart.findOne({ where: { userId: req.params.userId } })
