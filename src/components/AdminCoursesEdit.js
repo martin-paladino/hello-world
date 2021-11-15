@@ -9,7 +9,7 @@ import "../assets/styles/adminCoursesAdd.css";
 
 
 const AdminCoursesEdit = () => {
-    const courses     = useSelector((state) => state.course);
+    const courses     = useSelector((state) => state.courses);
 
     const [id, setId] = useState();
 
