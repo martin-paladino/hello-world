@@ -1,11 +1,10 @@
-import React from "react";
 import {Button, ListGroup, Badge} from "react-bootstrap";
-
 import { useSelector } from "react-redux";
 
 // Este componente sirve para Carrito y tambien para historial.
 const Cart = (history) => {
   const cart = useSelector((state) => state.cart);
+
   return (
     <div>
       <ListGroup as="ol" numbered>

@@ -1,23 +1,25 @@
-import React from "react";
 import { Container, Col, Row } from "react-bootstrap";
-import Cards from "../commons/Card";
-const Grid = ({ data }) => {
+import Card from "../commons/Card";
+import { useSelector} from "react-redux";
+
+const Grid = () => {
+  
+  const courses = useSelector(state => state.courses) //M. accedo a los cursos guardados en el estado global
+  
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>
-      {data.map((courses) => {
+      {courses.map(course => { 
         return (
-          <Container>
+          <Container key={course.id}>
             <Row>
               <Col sm={4}>
-                <Cards courses={courses} />
+                <Card course={course} /> {/* M. envio el curso como prop a cada card */}
               </Col>
             </Row>
           </Container>
-        );
-      })}
-      )
+        )})}
     </div>
-  );
+  )
 };
 
 export default Grid;

@@ -1,4 +1,4 @@
-const { Course } = require("../models")
+const { Course, Category } = require("../models")
 
 class CoursesController {
 
@@ -11,6 +11,12 @@ class CoursesController {
     static getCourse(req, res, next) {
         Course.findOne({ where: { id: req.params.id } })
         .then(course => res.status(200).send(course))
+        .catch(next)
+    }
+
+    static getCoursesFromTitle(req, res, next) {
+        Course.findAll({ where: { title: req.params.courseTitle }})
+        .then(courses => res.status(200).send(courses))
         .catch(next)
     }
 
@@ -34,7 +40,32 @@ class CoursesController {
         .then(() => res.sendStatus(202))
         .catch(next)
     }
-    
+
+    static getCoursesFromCategory(req, res, next) {
+        Category.findOne({ where: { name: req.params.category }})
+        .then(category => category.getCourses())
+        .then(courses => res.status(200).send(courses))
+        .catch(next)
+
+    }
+
+    static addCategoryToCourse(req, res, next) {
+        Course.findOne({where : {id: req.params.courseId}})
+        .then(course => {
+            return {
+                course,
+                categoryPromise: Category.findOne({where: { id: req.params.categoryId }})
+            }
+        })
+        .then(({course, categoryPromise}) => {
+            categoryPromise
+            .then(category => {
+                course.addCategory(category)
+                res.sendStatus(201)
+            })   
+        })
+        .catch(next)
+    }
 }
 
 module.exports = CoursesController

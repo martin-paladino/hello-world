@@ -2,9 +2,6 @@ const { Users, User } = require("../models");
 
 class AuthController {
 
-
-
-    
   static register(req, res, next) {
     const { email } = req.body;
     User.findOne({ where: { email } }).then((user) => {
@@ -21,13 +18,13 @@ class AuthController {
     });
   }
 
-  static login(req,res, next) {
-        res.send(req.user)
+  static login(req, res, next) {
+    res.send(req.user)
   }
 
   static logout(req, res, next) {
     req.logOut();
-    res.sendStatus(200)
+    res.status(200).send({})
   }
 
   static me(req, res, next) {
@@ -37,7 +34,7 @@ class AuthController {
     res.send(req.user)
   }
 
-  
+
 }
 
 module.exports = AuthController;
