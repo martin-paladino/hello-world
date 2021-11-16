@@ -12,9 +12,7 @@ import Cart from "./components/Cart";
 import SingleCourse from "./components/SingleCourse";
 import Me from "./components/Me";
 import Footer from "./commons/Footer";
-import { useEffect } from "react";
 import { meRequest } from "./state/user";
-import { useDispatch } from "react-redux";
 import Checkout from "./commons/Checkout";
 import Admin from "./components/Admin"
 import AdminCourses from "./components/AdminCourses";
