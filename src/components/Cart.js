@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button, ListGroup, Badge } from "react-bootstrap";
+import { Button, ListGroup, Badge, Container } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addCoursesToCart } from "../state/cart";
@@ -13,6 +13,9 @@ const Cart = () => {
   // cambia el JSON al valor real del localStorage
   let courses = JSON.parse(localStorage.getItem("courses"));
   let currentCart = user.id ? cart : courses;
+  
+ 
+  
 
   useEffect(() => {
     if (user.id) {
@@ -21,10 +24,23 @@ const Cart = () => {
     }
   }, []);
 
+  const removeLocalStorageItem = (course) => {
+    courses.splice(courses.indexOf(course), 1)
+    localStorage.setItem("courses", JSON.stringify(courses))
+    console.log("=>>>>",courses)
+  }
+  
+  useEffect(() =>{
+    
+  },[])
+
+  let totalPrice = currentCart && currentCart.reduce((sum, value) => ( sum + Number(value.price) ), 0);
+  
+  
   return (
     <div>
       <ListGroup as="ol" numbered>
-        {currentCart.map((course) => {
+        {currentCart && currentCart.map((course) => {
           return (
             <ListGroup.Item
               key={course.id}
@@ -36,16 +52,19 @@ const Cart = () => {
                 {course.description}
               </div>
               <Badge variant="primary" pill>
-                {course.price}
+               US$ {course.price}
               </Badge>
-              <Button>borrar item</Button>
+              <Button type="submit" onClick={() => removeLocalStorageItem(course)} >borrar item</Button>
             </ListGroup.Item>
           );
         })}
       </ListGroup>
+     <Container style={{display: "flex" , justifyContent: "space-between"}}>{/* el style mandarlo a un css y pasar la clase */}
       <Link to={user.id ? "/checkout" : "/login"}>
         <Button>Pagar</Button>
       </Link>
+      <div><h3>Total a pagar: US$ {totalPrice}</h3></div>
+        </Container>
     </div>
   );
 };

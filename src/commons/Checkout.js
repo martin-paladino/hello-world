@@ -14,6 +14,8 @@ const handleConfirmClick = () => {
   dispatch(addCoursesToUser(cart))
   dispatch(deleteCourseFromCart())
   }
+  const totalPrice = cart && cart.reduce((sum, value) => ( sum + Number(value.price) ), 0);
+  
   return (
     <div>
       <Container>
@@ -32,21 +34,23 @@ const handleConfirmClick = () => {
                 {course.description}
               </div>
               <Badge variant="primary" pill>
-                {course.price}
+                US$ {course.price}
               </Badge>
             </ListGroup.Item>
           </Container>
         );
       })}
-      <Container>
-        <Link to="/mycourses">
+      <Container style={{display: 'flex', justifyContent: "space-between"}}> {/* el style mandarlo a un css y pasar la clase */}
+        <Link to="/me">
           <Button onClick={handleConfirmClick} >Confirmar</Button>
         </Link>
-        <Link to="/me">
+        <Link to="/">
           <Button>Cancelar compra</Button>
         </Link>
+    <div><h3>Total a pagar: US$ {totalPrice}</h3></div>
       </Container>
     </div>
+
   );
 }
 
