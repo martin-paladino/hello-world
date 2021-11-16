@@ -37,14 +37,7 @@ export const sendLogoutRequest = createAsyncThunk("LOGOUT", () => {
       console.log({ err });
     });
 });
-export const meRequest = createAsyncThunk("ME", () => {
-  return axios
-    .get("/api/auth/me")
-    .then((res) => res.data)
-    .catch((err) => {
-      console.log({ err });
-    });
-});
+
 
 export const addCoursesToUser = createAsyncThunk("ADD_COURSES_TO_USER", (courses , thunkAPI) => {
   const {user} = thunkAPI.getState()

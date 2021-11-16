@@ -5,7 +5,7 @@ class Course extends S.Model {}
 
 Course.init({
     title: {
-        type: S.STRING,
+        type: S.STRING(1000),
         allowNull: false
     },
     description: {
@@ -13,15 +13,15 @@ Course.init({
         allowNull: false
     },
     professor: {
-        type: S.STRING,
+        type: S.STRING(1000),
         allowNull: false
     },
     image: {
-        type: S.STRING,
+        type: S.STRING(1000),
         allowNull: false
     },
     review: {
-        type: S.STRING,
+        type: S.TEXT,
         allowNull: false
     },
     rating: {
@@ -37,11 +37,11 @@ Course.init({
         allowNull: false
     },
     accessLink: {
-        type: S.STRING,
+        type: S.STRING(1000),
         allowNull: false
     },
     videoPreview: {
-        type: S.STRING,
+        type: S.STRING(1000),
         allowNull: false
     }
 }, 

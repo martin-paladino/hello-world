@@ -49,7 +49,7 @@ app.use((err,req,res,next)=>    {
 
 })
 
-db.sync({force: false})
+db.sync({force:false})
 .then(() => {
     console.log("db synchronized")
     app.listen(3001, () => console.log("Server running on port 3001"))

@@ -1,7 +1,5 @@
-import { useEffect } from "react"
 import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {useDispatch} from "react-redux"
 import Card from "./commons/Card";
 import NavbarContainer from "./components/NavbarContainer";
 import Grid from "./components/Grid";
