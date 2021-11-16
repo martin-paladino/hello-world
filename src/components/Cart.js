@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, ListGroup, Badge, Container } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { addCoursesToCart, deleteCourseFromCart } from "../state/cart";
+import { addCoursesToCart, deleteCourseFromCart, getCourses } from "../state/cart";
 
 // Este componente sirve para Carrito y tambien para historial.
 const Cart = () => {
@@ -15,9 +15,10 @@ const Cart = () => {
   let courses = cart.length > 0 ? cart : JSON.parse(localStorage.getItem("courses"));
   let currentCart = user.id ? cart : courses;
   
-
   useEffect(() => {
-    if (user.id && courses.length > 0) {
+    //user.id && dispatch(getCourses())
+
+    if(user.id && courses === null) {
       dispatch(addCoursesToCart(courses));
       localStorage.removeItem("courses");
     }
@@ -38,7 +39,7 @@ const Cart = () => {
   return (
     <div>
       <ListGroup as="ol" numbered>
-        {currentCart && currentCart.map((course) => {
+        {currentCart === null ? (<h3>Tu carrito de compras está vacío!</h3>) : currentCart.map((course) => {
           return (
             <ListGroup.Item
               key={course.id}
@@ -57,12 +58,12 @@ const Cart = () => {
           );
         })}
       </ListGroup>
-     <Container style={{display: "flex" , justifyContent: "space-between"}}>{/* el style mandarlo a un css y pasar la clase */}
+     {currentCart.length > 0 && <Container style={{display: "flex" , justifyContent: "space-between"}}>{/* el style mandarlo a un css y pasar la clase */}
       <Link to={user.id ? "/checkout" : "/login"}>
         <Button>Pagar</Button>
       </Link>
       <div><h3>Total a pagar: US$ {totalPrice}</h3></div>
-        </Container>
+        </Container>}
     </div>
   );
 };
