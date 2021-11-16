@@ -10,8 +10,7 @@ const Cart = () => {
 
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user);
-  // cambia el JSON al valor real del localStorage
-  let courses = JSON.parse(localStorage.getItem("courses"));
+  let courses = JSON.parse(localStorage.getItem("courses")) // cambia el JSON al valor real del localStorage
   let currentCart = user.id ? cart : courses;
 
   useEffect(() => {
