@@ -1,12 +1,12 @@
 import React                   from "react";
-import { useState }            from "react";
+import { useState, useEffect } from "react";
 import { Button, Form }        from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
 import { useSelector }         from "react-redux";
 import { useDispatch }         from "react-redux";
 import { setCourses }          from "../state/courses";
 import axios                   from "axios";          
-import { useNavigate }         from "react-router-dom"
+import { getAllCourses }       from "../state/courses";
 import "../assets/styles/admin.css";
 import "../assets/styles/adminCoursesAdd.css";
 
@@ -14,7 +14,7 @@ import "../assets/styles/adminCoursesAdd.css";
 
 const AdminCoursesEdit = () => {
     const courses  = useSelector((state) => state.courses);
-    const navigate = useNavigate();
+
     const dispatch = useDispatch();
     
     const [id, setId]     = useState();
@@ -45,15 +45,15 @@ const AdminCoursesEdit = () => {
                     ...form,
         
                     title: course.title,
-                    description:course.description,
-                    professor:course.professor,
-                    image:course.image,
-                    review:course.review,
-                    rating:course.rating,
-                    price:course.price,
-                    duration:course.duration,
-                    accessLink:course.accessLink,
-                    videoPreview:course.videoPreview,
+                    description: course.description,
+                    professor: course.professor,
+                    image: course.image,
+                    review: course.review,
+                    rating: course.rating,
+                    price: course.price,
+                    duration: course.duration,
+                    accessLink: course.accessLink,
+                    videoPreview: course.videoPreview,
                 });
             }
         })
@@ -68,14 +68,22 @@ const AdminCoursesEdit = () => {
         .then(res => res.data)
         .then(() => {
             dispatch(setCourses())
-            navigate(`/admin/courses`)})
+            dispatch(getAllCourses())
+        })
+        .then( () => alert("Curso modificado."))
+        .catch(err => console.log(err))
     };
 
-
+    useEffect(() => {
+          dispatch(getAllCourses())
+    }, []);
 
     const handleDelete = () => {
         axios.delete(`/api/courses/${id}`)
-        .then(() => navigate('/admin/courses'))
+        .then( () => alert("Curso eliminado."))
+        .then(() => {
+            dispatch(getAllCourses())
+        })
     };
 
     const handleInput = (e) => {
@@ -91,7 +99,10 @@ const AdminCoursesEdit = () => {
             <Container className="marginContent">
                 <div className="centrarTitulo">
                     <Row>
-                        <Col><h4> EDITAR CURSO </h4></Col>
+                        
+                        <Col>
+                            <h4> EDITAR CURSO </h4>
+                        </Col>
                     </Row>
                 </div>
 
