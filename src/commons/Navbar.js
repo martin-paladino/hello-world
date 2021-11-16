@@ -1,4 +1,4 @@
-import { Container, Form, Button, Navbar, Row, Col } from "react-bootstrap";
+import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCourses } from "../state/cart";
