@@ -8,9 +8,10 @@ import axios from "axios";
 export const setCart = createAction("SET_CART");
 
 //devuelve todos los cursos del carrito de un user (pendiente)//
-export const getCourses = createAsyncThunk("COURSE", (userId) => {
+export const getCoursesFromUserCart = createAsyncThunk("COURSE", (_, thunkAPI) => {
+  const { user } = thunkAPI.getState()
   return axios
-    .get(`/api/cart/${userId}/courses`)
+    .get(`/api/cart/${user.id}/courses`)
     .then((res) => res.data)
     .catch((err) => {
       console.log({ err });
@@ -27,11 +28,12 @@ export const getCourse = createAsyncThunk("COURSE", (courseId) => {
 });
 
 export const addCourseToCart = createAsyncThunk(
-  "COURSE",
-  ({ userId, courseId }) => {
+  "ADD_COURSE_TO_CART",
+  (courseId, thunkAPI) => {
+    const { user } = thunkAPI.getState()
     return axios
-      .post(`/api/cart/addtocart/${userId}/${courseId}`)
-      .then((res) => res.data) //M. guardo el curso en el carrito, no habria q .push?
+      .post(`/api/cart/addtocart/${user.id}/${courseId}`)
+      .then((res) => res.data) //aca esta el prob, transforma arr en obj
       .catch((err) => {
         console.log({ err });
       });
@@ -42,31 +44,35 @@ export const addCoursesToCart = createAsyncThunk("ADD_COURSES_TO_CART", (courses
   const { user } = thunkAPI.getState()
   return axios
   .post(`/api/cart/addcourses/${user.id}`, courses)
-  .then(res => res.data)
+  .then(res => res.data) 
   .catch((err) => {
     console.log({ err });
   });
 })
 
 export const deleteCourseFromCart = createAsyncThunk(
-  "COURSE",
-  ({ userId, courseId }) => {
+  "DELETE_COURSE_FROM_CART",
+  (courseId, thunkAPI) => {
+    const { user } = thunkAPI.getState()
     return axios
-      .delete(`/api/cart/${userId}/${courseId}`)
-      .then((res) => res.data)
+      .delete(`/api/cart/${user.id}/${courseId}`)
+      .then(() => axios.get(`/api/cart/${user.id}/courses`))
+      .then(res => res.data)
       .catch((err) => {
         console.log({ err });
-      });
+      })
   }
 );
 
 export const deleteCoursesFromCart = createAsyncThunk(
-  "COURSES",
+  "DELETE_COURSES_FROM_CART",
   ( courses,thunkAPI) => {
     const { user } = thunkAPI.getState()
     return axios
       .delete(`/api/cart/${user.id}`, courses)
+      .then(() => axios.get(`/api/cart/${user.id}/courses`))
       .then((res) => res.data)
+
       .catch((err) => {
         console.log({ err });
       });
@@ -74,7 +80,7 @@ export const deleteCoursesFromCart = createAsyncThunk(
 );
 
 const cartReducer = createReducer([], {
-  [getCourses.fulfilled]: (state, action) => action.payload,
+  [getCoursesFromUserCart.fulfilled]: (state, action) => action.payload,
   [deleteCourseFromCart.fulfilled]: (state, action) => action.payload,
   [addCourseToCart.fulfilled]: (state, action) => action.payload,
   [setCart]: (state, action) => action.payload,
