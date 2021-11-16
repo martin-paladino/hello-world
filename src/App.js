@@ -12,8 +12,10 @@ import Cart from "./components/Cart";
 import SingleCourse from "./components/SingleCourse";
 import Me from "./components/Me";
 import Footer from "./commons/Footer";
+import { useEffect } from "react";
+import { meRequest } from "./state/user";
+import { useDispatch } from "react-redux";
 import Checkout from "./commons/Checkout";
-import {meRequest} from "./state/user"
 import Admin from "./components/Admin"
 import AdminCourses from "./components/AdminCourses";
 import AdminCoursesAdd from "./components/AdminCoursesAdd";
@@ -21,12 +23,15 @@ import AdminCoursesEdit from "./components/AdminCoursesEdit";
 
 
 function App() {
-  const dispatch=useDispatch()
+const dispatch=useDispatch()  
+
   
 useEffect(()=>  {
 dispatch(meRequest())
 
 },[])
+
+
   return (
     <div>
       <NavbarContainer />

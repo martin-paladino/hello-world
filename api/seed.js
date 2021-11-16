@@ -4,11 +4,11 @@ const { User, Course, Cart, Category } = require("./models");
 
 const users = [
 
-    {
+    {   //dejar el verdadero password comentado
         fullname: "martin",
         email: "martin@gmail.com",
         password: "passhasheada1",
-        salt: "zxcvbnm1",
+        salt: "zxcvbnm1", //no es necesario ponerlo
         isAdmin: true
     },
     {
@@ -43,7 +43,7 @@ const users = [
 ];
 
 
-const courses = [
+const courses = [ //tiene que haber mas de 12
 
     {
         title: "Javascript: From Zero to Expert!",
@@ -51,11 +51,11 @@ const courses = [
         professor: "Pedro Perez",
         image: "https://html5hive.org/wp-content/uploads/2014/06/js_800x800.jpg",
         review: "Really, really well made course. Super in-depth, with great challenges and projects that will solidify your Javascript understanding.",
-        rating: 4.5,
+        rating: 4.5, //sacar todos los rating
         price: 9.99,
         duration: 5,
-        accessLink: "https://www.udemy.com/course/the-complete-javascript-course/",
-        videoPreview: "https://www.udemy.com/course/the-complete-javascript-course/"
+        accessLink: "https://www.udemy.com/course/the-complete-javascript-course/", // videos largos sobre el tema
+        videoPreview: "https://www.udemy.com/course/the-complete-javascript-course/" //videos de 1 min de youtube en español
     },
     {
         title: "The Python Mega Course: Build 10 Real World Applications",
@@ -107,11 +107,11 @@ const courses = [
     }
 ];
 
-const categories = [
-    {name: "javascript"}, {name: "node"}, {name: "python"}, {name: "inicial"}, {name: "avanzado"}
+const categories = [ //agregar categorias //fron back etc
+    {name: "javascript"}, {name: "node"}, {name: "python"}, {name: "inicial"},{name: "intermedio"}, {name: "avanzado"}
 ]
 
-const carts = [
+const carts = [ //agregar un par de carritos
 
     {
         status: "pending",
@@ -126,6 +126,8 @@ const carts = [
         userId: 3,
     }
 ];
+
+//asigrnarles categorias a los cursos (varias a cada uno)
 
 
 db.sync()

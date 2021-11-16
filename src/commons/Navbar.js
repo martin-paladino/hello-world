@@ -10,21 +10,25 @@ import { setCategory } from "../state/category";
 import "../assets/styles/general.css";
 import "../assets/styles/navbar.css";
 
-function NavbarFunc({ onSubmitHandler }) {
-  const user = useSelector((state) => state.user);
-  const category = useSelector((state) => state.category);
-  const dispatch = useDispatch();
+
+function Navbar({ onSubmitHandler }) {
+  
+  const user = useSelector(state => state.user)
+  const category = useSelector(state => state.category)
+  const dispatch = useDispatch()
+  
+console.log(user.id)
 
   return (
     <div className="navbar">
       
         <div>
-          <a href="/"><img
+          <Link to="/" > <img
             style={{ width: "40px", height: "auto" }}
             src="https://i.stack.imgur.com/o2dfh.png"
             alt=""
           />
-          </a>
+          </Link>
         </div>
 
         <div>
@@ -56,7 +60,7 @@ function NavbarFunc({ onSubmitHandler }) {
         </div>
         {user.id ? (
           <div>
-            <Button variant="secondary" className="boton">{user.fullname}</Button>
+           <Link to="/me" > <Button variant="secondary" className="boton">{user.fullname}</Button> </Link>
             <Link to="/">
               <Button variant="secondary" onClick={() => dispatch(sendLogoutRequest())}>
                 Logout
@@ -91,7 +95,7 @@ function NavbarFunc({ onSubmitHandler }) {
   );
 }
 
-export default NavbarFunc;
+export default Navbar;
 
 /*
 <Navbar bg="dark" variant="dark">
