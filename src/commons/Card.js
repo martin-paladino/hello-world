@@ -32,7 +32,7 @@ function Card({ course }) {
   };
 
   const userHandleCartClick = () => {
-    dispatch(addCourseToCart({ userId: user.id, courseId: course.id }));
+    dispatch(addCourseToCart(course.id));
   };
   return (
     <div>
