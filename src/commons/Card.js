@@ -54,11 +54,7 @@ function Card({ course }) {
             </Button>
           )}
           <Link to="/cart">
-<<<<<<< HEAD
             <Button variant="primary">Ir al carrito</Button>
-=======
-            <Button variant="primary">Go to cart</Button> {/* no deberia decir comprar y redirigir a checkout? */}
->>>>>>> d7215305692aac7e8fdd203b33de0aac4c2ee447
           </Link>
           </div>
       </div>
