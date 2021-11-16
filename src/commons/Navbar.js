@@ -1,9 +1,15 @@
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form, Button, Navbar, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCourses } from "../state/cart";
 import { sendLogoutRequest } from "../state/user";
-import { setCategory } from "../state/category"
+import { setCategory } from "../state/category";
+
+// estilos
+
+import "../assets/styles/general.css";
+import "../assets/styles/navbar.css";
+
 
 function Navbar({ onSubmitHandler }) {
   
@@ -14,49 +20,64 @@ function Navbar({ onSubmitHandler }) {
 console.log(user.id)
 
   return (
-    <Container>
-      <div className="navbar">
+    <div className="navbar">
+      
         <div>
-         <Link to="/" >  <Button >Home</Button></Link>
+          <Link to="/" > <img
+            style={{ width: "40px", height: "auto" }}
+            src="https://i.stack.imgur.com/o2dfh.png"
+            alt=""
+          />
+          </Link>
         </div>
+
         <div>
           <Form className="d-flex" onSubmit={onSubmitHandler}>
             <Form.Control
               value={category}
               onChange={(e) => dispatch(setCategory(e.target.value))}
               type="search"
-              placeholder="Search"
+              placeholder="Curso o categoria.."
               className="me-2"
               aria-label="Search"
+              id="searchinput"
             />
-              <Button type="submit">Search</Button>
+            <Button variant="secondary" type="submit">Buscar</Button>
           </Form>
         </div>
         <div>
-          <Button>Categories</Button>
+          <Button variant="secondary">Categorias</Button>
+        </div>
+        <div>
           <Link to="/cart">
-            <Button onClick={() => dispatch(getCourses(/* {user.id} */))}>
-              Cart
+            <Button
+              onClick={() => dispatch(getCourses(/* {user.id} */))}
+              className="redondo"
+            >
+              <img width="20px" src="/cart.png" />
             </Button>
           </Link>
         </div>
         {user.id ? (
           <div>
-           <Link to="/me"> <Button className="boton">{user.fullname}</Button></Link>
+           <Link to="/me" > <Button variant="secondary" className="boton">{user.fullname}</Button> </Link>
             <Link to="/">
-              <Button onClick={() => dispatch(sendLogoutRequest())}>
+              <Button variant="secondary" onClick={() => dispatch(sendLogoutRequest())}>
                 Logout
               </Button>
             </Link>
           </div>
         ) : (
           <div>
-            <Link to="/login">
-              <Button type="submit" as="input" value="Login" />
-            </Link>
-            <Link to="/register">
-              <Button as="input" type="submit" value="Register" />
-            </Link>
+            <div>
+              <Link to="/login">
+                <Button variant="secondary" type="submit" as="input" value="Login" />
+              </Link>
+
+              <Link to="/register">
+                <Button as="input" type="submit" value="Register" />
+              </Link>
+            </div>
           </div>
         )}
 
@@ -71,7 +92,6 @@ console.log(user.id)
 
 
       </div>
-    </Container>
   );
 }
 

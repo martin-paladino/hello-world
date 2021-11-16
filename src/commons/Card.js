@@ -2,8 +2,14 @@ import { Card as Rcard, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { addCourseToCart } from "../state/cart";
+
 import { setCourse } from "../state/course";
-import { useState } from "react";
+
+
+
+import "../assets/styles/general.css";
+import "../assets/styles/card.css";
+
 
 function Card({ course }) {
   const dispatch = useDispatch();
@@ -30,7 +36,7 @@ function Card({ course }) {
   };
   return (
     <div>
-      <Rcard style={{ width: "18rem" }}>
+      <Rcard className="card">
         <Rcard.Img onClick={handleClick} variant="top" src={course.image} />
         <Rcard.Body className="text-center">
           <Rcard.Title>{course.title}</Rcard.Title>
