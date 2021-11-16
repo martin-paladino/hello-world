@@ -52,7 +52,7 @@ function Card({ course }) {
             </Button>
           )}
           <Link to="/cart">
-            <Button variant="primary">Go to cart</Button>
+            <Button variant="primary">Go to cart</Button> {/* no deberia decir comprar y redirigir a checkout? */}
           </Link>
         </Rcard.Body>
       </Rcard>
