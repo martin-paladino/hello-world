@@ -1,7 +1,7 @@
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getCourses } from "../state/cart";
+import { getCoursesFromUserCart, setCart } from "../state/cart";
 import { sendLogoutRequest } from "../state/user";
 import { setCategory } from "../state/category";
 
@@ -19,6 +19,11 @@ function Navbar({ onSubmitHandler }) {
   
 console.log(user.id)
 
+  const handleLogout = () => {
+    dispatch(setCart([]));
+    dispatch(sendLogoutRequest());
+  };
+
   return (
     <div className="navbar">
       
@@ -31,82 +36,74 @@ console.log(user.id)
           </Link>
         </div>
 
+      <div>
+        <Form className="d-flex" onSubmit={onSubmitHandler}>
+          <Form.Control
+            value={category}
+            onChange={(e) => dispatch(setCategory(e.target.value))}
+            type="search"
+            placeholder="Curso o categoria.."
+            className="me-2"
+            aria-label="Search"
+            id="searchinput"
+          />
+          <Button variant="secondary" type="submit">
+            Buscar
+          </Button>
+        </Form>
+      </div>
+      <div>
+        <Button variant="secondary">Categorias</Button>
+      </div>
+      <div>
+        <Link to="/cart">
+          <Button
+            
+            className="redondo"
+          >
+            <img width="20px" src="/cart.png" />
+          </Button>
+        </Link>
+      </div>
+      {user.id ? (
         <div>
-          <Form className="d-flex" onSubmit={onSubmitHandler}>
-            <Form.Control
-              value={category}
-              onChange={(e) => dispatch(setCategory(e.target.value))}
-              type="search"
-              placeholder="Curso o categoria.."
-              className="me-2"
-              aria-label="Search"
-              id="searchinput"
-            />
-            <Button variant="secondary" type="submit">Buscar</Button>
-          </Form>
-        </div>
-        <div>
-          <Button variant="secondary">Categorias</Button>
-        </div>
-        <div>
-          <Link to="/cart">
-            <Button
-              onClick={() => dispatch(getCourses(/* {user.id} */))}
-              className="redondo"
-            >
-              <img width="20px" src="/cart.png" />
+          <Button variant="secondary" className="boton">
+            {user.fullname}
+          </Button>
+          <Link to="/">
+            <Button variant="secondary" onClick={handleLogout}>
+              Logout
             </Button>
           </Link>
         </div>
-        {user.id ? (
+      ) : (
+        <div>
           <div>
-           <Link to="/me" > <Button variant="secondary" className="boton">{user.fullname}</Button> </Link>
-            <Link to="/">
-              <Button variant="secondary" onClick={() => dispatch(sendLogoutRequest())}>
-                Logout
-              </Button>
+            <Link to="/login">
+              <Button
+                variant="secondary"
+                type="submit"
+                as="input"
+                value="Login"
+              />
+            </Link>
+
+            <Link to="/register">
+              <Button as="input" type="submit" value="Register" />
             </Link>
           </div>
-        ) : (
-          <div>
-            <div>
-              <Link to="/login">
-                <Button variant="secondary" type="submit" as="input" value="Login" />
-              </Link>
+        </div>
+      )}
 
-              <Link to="/register">
-                <Button as="input" type="submit" value="Register" />
-              </Link>
-            </div>
-          </div>
-        )}
-
-      {user.id ? (  // La idea es que pregunte user.isAdmin?
+      {user.id ? (
         <>
           <Link to="/admin">
             <Button className="boton"> Admin </Button>
           </Link>
         </>
-       ) : null
-      }
-
-
-      </div>
+      ) : null}
+    </div>
   );
 }
 
 export default Navbar;
-
-/*
-<Navbar bg="dark" variant="dark">
-    <Container>
-    <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-    <Nav className="me-auto">
-      <Nav.Link href="#home">Home</Nav.Link>
-      <Nav.Link href="#features">Features</Nav.Link>
-      <Nav.Link href="#pricing">Pricing</Nav.Link>
-    </Nav>
-    </Container>
-  </Navbar>
-
-*/

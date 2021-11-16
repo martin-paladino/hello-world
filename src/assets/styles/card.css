@@ -1,18 +1,15 @@
 .card {
-    display: inline-table;
     width:300px;
-    height:600px;
+    height:640px;
     padding: 30px;
     border-radius: 13px;
     align-items: center;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.667);
-  }
-  .card:hover {
-    background:rgba(255, 255, 124, 0.777);
-    
-    width:300px;
-    height:600px;
+    background-color: rgb(255, 255, 255);
+}
+
+.card:hover {
+    background:rgb(255, 255, 194);
     align-items: center;
     text-align: center;
     border-radius: 13px;
@@ -21,8 +18,30 @@
   -ms-transform: scale(1.05);
   transform: scale(1.05);
   transition: 0.5s ease;
-  }
+}
 
-  .contGrid {
-      display: flexbox;
-  }
+#cardImgCont {
+  
+  width: 300px;
+  height: 300px;
+}
+#cardImg{
+  width: 280px;
+  height: auto;
+}
+#cardDesc{
+  width: 300px;
+  height: 200px;
+  max-height: 210px;
+  padding-top: 15px;
+  padding-left:  15px;
+  padding-bottom:  15px;
+  padding-right:  20px;
+  
+  text-align:center;
+  overflow-y: scroll;
+}
+
+
+
+  

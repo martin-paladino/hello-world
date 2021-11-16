@@ -9,48 +9,38 @@ import "../assets/styles/home.css";
 
 function Home() {
   const courses = useSelector(state => state.courses);
+  const user = useSelector(state => state.user)
   const dispatch = useDispatch();
 
   useEffect(() => dispatch(getAllCourses()), []);
  
   return (
-  /*  <div>
-      <h1>Mensaje de bienvenida</h1>
-      <Carousel>
-        {courses.map(course => {
-          return (
-            <Carousel.Item key={course.id}>
-              <Card course={course} />
-            </Carousel.Item>
-          )
-        })}
-      </Carousel>
-    </div>
-  */
+ 
+ <div>
+    <div id="contMargin"><h1 id="big">Bienvenidx {user.fullname} a Hello World!</h1></div>
  <div className="bodyCar">
    
   <input type="radio" name="position" checked />
-  {
+  <input type="radio" name="position" />
+  <input type="radio" name="position" />
+  <input type="radio" name="position" />
+  <input type="radio" name="position" />
   
-  
-  courses.map((course) => {
-          return (
-            <input type="radio" name="position" />
-          )
-        })}
   <main id="carousel">
-  {courses.map(course => {
+  
+   {courses.map(course => { if(course<5){
           return (
             <div key={course.id} className="item">
               <Card course={course} />
             </div>
           )
-        })}
+        }})}
+       
     </main>
 
  </div>
  
- 
+ </div>
  
  
     );

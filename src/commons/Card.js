@@ -32,30 +32,32 @@ function Card({ course }) {
   };
 
   const userHandleCartClick = () => {
-    dispatch(addCourseToCart({ userId: user.id, courseId: course.id }));
+    dispatch(addCourseToCart(course.id));
   };
   return (
     <div>
-      <Rcard className="card">
-        <Rcard.Img onClick={handleClick} variant="top" src={course.image} />
-        <Rcard.Body className="text-center">
+      <div className="card">
+        <div id="cardImgCont"><img id="cardImg" onClick={handleClick} variant="top" src={course.image} /></div>
+        <div id="cardDesc">
           <Rcard.Title>{course.title}</Rcard.Title>
           <Rcard.Text>{course.description}</Rcard.Text>
-          <Rcard.Title>{course.price}</Rcard.Title>
+        </div>
+        <div>${course.price}</div>
+        <div id="cardFooter">
           {user.id ? (
             <Button onClick={userHandleCartClick} variant="primary">
-              Add to cart
+              Agregar 
             </Button>
           ) : (
             <Button onClick={handleCartClick} variant="primary">
-              Add to cart
+              Agregar
             </Button>
           )}
           <Link to="/cart">
-            <Button variant="primary">Go to cart</Button>
+            <Button variant="primary">Ir al carrito</Button>
           </Link>
-        </Rcard.Body>
-      </Rcard>
+          </div>
+      </div>
     </div>
   );
 }

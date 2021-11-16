@@ -24,10 +24,6 @@ Course.init({
         type: S.TEXT,
         allowNull: false
     },
-    rating: {
-        type: S.DECIMAL(10, 1),
-        allowNull: false
-    },
     price: {
         type: S.DECIMAL(10, 2),
         allowNull: false

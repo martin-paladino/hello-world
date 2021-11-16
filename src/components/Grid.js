@@ -16,8 +16,10 @@ const Grid = () => {
     <div id="contGrid">
       {courses.map(course => { 
         return (
+                <div id="espacio">
                 <div key={course.id}>
-                <Card course={course} />
+                <Card key={course.id} course={course} />
+                </div>
                 </div>
               
         )})}

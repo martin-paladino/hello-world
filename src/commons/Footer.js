@@ -1,5 +1,4 @@
 import React from "react";
-import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 // estilos
@@ -10,19 +9,23 @@ import "../assets/styles/footer.css"
 function Footer() {
   return (
     
-      <div className="footer">
-        <div>
+      <div id="footer">
+        <div id="footerEl">
           <Link to="/">
-              <Card.Img
+              <img id="logo"
                 style={{ width: "100px", height: "auto" }}
                 src="https://i.stack.imgur.com/o2dfh.png"
                 alt=""
               />
           </Link>
           </div>
-          <div>
-          <h3 className="textobarra">© 2021 hello_world. <br/> Todos los derechos reservados.</h3></div>
-          <div>
+          <div id="footerEl"><h3 className="textobarra">
+              2021 (C) <br></br>
+              Todos los derechos reservados.<br></br>
+            
+          </h3></div>
+          
+          <div id="footerEl">
           <h3 className="textobarra">
               Contacto:<br></br>
               courses@hello_world.com
