@@ -18,7 +18,7 @@ import AdminCoursesAdd from "./components/AdminCoursesAdd";
 import AdminCoursesEdit from "./components/AdminCoursesEdit";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-
+import "./assets/styles/app.css"
 function App() {
 const dispatch=useDispatch()  
 
@@ -31,6 +31,7 @@ dispatch(meRequest())
 
   return (
     <div>
+      <div className="margin_bottom">
       <NavbarContainer />
       <Routes>
         <Route exact path="/checkout" element={<Checkout />} />
@@ -48,6 +49,7 @@ dispatch(meRequest())
         <Route exact path="/admin/courses/add" element={<AdminCoursesAdd />} />
         <Route exact path="/admin/courses/edit" element={<AdminCoursesEdit />} />
       </Routes>
+      </div>
       <Footer />
 
     </div>

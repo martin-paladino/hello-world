@@ -19,14 +19,15 @@ function Footer() {
               />
           </Link>
           </div>
-          <div id="footerEl"><h3 className="textobarra">
+          <div id="footerEl"><h3 className="textobarra , margin-derechos"
+          >
               2021 (C) <br></br>
               Todos los derechos reservados.<br></br>
             
           </h3></div>
           
           <div id="footerEl">
-          <h3 className="textobarra">
+          <h3 className="textobarra , margin-contacto" >
               Contacto:<br></br>
               courses@hello_world.com
           </h3>
