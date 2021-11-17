@@ -58,7 +58,6 @@ console.log(user.id)
       <div>
         <Link to="/cart">
           <Button
-            
             className="redondo"
           >
             <img width="20px" src="/cart.png" />

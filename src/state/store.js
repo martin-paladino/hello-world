@@ -5,6 +5,7 @@ import cartReducer from "./cart"
 import coursesReducer from "./courses";
 import courseReducer from "./course";
 import categoryReducer from "./category";
+import ordersReducer from "./orders";
 
 const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
@@ -13,7 +14,8 @@ const store = configureStore({
     course: courseReducer,   
     courses: coursesReducer,
     cart: cartReducer,
-    category: categoryReducer
+    category: categoryReducer,
+    orders: ordersReducer
   },
 });
 

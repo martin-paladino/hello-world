@@ -9,6 +9,7 @@ import Home from "./commons/Home";
 import Cart from "./components/Cart";
 import SingleCourse from "./components/SingleCourse";
 import Me from "./components/Me";
+import Orders from "./commons/Orders";
 import Footer from "./commons/Footer";
 import { meRequest } from "./state/user";
 import Checkout from "./commons/Checkout";
@@ -47,6 +48,7 @@ dispatch(meRequest())
         <Route exact path="/admin/courses" element={<AdminCourses />} />
         <Route exact path="/admin/courses/add" element={<AdminCoursesAdd />} />
         <Route exact path="/admin/courses/edit" element={<AdminCoursesEdit />} />
+        <Route exact path="/orders" element={<Orders/>}/>
       </Routes>
       <Footer />
 

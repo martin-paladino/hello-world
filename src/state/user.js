@@ -38,16 +38,19 @@ export const sendLogoutRequest = createAsyncThunk("LOGOUT", () => {
     });
 });
 
-export const addCoursesToUser = createAsyncThunk("ADD_COURSES_TO_USER", (courses , thunkAPI) => {
+export const addCoursesToUser = createAsyncThunk("ADD_COURSES_TO_USER", (body , thunkAPI) => {
   const {user} = thunkAPI.getState()
   return axios
-    .post(`/api/users/addcourse/${user.id}`, courses)
+    .post(`/api/users/addcourse/${user.id}`, body)
     .then((res) => res.data)
     .catch((err) => {
       console.log({ err });
     });
 });
 
+/* export const addCoursesToUserOrders = createAsyncThunk("ADD_COURSES_TO_USER_ORDER", (body) => {
+
+}) */
 
 
 const userReducer = createReducer(
