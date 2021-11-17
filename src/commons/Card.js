@@ -1,15 +1,11 @@
 import { Card as Rcard, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import { addCourseToCart } from "../state/cart";
 
 import { setCourse } from "../state/course";
-
-
-
+import { addCourseToCart } from "../state/cart";
 import "../assets/styles/general.css";
 import "../assets/styles/card.css";
-
 
 function Card({ course }) {
   const dispatch = useDispatch();
@@ -32,8 +28,9 @@ function Card({ course }) {
   };
 
   const userHandleCartClick = () => {
-    dispatch(addCourseToCart(course.id));
+    dispatch(addCourseToCart(course.id))
   };
+
   return (
     <div>
       <div className="card">

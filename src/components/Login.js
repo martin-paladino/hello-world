@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Container, Form, Button, Row, Col, Alert} from "react-bootstrap";
-import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useDispatch } from "react-redux";
-import { setUser } from "../state/user"
+import { sendLoginRequest, setUser } from "../state/user"
 import { Link } from "react-router-dom";
 
 import "../assets/styles/general.css";
@@ -22,12 +21,11 @@ const Login = () => {
     let body = { email, password};
     setVari("primary")
     setMessage("Logueando...");
-     axios
-      .post("/api/auth/login", body)
-      .then((response) => dispatch(setUser(response.data)))
+    dispatch(sendLoginRequest(body))
       .then(() => {
-        setVari("primary");setMessage("Que bueno volver a verte " + email + ".")
-        navigate(!localStorage.getItem("courses") ? "/me" : "/cart") //M: redirecciono
+        setVari("primary");
+        setMessage("Que bueno volver a verte " + email + ".")
+        navigate(!localStorage.getItem("courses") ? "/me" : "/cart") 
       })
       .catch(err => {
         console.log({err})

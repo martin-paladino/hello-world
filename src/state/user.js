@@ -6,8 +6,6 @@ import {
 import axios from "axios";
 import { act } from "react-dom/test-utils";
 
-export const setUser = createAction("SET_USER");
-
 const initialState = {
   email: null,
   fullname: null,
@@ -15,17 +13,27 @@ const initialState = {
   isAdmin: null,
 };
 
+export const setUser = createAction("SET_USER");
 
-export const meRequest=createAsyncThunk("ME",()=> {
+export const meRequest = createAsyncThunk("ME", () => {
 return axios
 .get("/api/auth/me")
-.then((res)=>res.data)
-.catch((err)=>  {console.log( {err})})
-
-
+.then(res => res.data)
+.catch((err)=> console.log({ err }))
 })
 
+export const sendRegisterRequest = createAsyncThunk("REGISTER_REQUEST", body => {
+  return axios.post("/api/auth/register", body)
+  .then(res => res.data)
+  .catch((err)=> console.log({ err }))
+})
 
+export const sendLoginRequest = createAsyncThunk("LOGIN_REQUEST", body => {
+  return axios
+  .post("/api/auth/login", body)
+  .then(res => {return res.data})
+  .catch((err)=> console.log({ err }))
+})
 
 export const sendLogoutRequest = createAsyncThunk("LOGOUT", () => {
   return axios
@@ -33,9 +41,7 @@ export const sendLogoutRequest = createAsyncThunk("LOGOUT", () => {
     .then((res) => {
       return initialState;
     })
-    .catch((err) => {
-      console.log({ err });
-    });
+    .catch((err) => console.log({ err }));
 });
 
 export const addCoursesToUser = createAsyncThunk("ADD_COURSES_TO_USER", (courses , thunkAPI) => {
@@ -48,11 +54,10 @@ export const addCoursesToUser = createAsyncThunk("ADD_COURSES_TO_USER", (courses
     });
 });
 
-
-
-const userReducer = createReducer(
-  {},
+const userReducer = createReducer({},
   {
+    [sendRegisterRequest.fulfilled]: (state, action) => action.payload,
+    [sendLoginRequest.fulfilled]: (state, action) => action.payload,
     [sendLogoutRequest.fulfilled]: (state, action) => action.payload,
     [setUser]: (state, action) => action.payload,
     [meRequest.fulfilled]: (state, action) => action.payload,

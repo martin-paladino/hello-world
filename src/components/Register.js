@@ -1,17 +1,19 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { Container, Form, Button, Col, Row, Alert } from "react-bootstrap";
-import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
 import {Link} from "react-router-dom"
+import { sendRegisterRequest } from "../state/user"
 
 import "../assets/styles/general.css";
 import "../assets/styles/register.css";
 
 const Register = () => {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const [fullname, setFullname] = useState("")
-  const [email, setEmail] = useState("") //M: decia user, pero en realidad es mail
+  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("");
   const [rPassword, setRPassword] = useState("");
   const [vari, setVari] = useState("light");
@@ -21,14 +23,12 @@ const Register = () => {
     let body = { "fullname": fullname, "email": email, "password": password };
     setVari("primary")
     setMessage("Registrando...");
-
-    axios
-      .post("/api/auth/register", body)
+    dispatch(sendRegisterRequest(body))
       .then(() => {
         setVari("primary");
         setMessage("Bienvenidx a nuestra comunidad, " + email + ".")
       })
-      .then(() => navigate("/login")) //M: redirecciona
+      .then(() => navigate("/login")) 
       .catch((err) => {
         console.log({ err });
         setVari("danger")
@@ -40,12 +40,10 @@ const Register = () => {
     let comprobado = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
       email
     );
-
     if (!comprobado) {
       setVari("danger")
       setMessage("Correo invalido!");
     } else {
-      console.log(password)
       if (password.length > 5) {
         if (!password.includes(' ')) {
           if (password === rPassword) {
@@ -59,7 +57,6 @@ const Register = () => {
           setVari("danger")
           setMessage("Tu clave no puede tener espacios.");
         }
-
       } else {
         setVari("danger")
         setMessage("Tu clave debe como mínimo poseer 5 caracteres.");
