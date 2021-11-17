@@ -88,7 +88,7 @@ const Login = () => {
           type="submit"
           variant="primary"
           size="lg"
-          onClick={(e) => handleSubmit(e)}
+          onClick={handleSubmit}
         >
           Logueame
         </Button>
