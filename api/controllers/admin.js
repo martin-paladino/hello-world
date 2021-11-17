@@ -2,16 +2,15 @@ const { User } = require("../models");
 
 class AdminController {
   static getAll = (req, res, next) => {
-    User.findAll()
-      .then((res) => res.data)
+    User.findAll(  )
+      .then((users) => res.status(200).send(users))
       .catch(next);
-    /*   res.status(200).send("funciona") */
-  };
+      } ;
 
   static promoteAdmin = (req, res, next) => {
     User.update(req.body, {
       where: {
-        isAdmin: req.params.id,
+        id:req.params.id
       },
       returning: true,
     })

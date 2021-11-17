@@ -1,0 +1,14 @@
+.marginContent{
+    margin: 100px;
+}
+
+.centrarTitulo {
+    display: flex;
+    justify-content: center;
+    margin: 100px;
+}
+
+.button:hover{
+    background-color: rgba(0, 0, 0, 0.750);
+}
+

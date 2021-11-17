@@ -27,6 +27,9 @@ const coursesReducer = createReducer([], {
   [getCoursesFromCategory.fulfilled]: (state, action) => action.payload
 });
 
+
+
+
 export default coursesReducer;
 
 

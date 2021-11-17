@@ -8,41 +8,85 @@ import axios from "axios";
 export const setCart = createAction("SET_CART");
 
 //devuelve todos los cursos del carrito de un user (pendiente)//
-export const getCourses = createAsyncThunk("COURSE", (userId) => {
+export const getCoursesFromUserCart = createAsyncThunk("COURSE", (_, thunkAPI) => {
+  const { user } = thunkAPI.getState()
   return axios
-    .get(`/api/cart/${userId}/courses`) //de donde sacariamos el id??
+    .get(`/api/cart/${user.id}/courses`)
     .then((res) => res.data)
     .catch((err) => {
       console.log({ err });
     });
 });
 
-//const data = {userId, courseId}
-
-export const addCourseToCart = createAsyncThunk("COURSE", ({userId, courseId}) => {
+export const getCourse = createAsyncThunk("COURSE", (courseId) => {
   return axios
-    .post(`/api/cart/addtocart/${userId}/${courseId}`)
-    .then((res) => res.data) //M. guardo el curso en el carrito, no habria q .push?
-    .catch((err) => {
-      console.log({ err });
-    });
-});
-
-export const deleteCourseFromCart = createAsyncThunk("COURSE", (data ) => {
-  return axios
-    //.delete(`/api/cart/${userId}/${courseId}`) //de donde sacariamos el id??
+    .get(`/api/courses/${courseId}`)
     .then((res) => res.data)
     .catch((err) => {
       console.log({ err });
     });
 });
 
+export const addCourseToCart = createAsyncThunk(
+  "ADD_COURSE_TO_CART",
+  (courseId, thunkAPI) => {
+    const { user } = thunkAPI.getState()
+    return axios
+      .post(`/api/cart/addtocart/${user.id}/${courseId}`)
+      .then((res) => res.data) //aca esta el prob, transforma arr en obj
+      .catch((err) => {
+        console.log({ err });
+      });
+  }
+);
+
+export const addCoursesToCart = createAsyncThunk("ADD_COURSES_TO_CART", (courses, thunkAPI) => {
+  const { user } = thunkAPI.getState()
+  return axios
+  .post(`/api/cart/addcourses/${user.id}`, courses)
+  .then(res => res.data) 
+  .catch((err) => {
+    console.log({ err });
+  });
+})
+
+export const deleteCourseFromCart = createAsyncThunk(
+  "DELETE_COURSE_FROM_CART",
+  (courseId, thunkAPI) => {
+    const { user } = thunkAPI.getState()
+    return axios
+      .delete(`/api/cart/${user.id}/${courseId}`)
+      .then(() => axios.get(`/api/cart/${user.id}/courses`))
+      .then(res => res.data)
+      .catch((err) => {
+        console.log({ err });
+      })
+  }
+);
+
+export const deleteCoursesFromCart = createAsyncThunk(
+  "DELETE_COURSES_FROM_CART",
+  ( courses,thunkAPI) => {
+    const { user } = thunkAPI.getState()
+    return axios
+      .delete(`/api/cart/${user.id}`, courses)
+      .then(() => axios.get(`/api/cart/${user.id}/courses`))
+      .then((res) => res.data)
+
+      .catch((err) => {
+        console.log({ err });
+      });
+  }
+);
 
 const cartReducer = createReducer([], {
-  [getCourses.fulfilled]: (state, action) => action.payload, 
-  [deleteCourseFromCart.fullfilled]: (state, action) => action.payload,
+  [getCoursesFromUserCart.fulfilled]: (state, action) => action.payload,
+  [deleteCourseFromCart.fulfilled]: (state, action) => action.payload,
   [addCourseToCart.fulfilled]: (state, action) => action.payload,
-  [setCart]: (state, action) => action.payload
+  [setCart]: (state, action) => action.payload,
+  [getCourse.fulfilled] : (state, action) => action.payload,
+  [addCoursesToCart.fulfilled]: (state, action) => action.payload,
+  [deleteCoursesFromCart.fulfilled]: (state, action) => action.payload,
 });
 
 export default cartReducer;

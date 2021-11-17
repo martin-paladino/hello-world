@@ -3,6 +3,7 @@ import { getCoursesFromCategory } from "../state/courses"
 import Navbar from "../commons/Navbar";
 import {useNavigate} from "react-router-dom"
 
+
 function NavbarContainer() {
   const dispatch = useDispatch();
   const category = useSelector(state => state.category)

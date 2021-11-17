@@ -1,36 +1,49 @@
 import { useEffect } from "react";
-import { Carousel, Container, Row, Col } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 import Card from "../commons/Card";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllCourses } from "../state/courses";
 
+import "../assets/styles/general.css";
+import "../assets/styles/home.css";
+
 function Home() {
   const courses = useSelector(state => state.courses);
+  const user = useSelector(state => state.user)
   const dispatch = useDispatch();
 
   useEffect(() => dispatch(getAllCourses()), []);
  
   return (
-    <div>
-      {/* Se podria agregar algun mensaje de bienvienida con alguna imagen antes.... o carrousel izq, registrarse der */}
-      
-      <Carousel>
-        {courses.map(course => {
+ 
+ <div>
+    <div id="contMargin"><h1 id="big">Bienvenidx {user.fullname} a Hello World!</h1></div>
+ <div className="bodyCar">
+   
+  <input type="radio" name="position" checked />
+  <input type="radio" name="position" />
+  <input type="radio" name="position" />
+  <input type="radio" name="position" />
+  <input type="radio" name="position" />
+  
+  <main id="carousel">
+  
+   {courses.map(course => { if(course<5){
           return (
-            <Carousel.Item key={course.id}>
-              <Container>
-                <Row>
-                  <Col sm={4}>
-                      <Card course={course} />
-                  </Col>
-                </Row>
-              </Container>
-            </Carousel.Item>
+            <div key={course.id} className="item">
+              <Card course={course} />
+            </div>
           )
-        })}
-      </Carousel>
-    </div>
-  );
+        }})}
+       
+    </main>
+
+ </div>
+ 
+ </div>
+ 
+ 
+    );
 }
 
 export default Home;

@@ -3,8 +3,10 @@ import { Container, Form, Button, Col, Row, Alert } from "react-bootstrap";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
+import {Link} from "react-router-dom"
 
-// Tengo que comprobar si esta o no logueado usando Redux!
+import "../assets/styles/general.css";
+import "../assets/styles/register.css";
 
 const Register = () => {
   const navigate = useNavigate()
@@ -66,6 +68,7 @@ const Register = () => {
   }
 
   return (
+    <div id="contMargin">
     <Container className="d-grid h-100" id="main-container">
       <Row><Col></Col><Col>
         <Form>
@@ -128,6 +131,7 @@ const Register = () => {
         </div>
       </Col><Col></Col></Row>
     </Container>
+    </div>
   );
 };
 

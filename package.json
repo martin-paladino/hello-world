@@ -15,6 +15,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "morgan": "^1.10.0",
+    "nodemailer": "^6.7.1",
     "nodemon": "^2.0.15",
     "passport": "^0.5.0",
     "passport-local": "^1.0.0",
@@ -33,7 +34,7 @@
   },
   "scripts": {
     "start": "concurrently 'npm run server' 'npm run client'",
-    "server": "nodemon  api/server.js",
+    "server": "nodemon --inspect api/server.js",
     "client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

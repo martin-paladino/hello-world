@@ -1,9 +1,15 @@
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getCourses } from "../state/cart";
+import { getCoursesFromUserCart, setCart } from "../state/cart";
 import { sendLogoutRequest } from "../state/user";
-import { setCategory } from "../state/category"
+import { setCategory } from "../state/category";
+
+// estilos
+
+import "../assets/styles/general.css";
+import "../assets/styles/navbar.css";
+
 
 function Navbar({ onSubmitHandler }) {
   
@@ -11,69 +17,93 @@ function Navbar({ onSubmitHandler }) {
   const category = useSelector(state => state.category)
   const dispatch = useDispatch()
   
+console.log(user.id)
+
+  const handleLogout = () => {
+    dispatch(setCart([]));
+    dispatch(sendLogoutRequest());
+  };
+
   return (
-    <Container>
-      <div className="navbar">
+    <div className="navbar">
+      
         <div>
-          <Button href="/">Home</Button>
+          <Link to="/" > <img
+            style={{ width: "40px", height: "auto" }}
+            src="https://i.stack.imgur.com/o2dfh.png"
+            alt=""
+          />
+          </Link>
         </div>
+
+      <div>
+        <Form className="d-flex" onSubmit={onSubmitHandler}>
+          <Form.Control
+            value={category}
+            onChange={(e) => dispatch(setCategory(e.target.value))}
+            type="search"
+            placeholder="Curso o categoria.."
+            className="me-2"
+            aria-label="Search"
+            id="searchinput"
+          />
+          <Button variant="secondary" type="submit">
+            Buscar
+          </Button>
+        </Form>
+      </div>
+      <div>
+        <Button variant="secondary">Categorias</Button>
+      </div>
+      <div>
+        <Link to="/cart">
+          <Button
+            
+            className="redondo"
+          >
+            <img width="20px" src="/cart.png" />
+          </Button>
+        </Link>
+      </div>
+      {user.id ? (
         <div>
-          <Form className="d-flex" onSubmit={onSubmitHandler}>
-            <Form.Control
-              value={category}
-              onChange={(e) => dispatch(setCategory(e.target.value))}
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-              <Button type="submit">Search</Button>
-          </Form>
-        </div>
-        <div>
-          <Button>Categories</Button>
-          <Link to="/cart">
-            <Button onClick={() => dispatch(getCourses(/* {user.id} */))}>
-              Cart
+          <Button variant="secondary" className="boton">
+            {user.fullname}
+          </Button>
+          <Link to="/">
+            <Button variant="secondary" onClick={handleLogout}>
+              Logout
             </Button>
           </Link>
         </div>
-        {user.id ? (
-          <div>
-            <Button className="boton">{user.fullname}</Button>
-            <Link to="/">
-              <Button onClick={() => dispatch(sendLogoutRequest())}>
-                Logout
-              </Button>
-            </Link>
-          </div>
-        ) : (
+      ) : (
+        <div>
           <div>
             <Link to="/login">
-              <Button type="submit" as="input" value="Login" />
+              <Button
+                variant="secondary"
+                type="submit"
+                as="input"
+                value="Login"
+              />
             </Link>
+
             <Link to="/register">
               <Button as="input" type="submit" value="Register" />
             </Link>
           </div>
-        )}
-      </div>
-    </Container>
+        </div>
+      )}
+
+      {user.id ? (
+        <>
+          <Link to="/admin">
+            <Button className="boton"> Admin </Button>
+          </Link>
+        </>
+      ) : null}
+    </div>
   );
 }
 
 export default Navbar;
-
-/*
-<Navbar bg="dark" variant="dark">
-    <Container>
-    <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-    <Nav className="me-auto">
-      <Nav.Link href="#home">Home</Nav.Link>
-      <Nav.Link href="#features">Features</Nav.Link>
-      <Nav.Link href="#pricing">Pricing</Nav.Link>
-    </Nav>
-    </Container>
-  </Navbar>
-
-*/

@@ -1,0 +1,16 @@
+#contGrid {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+    width: 100%;
+     
+    
+    display: flex;
+  flex-wrap: wrap;
+  
+}
+
+#espacio {
+    width: 310px;
+    height: 670px;
+}
