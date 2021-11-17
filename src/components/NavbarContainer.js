@@ -9,15 +9,21 @@ function NavbarContainer() {
   const category = useSelector(state => state.category)
   const navigate = useNavigate()
 
+
+  const onChangeHandler = (e) => {
+    dispatch(getCoursesFromCategory(e.target.value));
+  }
   // funcion para mostrar cursos de una categoria
   const onSubmitHandler = (e) => {
     e.preventDefault()
-    dispatch(getCoursesFromCategory(category))
+    dispatch(getCoursesFromCategory())
     navigate("/search")
   };
 
   return (
-    <Navbar onSubmitHandler={onSubmitHandler} />
+    <Navbar onSubmitHandler={onSubmitHandler} 
+    onChangeHandler={onChangeHandler}
+    />
   );
 }
 
