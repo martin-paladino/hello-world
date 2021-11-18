@@ -27,13 +27,11 @@ function Home() {
       </div>
 
       <div className="bodyCar">
-        <main id="carousel" style={{ width: "100%" , height: "800px" }}>
+        <main id="carousel" style={{ width: "100%", height: "800px" }}>
           <Carousel breakPoints={breakPoints}>
-            {courses.map((course) => {
-              {
-                return <Card course={course} />;
-              }
-            })}
+            {courses.map((course) => (
+              <Card course={course} />
+            ))}
           </Carousel>
         </main>
       </div>

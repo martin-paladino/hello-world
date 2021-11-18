@@ -15,7 +15,7 @@ class CoursesController {
     }
 
     static getCoursesFromTitle(req, res, next) {
-        Course.findAll({ where: { title: req.params.courseTitle }})
+        Course.findAll({ where: { title: req.params.coursetitle }})
         .then(courses => res.status(200).send(courses))
         .catch(next)
     }
@@ -43,7 +43,7 @@ class CoursesController {
 
     static getCoursesFromCategory(req, res, next) {
         Category.findOne({ where: { name: req.params.category }})
-        .then(category => category.getCourses())
+        .then(category => category ? category.getCourses() : [])
         .then(courses => res.status(200).send(courses))
         .catch(next)
 
