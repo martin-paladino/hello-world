@@ -28,11 +28,13 @@ export const getCoursesFromOrders = createAsyncThunk("COURSES_FROM_ORDERS", (use
   .catch(err => console.log({ err }))
 })
 
+
 const coursesReducer = createReducer([], {
   [setCourses]: (state, action) => action.payload,
   [getAllCourses.fulfilled]: (state, action) => action.payload,
   [getCoursesFromCategory.fulfilled]: (state, action) => action.payload,
-  [getCoursesFromOrders.fulfilled]: (state, action) => action.payload
+  [getCoursesFromOrders.fulfilled]: (state, action) => action.payload,
+
 });
 
 

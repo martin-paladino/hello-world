@@ -15,4 +15,5 @@ router.delete("/:id", CoursesController.deleteCourse)
 router.post("/addcategory/:courseId/:categoryId", CoursesController.addCategoryToCourse)
 router.get("/category/:category", CoursesController.getCoursesFromCategory)
 
+
 module.exports = router

@@ -1,4 +1,4 @@
-const { Course, Category } = require("../models")
+const { Course, Category ,UserCourse} = require("../models")
 
 class CoursesController {
 
@@ -66,6 +66,8 @@ class CoursesController {
         })
         .catch(next)
     }
+
+
 }
 
 module.exports = CoursesController

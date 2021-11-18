@@ -20,10 +20,11 @@ return(
     <div>
 
        <DropdownButton id="dropdown-basic-button" title="Categorias" variant="secondary">
-       {/* <Dropdown.Item href="#/action-1">{category.name}</Dropdown.Item>
- */}    {categories.map((category)=>(
+       <Link to=   {"/courses/vertodos"} style= {{textDecoration:"none"}} ><Dropdown.Item href="#/action-2" >Ver todos </Dropdown.Item></Link>
 
- <Link to=  {`/courses/${category.name}`}> <Dropdown.Item href="#/action-1">{category.name}</Dropdown.Item></Link>
+    {categories.map((category)=>(
+
+ <Link to=  {`/courses/${category.name}`} style={{textDecoration:"none"}}> <Dropdown.Item  href="#/action-1">{category.name}</Dropdown.Item></Link>
 
 
 ))}
