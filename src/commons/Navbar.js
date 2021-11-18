@@ -46,10 +46,14 @@ console.log(user.id)
             className="me-2"
             aria-label="Search"
             id="searchinput"
-          />
+            
+          />{/* si la barra de search esta vacia el boton no debe hacer nada */}
+            <Link to="/search">
           <Button variant="secondary" type="submit">
             Buscar
           </Button>
+          </Link>
+          
         </Form>
       </div>
       <div>

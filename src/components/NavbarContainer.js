@@ -17,7 +17,7 @@ function NavbarContainer() {
   const onSubmitHandler = (e) => {
     e.preventDefault()
     dispatch(getCoursesFromCategory())
-    navigate("/search")
+    //navigate("/search")
   };
 
   return (

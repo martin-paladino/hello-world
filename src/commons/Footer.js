@@ -12,8 +12,8 @@ function Footer() {
       <div id="footer">
         <div id="footerEl">
           <Link to="/">
-              <img id="logo"
-                style={{ width: "100px", height: "auto" }}
+              <img id="logoHW"
+                style={{ width: "70px", height: "auto" }}
                 src="https://i.stack.imgur.com/o2dfh.png"
                 alt=""
               />
