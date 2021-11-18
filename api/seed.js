@@ -204,7 +204,8 @@ const courses = [
       "Universidad CSS. En este curso aprenderás todo lo referente a CSS para crear aplicaciones y sitios Web increíbles aplicando Cascading Style Sheets (Hojas de Estilo en Cascada).Desarrollaremos múltiples aplicaciones para poner en práctica todos los conceptos que estudiaremos a lo largo del curso.",
     professor: "Global Mentoring Ing. Ubaldo Acosta",
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1452px-CSS3_logo_and_wordmark.svg.png",
+    
+    "//lineadecodigo.com/wp-content/uploads/2014/04/css.png",
     review:
       "Excelente la forma de explicar, muy bueno que todo el curso va siguiendo un flujo y que sus clases sean tan dinámicas le agrega un gran valor adicional        ",
     rating: 4.7,
