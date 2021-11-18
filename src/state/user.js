@@ -38,19 +38,25 @@ export const sendLogoutRequest = createAsyncThunk("LOGOUT", () => {
     });
 });
 
+//esta no se usó al final, la de abajo si
 export const addCoursesToUser = createAsyncThunk("ADD_COURSES_TO_USER", (body , thunkAPI) => {
   const {user} = thunkAPI.getState()
   return axios
-    .post(`/api/users/addcourse/${user.id}`, body)
+    .post(`/api/users/addcourses/${user.id}`, body)
     .then((res) => res.data)
     .catch((err) => {
       console.log({ err });
     });
 });
 
-/* export const addCoursesToUserOrders = createAsyncThunk("ADD_COURSES_TO_USER_ORDER", (body) => {
-
-}) */
+export const addCoursesToUserOrders = createAsyncThunk("ADD_COURSES_TO_USER_ORDER", (body) => {
+  return axios
+  .post("/api/users/adduserorders", body)
+  .then(res => res.data)
+  .catch((err) => {
+    console.log({ err });
+  });
+})
 
 
 const userReducer = createReducer(
@@ -59,7 +65,8 @@ const userReducer = createReducer(
     [sendLogoutRequest.fulfilled]: (state, action) => action.payload,
     [setUser]: (state, action) => action.payload,
     [meRequest.fulfilled]: (state, action) => action.payload,
-    [addCoursesToUser.fulfilled]: (state, action) => action.payload
+    [addCoursesToUser.fulfilled]: (state, action) => action.payload,
+    [addCoursesToUserOrders.fulfilled]: (state, action) => action.payload
   }
 );
 

@@ -21,10 +21,18 @@ export const getCoursesFromCategory = createAsyncThunk("GET_COURSES_FROM_CATEGOR
   .catch(err => console.log({ err }))
 })
 
+export const getCoursesFromOrders = createAsyncThunk("COURSES_FROM_ORDERS", (userId) => {
+  return axios
+  .get(`/api/users/getcoursesfromorders/${userId}`)
+  .then(res => res.data)
+  .catch(err => console.log({ err }))
+})
+
 const coursesReducer = createReducer([], {
   [setCourses]: (state, action) => action.payload,
   [getAllCourses.fulfilled]: (state, action) => action.payload,
-  [getCoursesFromCategory.fulfilled]: (state, action) => action.payload
+  [getCoursesFromCategory.fulfilled]: (state, action) => action.payload,
+  [getCoursesFromOrders.fulfilled]: (state, action) => action.payload
 });
 
 

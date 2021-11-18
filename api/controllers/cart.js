@@ -28,12 +28,17 @@ class CartController {
 
   //body: arreglo de objetos(cursos) [{title, id, price, duration, etc}]
   static addCoursesToCart(req, res, next) {
+    const courses = req.body.map(course => {
+      delete course.CategoryCourse
+      return course
+    })
+    console.log("los cursos son", courses)
     Cart.findOrCreate({
       where: { userId: req.params.userId },
     })
       .then((cart) => {
         return {
-          coursePromise: Course.findAll({ where: { [Op.or]: req.body } }),
+          coursePromise: Course.findAll({ where: { [Op.or]: courses } }),
           cart: cart[0],
         };
       })

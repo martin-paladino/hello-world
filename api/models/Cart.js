@@ -11,7 +11,7 @@ Cart.init({
         allowNull: false
     }
 
-}, {sequelize: db, modelName: "cart"});
+}, {sequelize: db, modelName: "cart", timestamps: false});
 
 
 module.exports = Cart;
