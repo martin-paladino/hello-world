@@ -1,4 +1,4 @@
-import { Container, Form, Button, Row, Col } from "react-bootstrap";
+import { Container, Form, Button, Dropdown,DropdownButton} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCoursesFromUserCart, setCart } from "../state/cart";
@@ -9,6 +9,7 @@ import { setCategory } from "../state/category";
 
 import "../assets/styles/general.css";
 import "../assets/styles/navbar.css";
+import Categories from "../components/Categories";
 
 
 function Navbar({ onSubmitHandler }) {
@@ -52,9 +53,17 @@ console.log(user.id)
           </Button>
         </Form>
       </div>
-      <div>
-        <Button variant="secondary">Categorias</Button>
-      </div>
+    <div>
+      
+      <Categories/>
+      
+      
+      </div> 
+    
+
+
+
+
       <div>
         <Link to="/cart">
           <Button

@@ -53,7 +53,7 @@ const courses = [
     price: 9.99,
     duration: 5,
     accessLink: "https://www.youtube.com/watch?v=RqQ1d1qEWlE&ab_channel=Fazt",
-    videoPreview: "https://youtu.be/eVr3hXiapBc",
+    videoPreview: "https://www.youtube.com/watch?v=eVr3hXiapBc",
   },
   {
     title: " El mega curso de Python: crea 10 aplicaciones del mundo real",
