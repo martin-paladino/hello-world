@@ -6,11 +6,13 @@ router.post("/addcourses/:userId", UsersController.addCoursesToUser)
 router.put("/:id",UsersController.editUser)
 
 router.post("/sendmail/:userId", UsersController.sendMail)
+
 //----------rutas para las órdenes(userCourses) del user----------
 router.post("/adduserorders", UsersController.addCoursesToUserOrders)
 router.get("/getuserorders/:userId", UsersController.getUserOrders)
 router.get("/getcoursesfromorders/:userId", UsersController.getCoursesFromOrders)
 /* router.get("/purchasedcourse/:courseId/:userId",UsersController.purchasedCourse)
  */
+router.get("/getmycourses/:userId", UsersController.getMyCourses)
 
 module.exports=router

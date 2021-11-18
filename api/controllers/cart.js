@@ -30,9 +30,9 @@ class CartController {
   static addCoursesToCart(req, res, next) {
     const courses = req.body.map(course => {
       delete course.CategoryCourse
+      delete course.CartCourse
       return course
     })
-    console.log("los cursos son", courses)
     Cart.findOrCreate({
       where: { userId: req.params.userId },
     })

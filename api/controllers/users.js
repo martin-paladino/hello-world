@@ -40,8 +40,8 @@ class UsersController {
 
   static sendMail(req, res, next) {
     User.findOne({ where: { id: req.params.userId } })
-      .then((user) => {
-        let transporter = nodemailer.createTransport({
+    .then((user) => {
+          let transporter = nodemailer.createTransport({
           host: "smtp.gmail.com",
           port: 587,
           secure: false,
@@ -50,26 +50,40 @@ class UsersController {
             pass: "tqvgurvykfppveee",
           },
         });
-
+        console.log("DATATTTTTTT:",user.dataValues.email);
+        let preciofinal = 0;
+        let texto = "Gracias " + user.dataValues.fullname + ", por tu compra.\n\nRecibo:\n";
+        let a = req.body.map((curso, i) => {
+          texto +=
+            " " +
+            (i + 1) +
+            ". " +
+            curso.title +
+            " / Precio: " +
+            curso.price +
+            "\n";
+          preciofinal += parseInt(curso.price);
+        });
+        texto += "\n\nTotal abonado: US$" + preciofinal;
         var mailOptions = {
           from: "Hello World",
-          to: "gaston.castagneri@gmail.com",
+          to: user.dataValues.email,
           subject: "Recibo de tus cursos en Hello World",
-          text: JSON.stringify(req.body),
+          text: texto,
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
           if (error) {
-            console.log("errooor 1");
-            res.status(500).send(error.message);
+              res.status(500).send(error.message);
           } else {
-            console.log("mail enviado");
+            //console.log("mail enviado");
             res.status(200).jsonp(req.body);
           }
-        });
-      })
-      .catch((err) => console.log(err));
+        }
+      );
+    }).catch(err=>console.log(err))
   }
+    
 
   //----------controllers para las órdenes(userCourses) del user----------
 
@@ -91,6 +105,13 @@ class UsersController {
       .then((user) => user.getCourses())
       .then((courses) => res.status(200).send(courses))
       .catch(next);
+  }
+
+  static getMyCourses(req, res, next) {
+    UserCourse.findAll({where: { userId: req.params.userId, purchased: true }})
+    .then(myCourses => {
+      res.status(200).send(myCourses)})
+    .catch(next)
   }
 
   /* static purchasedCourse(req, res, next) {

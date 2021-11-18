@@ -24,11 +24,20 @@ export const getUserOrders = createAsyncThunk(
 
 
 }) */
- 
+
+//funcion para traer los cursos comprados (purchased=true)
+export const getMyCourses = createAsyncThunk("GET_MY_COURSES", userId => {
+  return axios
+    .get(`/api/users/getmycourses/${userId}`)
+    .then(res => res.data)
+    .catch((err) => console.log({ err }));
+})
+
 const ordersReducer = createReducer([], {
   [setOrders]: (state, action) => action.payload,
   [getUserOrders.fulfilled]: (state, action) => action.payload,
-/*   [purchasedCourse.fulfilled]: (state, action) => action.payload
+  [getMyCourses.fulfilled]: (state, action) => action.payload,
+  /*   [purchasedCourse.fulfilled]: (state, action) => action.payload
  */ 
 });
 

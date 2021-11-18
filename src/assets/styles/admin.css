@@ -22,3 +22,11 @@
     background-color: rgba(0, 0, 0, 0.750);
 }
 
+.notFound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    font-size: 40px;
+}
+

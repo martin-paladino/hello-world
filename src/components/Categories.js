@@ -14,7 +14,7 @@ dispatch(getAllCategories())
 
 const categories=useSelector((state)=>state.categories)
 
-console.log(categories,"CATEGORIAS")
+
 
 return(
     <div>
