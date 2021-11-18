@@ -4,16 +4,23 @@ import { ListGroup, Badge, Button, Card, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { addCoursesToUser } from "../state/user";
 import { deleteCoursesFromCart } from "../state/cart";
+import { sendMail } from "../state/user";
+import nodemailer from "nodemailer";
+
 
 function Checkout() {
   const dispatch = useDispatch();
-
+  
+  
+    
   const cart = useSelector((state) => state.cart);
 
+  
   const handleConfirmClick = () => {
-    const body = {cart, purchased: true}
-    dispatch(addCoursesToUser(body)); //envia los cursos comprados a la tabla de ordenes ("userCourses") con la prop purchased=true
+    dispatch(addCoursesToUser(cart));
+    dispatch(sendMail(cart));
     dispatch(deleteCoursesFromCart());
+   
   };
   const totalPrice = cart && cart.reduce((sum, value) => sum + Number(value.price), 0);
 

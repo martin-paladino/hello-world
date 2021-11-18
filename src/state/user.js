@@ -48,9 +48,16 @@ export const addCoursesToUser = createAsyncThunk("ADD_COURSES_TO_USER", (body , 
     });
 });
 
-/* export const addCoursesToUserOrders = createAsyncThunk("ADD_COURSES_TO_USER_ORDER", (body) => {
 
-}) */
+export const sendMail = createAsyncThunk("SEND_EMAIL", (courses, thunkAPI) => {
+  const {user} = thunkAPI.getState()
+  return axios
+    .post(`/api/users/sendmail/${user.id}`, courses)
+    .then((res) => res.data)
+    .catch((err) => {
+      console.log({ err });
+    });
+});
 
 
 const userReducer = createReducer(
@@ -59,7 +66,8 @@ const userReducer = createReducer(
     [sendLogoutRequest.fulfilled]: (state, action) => action.payload,
     [setUser]: (state, action) => action.payload,
     [meRequest.fulfilled]: (state, action) => action.payload,
-    [addCoursesToUser.fulfilled]: (state, action) => action.payload
+    [addCoursesToUser.fulfilled]: (state, action) => action.payload,
+    [sendMail.fulfilled]: (state, action) => action.payload
   }
 );
 

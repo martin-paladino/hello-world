@@ -1,4 +1,7 @@
 const { User, Course, UserCourse } = require("../models");
+
+const nodemailer = require("nodemailer");
+
 const { Op } = require("sequelize");
 
 class UsersController {
@@ -28,12 +31,44 @@ class UsersController {
       })
       .catch(next);
   }
-  //en el body le mando userId, courseId, purchased
-  /* static addCoursesToUserOrders(req, res, next) {
-    UserCourse.create(req.body)
-    .then(newOrder => res.status(201).send(newOrder))
-    .catch(next)
-  } */
+
+
+  static sendMail(req,res,next) {
+    
+    User.findOne({ where: { id: req.params.userId } })
+      .then((user) => {
+        let transporter = nodemailer.createTransport({
+          host: "smtp.gmail.com",
+          port: 587,
+          secure: false,
+          auth: {
+            user: "rod.desarasqueta@gmail.com",
+            pass: "tqvgurvykfppveee",
+          },
+        });
+      
+        var mailOptions = {
+          from: "Hello World",
+          to: "gaston.castagneri@gmail.com",
+          subject: "Recibo de tus cursos en Hello World",
+          text: JSON.stringify(req.body),
+        };
+        
+        transporter.sendMail(mailOptions, (error, info) => {
+          
+          if (error) {
+              console.log("errooor 1" )
+              res.status(500).send(error.message);
+          } else {
+            console.log("mail enviado");
+            res.status(200).jsonp(req.body);
+          }
+        });
+      }).catch(err=>console.log(err))
+
+    
+
+  }
 
 }
 

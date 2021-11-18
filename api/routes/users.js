@@ -4,6 +4,7 @@ const UsersController = require("../controllers/users")
 
 router.post("/addcourse/:userId", UsersController.addCoursesToUser)
 router.put("/:id",UsersController.editUser)
-//router.post("/adduserorders", UsersController.addCoursesToUserOrders)
+
+router.post("/sendmail/:userId", UsersController.sendMail)
 
 module.exports=router
