@@ -29,7 +29,11 @@ const AdminUsers = () => {
         });
     }, []);
 
-
+    function alertMsg(msg){
+        document.getElementById('msgBody').style.visibility="visible";
+        document.getElementById('msgText').innerHTML=msg;
+    }
+    
     const handleRol = (e) => {
         setRol(e.target.value)
     };
@@ -39,18 +43,18 @@ const AdminUsers = () => {
         console.log("USER DEL MAP", id)
 
         if(userLoggeado.id == id) {
-            alert("No se puede auto-revocar su permiso.")
+            alertMsg("No se puede auto-revocar su permiso.")
         }
         else{
             axios.put(`/api/users/${id}`, {isAdmin: Boolean(Number(rol)) })
-            .then( () => alert("Usuario modificado."))
+            .then( () => alertMsg("Usuario modificado."))
             .then(() => navigate('/admin'))
         }
     };
 
     const handleDelete = (id) => {
         axios.delete(`/api/admin/${id}`)
-        .then( () => alert("Usuario eliminado."))
+        .then( () => alertMsg("Usuario eliminado."))
         .then(() => navigate('/admin'))
     };
 

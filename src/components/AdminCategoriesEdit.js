@@ -24,6 +24,10 @@ const AdminCategoriesEdit = () => {
     });
     const [authorized, setAuthorized] = useState(false);
   
+    function alertMsg(msg){
+        document.getElementById('msgBody').style.visibility="visible";
+        document.getElementById('msgText').innerHTML=msg;
+    }
     
     useEffect(() => {
         axios.get("/api/admin")
@@ -60,7 +64,7 @@ const AdminCategoriesEdit = () => {
             dispatch(setCategories())
             dispatch(getAllCategories())
         })
-        .then( () => alert("Categoría modificada."))
+        .then( () => alertMsg("Categoría modificada."))
         .then( () => navigate("/admin/categories"))
         .catch(err => console.log(err))
     };
@@ -68,7 +72,7 @@ const AdminCategoriesEdit = () => {
 
     const handleDelete = () => {
         axios.delete(`/api/categories/${id}`)
-        .then( () => alert("Categoría eliminada."))
+        .then( () => alertMsg("Categoría eliminada."))
         .then(() => {
             dispatch(getAllCategories())
         })

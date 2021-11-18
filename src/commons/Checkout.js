@@ -23,6 +23,10 @@ function Checkout() {
     dispatch(addCoursesToUserOrders(body));//envia los cursos comprados a la tabla de ordenes ("userCourses") con la prop purchased=true
     dispatch(sendMail(cart));
     dispatch(deleteCoursesFromCart());
+
+    document.getElementById('msgBody').style.visibility="visible";
+    document.getElementById('msgText').innerHTML="Compra confirmada.";
+   
   };
 
 
@@ -36,6 +40,8 @@ function Checkout() {
 
     dispatch(addCoursesToUserOrders(body)) //envia los cursos cancelados a la tabla de ordenes ("userCourses") con la prop purchased=false
     dispatch(deleteCoursesFromCart());
+    document.getElementById('msgBody').style.visibility="visible";
+    document.getElementById('msgText').innerHTML="Compra cancelada.";
   };
 
 

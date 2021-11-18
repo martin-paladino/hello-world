@@ -32,7 +32,11 @@ const AdminCoursesEdit = () => {
         videoPreview:"",
     });
 
-
+    function alertMsg(msg){
+        document.getElementById('msgBody').style.visibility="visible";
+        document.getElementById('msgText').innerHTML=msg;
+    }
+    
     useEffect(() => {
         axios.get("/api/admin")
         .then((res) => res.data)
@@ -77,14 +81,14 @@ const AdminCoursesEdit = () => {
             dispatch(setCourses())
             dispatch(getAllCourses())
         })
-        .then( () => alert("Curso modificado."))
+        .then( () => alertMsg("Curso modificado."))
         .catch(err => console.log(err))
     };
 
 
     const handleDelete = () => {
         axios.delete(`/api/courses/${id}`)
-        .then( () => alert("Curso eliminado."))
+        .then( () => alertMsg("Curso eliminado."))
         .then(() => {
             dispatch(getAllCourses())
         })
