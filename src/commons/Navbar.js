@@ -12,13 +12,14 @@ import "../assets/styles/navbar.css";
 import Categories from "../components/Categories";
 
 
-function Navbar({ onSubmitHandler }) {
+function Navbar({ onSubmitHandler, onChangeHandler }) {
   
   const user = useSelector(state => state.user)
   const category = useSelector(state => state.category)
   const dispatch = useDispatch()
   
-console.log(user.id)
+console.log("USER NAVBAR ", user.id)
+console.log("USER NAVBAR ", user.isAdmin)
 
   const handleLogout = () => {
     dispatch(setCart([]));
@@ -38,19 +39,23 @@ console.log(user.id)
         </div>
 
       <div>
-        <Form className="d-flex" onSubmit={onSubmitHandler}>
+        <Form className="d-flex" onSubmit={(e)=> onSubmitHandler(e)}>
           <Form.Control
-            value={category}
-            onChange={(e) => dispatch(setCategory(e.target.value))}
+            
+            onChange={onChangeHandler}
             type="search"
             placeholder="Curso o categoria.."
             className="me-2"
             aria-label="Search"
             id="searchinput"
-          />
+            
+          />{/* si la barra de search esta vacia el boton no debe hacer nada */}
+            <Link to="/search">
           <Button variant="secondary" type="submit">
             Buscar
           </Button>
+          </Link>
+          
         </Form>
       </div>
     <div>
@@ -67,7 +72,6 @@ console.log(user.id)
       <div>
         <Link to="/cart">
           <Button
-            
             className="redondo"
           >
             <img width="20px" src="/cart.png" />
@@ -104,7 +108,7 @@ console.log(user.id)
         </div>
       )}
 
-      {user.id ? (
+      {user.isAdmin ? (
         <>
           <Link to="/admin">
             <Button className="boton"> Admin </Button>

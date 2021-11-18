@@ -1,10 +1,22 @@
 import React      from "react";
+import { useEffect } from "react";
+import { useDispatch }         from "react-redux";
 import { Link }   from "react-router-dom";
+import { getAllCourses }       from "../state/courses";
+import { getAllUsers }       from "../state/users";
+
 import { Button, Container, Row, Col} from "react-bootstrap";
 import "../assets/styles/admin.css";
 
 
 const Admin = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAllUsers())
+  }, []);
+
+
     return (
         <div >
             <Container className="marginContent">

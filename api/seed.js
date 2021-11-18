@@ -53,7 +53,8 @@ const courses = [
     price: 9.99,
     duration: 5,
     accessLink: "https://www.youtube.com/watch?v=RqQ1d1qEWlE&ab_channel=Fazt",
-    videoPreview: "https://www.youtube.com/watch?v=eVr3hXiapBc",
+    videoPreview: "https://www.youtube.com/embed/eVr3hXiapBc"
+    
   },
   {
     title: " El mega curso de Python: crea 10 aplicaciones del mundo real",
@@ -70,7 +71,8 @@ const courses = [
     accessLink:
       "https://www.youtube.com/watch?v=DLikpfc64cA&ab_channel=freeCodeCampEspa%C3%B1ol",
     videoPreview:
-      "https://www.youtube.com/watch?v=CjmzDHMHxwU&ab_channel=codigofacilito",
+    `https://www.youtube.com/embed/CjmzDHMHxwU`
+      //"https://www.youtube.com/watch?v=CjmzDHMHxwU&ab_channel=codigofacilito",
   },
   {
     title: "Programación en Java para principiantes",
@@ -87,7 +89,8 @@ const courses = [
     accessLink:
       "https://www.youtube.com/watch?v=Z8zAKYLZBqc&ab_channel=LucasMoy",
     videoPreview:
-      "https://www.youtube.com/watch?v=nXgyVfVch1w&ab_channel=AprenderProgramacion",
+    "https://www.youtube.com/embed/nXgyVfVch1w"
+      //"https://www.youtube.com/watch?v=nXgyVfVch1w&ab_channel=AprenderProgramacion",
   },
   {
     title: "React - La guía completa",
@@ -104,7 +107,8 @@ const courses = [
     accessLink:
       "https://www.youtube.com/watch?v=zIY87vU33aA&t=9758s&ab_channel=Fazt",
     videoPreview:
-      "https://www.youtube.com/watch?v=Mi3toIqESMc&ab_channel=codigofacilito",
+    "https://www.youtube.com/embed/Mi3toIqESMc"
+    //"https://www.youtube.com/watch?v=Mi3toIqESMc&ab_channel=codigofacilito",
   },
   {
     title: "NodeJS - La guía completa",
@@ -119,7 +123,8 @@ const courses = [
     duration: 10,
     accessLink: "https://www.youtube.com/watch?v=BhvLIzVL8_o&ab_channel=Fazt",
     videoPreview:
-      "https://www.youtube.com/watch?v=JZMZJhTajaY&ab_channel=KODOTI",
+    "https://www.youtube.com/embed/JZMZJhTajaY"  
+//    "https://www.youtube.com/watch?v=JZMZJhTajaY&ab_channel=KODOTI",
   },
   {
     title: "Aprende Javascript, HTML5 y CSS3",
@@ -136,7 +141,8 @@ const courses = [
     accessLink:
       "https://www.youtube.com/watch?v=VG_upBADlRg&ab_channel=VidaMRR-Dise%C3%B1oydesarrolloweb",
     videoPreview:
-      "https://www.youtube.com/watch?v=iWfncDG3M90&ab_channel=Platzi",
+    "https://www.youtube.com/embed/iWfncDG3M90"
+    //"https://www.youtube.com/watch?v=iWfncDG3M90&ab_channel=Platzi",
   },
   {
     title: "PHP 8 y MYSQL: El Curso Completo, Práctico y Desde Cero !",
@@ -152,7 +158,8 @@ const courses = [
     duration: 8,
     accessLink: "https://www.youtube.com/watch?v=pn2v9lPakHQ&ab_channel=Fazt",
     videoPreview:
-      "https://www.youtube.com/watch?v=1g7FFB-eaGI&ab_channel=OpenWebinars",
+    "https://www.youtube.com/embed/1g7FFB-eaGI"
+     // "https://www.youtube.com/watch?v=1g7FFB-eaGI&ab_channel=OpenWebinars",
   },
   {
     title: "Angular: De cero a experto (Legacy)",
@@ -169,7 +176,8 @@ const courses = [
     accessLink:
       "https://www.youtube.com/watch?v=i-oYrcNtc2s&ab_channel=DominiCode",
     videoPreview:
-      "https://www.youtube.com/watch?v=0IxXZPJA3mU&ab_channel=Develoteca",
+    "https://www.youtube.com/embed/0IxXZPJA3mU"
+    //  "https://www.youtube.com/watch?v=0IxXZPJA3mU&ab_channel=Develoteca",
   },
   {
     title: "React Native: Aplicaciones nativas para IOS y Android",
@@ -185,7 +193,8 @@ const courses = [
     duration: 8,
     accessLink: "https://www.youtube.com/watch?v=hXDMWeD0ERM&ab_channel=Fazt",
     videoPreview:
-      "https://www.youtube.com/watch?v=YkYIZDoZhYw&ab_channel=C%C3%B3digoconJuan",
+    "https://www.youtube.com/embed/YkYIZDoZhYw"
+      //"https://www.youtube.com/watch?v=YkYIZDoZhYw&ab_channel=C%C3%B3digoconJuan",
   },
   {
     title:
@@ -203,7 +212,8 @@ const courses = [
     accessLink:
       "https://www.youtube.com/watch?v=OWKXEJN67FE&ab_channel=SoyDalto",
     videoPreview:
-      "https://www.youtube.com/watch?v=8cSo0ijtkzU&ab_channel=BitechStudio",
+    "https://www.youtube.com/embed/8cSo0ijtkzU"
+      //"https://www.youtube.com/watch?v=8cSo0ijtkzU&ab_channel=BitechStudio",
   },
   {
     title: "Curso de HTML5 desde cero: El más completo en Español",
@@ -220,7 +230,8 @@ const courses = [
     accessLink:
       "https://www.youtube.com/watch?v=kN1XP-Bef7w&ab_channel=SoyDalto",
     videoPreview:
-      "https://www.youtube.com/watch?v=10GHKjgQIR0&ab_channel=BitechStudio",
+    "https://www.youtube.com/embed/10GHKjgQIR0"
+      //"https://www.youtube.com/watch?v=10GHKjgQIR0&ab_channel=BitechStudio",
   },
   /* {
     title: "JavaScript: de cero hasta los detalles (ES5) ",

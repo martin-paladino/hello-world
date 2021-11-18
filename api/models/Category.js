@@ -9,6 +9,6 @@ Category.init({
         allowNull: false
     }
 },
-{ sequelize: db, modelName: "category" })
+{ sequelize: db, modelName: "category", timestamps: false })
 
 module.exports = Category
