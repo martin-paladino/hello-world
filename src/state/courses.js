@@ -17,7 +17,14 @@ export const getAllCourses = createAsyncThunk("GET_ALL_COURSES", () => {
 export const getCoursesFromCategory = createAsyncThunk("GET_COURSES_FROM_CATEGORY", (category) => {
   return axios
   .get(`/api/courses/category/${category}`)
-  .then(res => res.data)
+  .then(res => res.data || [])
+  .catch(err => console.log({ err }))
+})
+
+export const getCoursesFromTitle = createAsyncThunk("GET_COURSES_FROM_TITLE", (title) => {
+  return axios
+  .get(`/api/courses/${title}`)
+  .then(res => res.data || [])
   .catch(err => console.log({ err }))
 })
 
@@ -32,7 +39,8 @@ const coursesReducer = createReducer([], {
   [setCourses]: (state, action) => action.payload,
   [getAllCourses.fulfilled]: (state, action) => action.payload,
   [getCoursesFromCategory.fulfilled]: (state, action) => action.payload,
-  [getCoursesFromOrders.fulfilled]: (state, action) => action.payload
+  [getCoursesFromOrders.fulfilled]: (state, action) => action.payload,
+  [getCoursesFromTitle.fulfilled]: (state, action) => action.payload
 });
 
 

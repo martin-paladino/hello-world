@@ -13,14 +13,13 @@ import "../assets/styles/navbar.css";
 import Categories from "../components/Categories";
 
 
-function Navbar({ onSubmitHandler, onChangeHandler }) {
+function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
   
   const user = useSelector(state => state.user)
   const category = useSelector(state => state.category)
   const dispatch = useDispatch()
   
-console.log("USER NAVBAR ", user.id)
-console.log("USER NAVBAR ", user.isAdmin)
+
 
   const handleLogout = () => {
     dispatch(setCart([]));
@@ -28,6 +27,7 @@ console.log("USER NAVBAR ", user.isAdmin)
     document.getElementById('msgBody').style.visibility="visible";
     document.getElementById('msgText').innerHTML="Usuario deslogueado.";
   };
+  
 
   function visib (e){
     e.preventDefault();
@@ -56,22 +56,22 @@ console.log("USER NAVBAR ", user.isAdmin)
         
 
       <div>
-        <Form className="d-flex" onSubmit={(e)=> onSubmitHandler(e)}>
+        <Form  className="d-flex" >
+          
           <Form.Control
-            
+            value={inputSearch}
             onChange={onChangeHandler}
             type="search"
-            placeholder="Curso o categoria.."
+            placeholder="Curso o categoria..."
             className="me-2"
             aria-label="Search"
             id="searchinput"
-            
-          />{/* si la barra de search esta vacia el boton no debe hacer nada */}
-            <Link to="/search">
-          <Button variant="secondary" type="submit">
+          />
+           
+          <Button  onClick={onSubmitHandler} variant="secondary" type="submit" >
             Buscar
           </Button>
-          </Link>
+          
           
         </Form>
       </div>
