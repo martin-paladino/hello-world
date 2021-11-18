@@ -52,9 +52,10 @@ export const addCoursesToUser = createAsyncThunk("ADD_COURSES_TO_USER", (body , 
 
 export const sendMail = createAsyncThunk("SEND_EMAIL", (courses, thunkAPI) => {
   const {user} = thunkAPI.getState()
+  console.log("USERRRR MAIL", user)
   return axios
     .post(`/api/users/sendmail/${user.id}`, courses)
-    .then((res) => res.data)
+    .then((res) => console.log("RESSSSSS", res))
     .catch((err) => {
       console.log({ err });
     });

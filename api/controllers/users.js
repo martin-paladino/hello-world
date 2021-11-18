@@ -42,8 +42,8 @@ class UsersController {
   static sendMail(req,res,next) {
     
     User.findOne({ where: { id: req.params.userId } })
-      .then((user) => {
-        let transporter = nodemailer.createTransport({
+    .then((user) => {
+          let transporter = nodemailer.createTransport({
           host: "smtp.gmail.com",
           port: 587,
           secure: false,
@@ -63,15 +63,15 @@ class UsersController {
         transporter.sendMail(mailOptions, (error, info) => {
           
           if (error) {
-              console.log("errooor 1" )
               res.status(500).send(error.message);
           } else {
-            console.log("mail enviado");
+            //console.log("mail enviado");
             res.status(200).jsonp(req.body);
           }
-        });
-      }).catch(err=>console.log(err))
-    }
+        }
+      );
+    }).catch(err=>console.log(err))
+  }
     
 
   

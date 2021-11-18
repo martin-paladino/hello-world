@@ -9,6 +9,7 @@ import { Button, Form }        from "react-bootstrap";
 import { Container, Row, Col}  from "react-bootstrap";
 import { getAllCategories }    from "../state/categories";
 import { setCategories }       from "../state/categories";
+import NotFound                from "../commons/NotFound";
 import "../assets/styles/admin.css";
 import "../assets/styles/adminCoursesAdd.css";
 
@@ -21,10 +22,19 @@ const AdminCategoriesEdit = () => {
     const [form, setForm] = useState({
         name: "",
     });
+    const [authorized, setAuthorized] = useState(false);
   
     
     useEffect(() => {
-        dispatch(getAllCategories())
+        axios.get("/api/admin")
+        .then((res) => res.data)
+        .then(() => {
+            setAuthorized(true);
+            dispatch(getAllCategories())
+        })
+        .catch((error) => {
+            setAuthorized(false);
+        });
   }, []);
 
 
@@ -75,57 +85,64 @@ const AdminCategoriesEdit = () => {
     };
 
 
-    return (
-        <div>
-            <Admin />
-            <Container className="marginContent">
-                <div className="subtitulo">
+    if(authorized) {
+        return (
+            <div>
+                <Admin />
+                <Container className="marginContent">
+                    <div className="subtitulo">
+                        <Row>
+                            <Col><h1> EDITAR CATEGORÍA: </h1></Col>
+                        </Row>
+                    </div>
                     <Row>
-                        <Col><h1> EDITAR CATEGORÍA: </h1></Col>
+                        <Col>
+                            {categories.map(category => {
+                                return (
+                                    <Row>
+                                        <Col>
+                                            <Button className="buttonSubsecciones" variant="outline-secondary" onClick={() => editToggle(category.id)} type='button'>
+                                                {category.name}
+                                            </Button>
+                                        </Col>
+                                    </Row>
+                                )
+                            })}
+                        </Col>
+
+                        <Col>
+                            <div style={{display: 'none'}} id='EditCategory'>
+                            
+                                <Form className="centrarForm" onSubmit={handleSubmit}>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                                        <Form.Control
+                                            value={form.name}
+                                            type="text"
+                                            placeholder="Nombre de la Categoría"
+                                            className="input"
+                                            name="name"
+                                            onChange={handleInput}
+                                        />
+                                    </Form.Group>
+                            
+                                    <Button variant="primary" type="submit"> Editar </Button>
+                                    <Button variant="danger" onClick={handleDelete}> Eliminar </Button>
+
+                                </Form>
+                            </div>
+                        </Col>
+
+
                     </Row>
-                </div>
-                <Row>
-                    <Col>
-                        {categories.map(category => {
-                            return (
-                                <Row>
-                                    <Col>
-                                        <Button className="buttonSubsecciones" variant="outline-secondary" onClick={() => editToggle(category.id)} type='button'>
-                                            {category.name}
-                                        </Button>
-                                    </Col>
-                                </Row>
-                            )
-                        })}
-                    </Col>
-
-                    <Col>
-                        <div style={{display: 'none'}} id='EditCategory'>
-                        
-                            <Form className="centrarForm" onSubmit={handleSubmit}>
-                                <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Control
-                                        value={form.name}
-                                        type="text"
-                                        placeholder="Nombre de la Categoría"
-                                        className="input"
-                                        name="name"
-                                        onChange={handleInput}
-                                    />
-                                </Form.Group>
-                        
-                                <Button variant="primary" type="submit"> Editar </Button>
-                                <Button variant="danger" onClick={handleDelete}> Eliminar </Button>
-
-                            </Form>
-                        </div>
-                    </Col>
-
-
-                </Row>
-            </Container>
-        </div>
-    )
+                </Container>
+            </div>
+        )
+    }
+    else {
+        return (
+            <NotFound />
+        )
+    }
 };
 
 

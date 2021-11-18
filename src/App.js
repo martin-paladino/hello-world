@@ -24,6 +24,7 @@ import AdminUsers from "./components/AdminUsers";
 import AdminCategories    from "./components/AdminCategories";
 import AdminCategoriesAdd from "./components/AdminCategoriesAdd";
 import AdminCategoriesEdit from "./components/AdminCategoriesEdit";
+import NotFound from "./commons/NotFound";
 
 import "./assets/styles/app.css"
 function App() {
@@ -61,6 +62,7 @@ dispatch(meRequest())
         <Route exact path="/admin/categories/add" element={<AdminCategoriesAdd />} />
         <Route exact path="/admin/categories/edit" element={<AdminCategoriesEdit />} />
         <Route exact path="/orders" element={<Orders/>}/>
+        <Route exact path="*" element={<NotFound/>}/>
       </Routes>
       </div>
       <Footer />
