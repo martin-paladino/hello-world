@@ -2,13 +2,13 @@ import React, { useEffect } from "react"
 import  {Dropdown,DropdownButton} from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import { getCategories } from "../state/categories"
+import { getAllCategories } from "../state/categories"
 
 const Categories=()=>   {
 const dispatch=useDispatch()
 
 useEffect(()=>  {
-dispatch(getCategories())
+dispatch(getAllCategories())
 
 },[])
 
