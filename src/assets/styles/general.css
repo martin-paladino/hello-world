@@ -3,6 +3,8 @@
     margin-top : 0px;
     padding-left: 0px;
     padding-right: 0px;
+    
+  position: relative;
 
 }
 
@@ -10,8 +12,9 @@
 body {
 
 background: rgb(255,255,255);
-background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 71%, rgba(198,195,195,1) 100%);
+background: radial-gradient(circle, rgb(131, 131, 131) 0%, rgba(255,255,255,1) 71%, rgba(198,195,195,1) 100%);
 font-family: Noto Sans, sans-serif;
+
 }
 
 h1 {

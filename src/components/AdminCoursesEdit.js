@@ -5,6 +5,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useSelector }         from "react-redux";
 import { useDispatch }         from "react-redux";
 import { setCourses }          from "../state/courses";
+import Admin                   from "./Admin"
 import axios                   from "axios";          
 import { getAllCourses }       from "../state/courses";
 import "../assets/styles/admin.css";
@@ -14,7 +15,6 @@ import "../assets/styles/adminCoursesAdd.css";
 
 const AdminCoursesEdit = () => {
     const courses  = useSelector((state) => state.courses);
-
     const dispatch = useDispatch();
     
     const [id, setId]     = useState();
@@ -24,21 +24,20 @@ const AdminCoursesEdit = () => {
         professor:"",
         image:"",
         review:"",
-        rating:"",
         price:"",
         duration:"",
         accessLink:"",
         videoPreview:"",
-    })
+    });
 
-    console.log("COURSES", courses)
+
+    useEffect(() => {
+        dispatch(getAllCourses())
+  }, []);
+
 
     const editToggle = (idCourse) => {
-        console.log("ESTADO Id PRE", id)
-        console.log("ID DEL BOTON", idCourse)
         setId(idCourse);
-        console.log("ESTADO Id POST", id)
-        console.log("SETFORM", courses[id])
         courses.map(course => {
             if(course.id === idCourse) {
                 setForm({
@@ -49,18 +48,16 @@ const AdminCoursesEdit = () => {
                     professor: course.professor,
                     image: course.image,
                     review: course.review,
-                    rating: course.rating,
                     price: course.price,
                     duration: course.duration,
                     accessLink: course.accessLink,
                     videoPreview: course.videoPreview,
                 });
-            }
-        })
-        
-        
+            };
+        });
         document.getElementById('EditProduct').style.display = document.getElementById('EditProduct').style.display === 'none' ? 'block' : 'none'
     };
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -74,9 +71,6 @@ const AdminCoursesEdit = () => {
         .catch(err => console.log(err))
     };
 
-    useEffect(() => {
-          dispatch(getAllCourses())
-    }, []);
 
     const handleDelete = () => {
         axios.delete(`/api/courses/${id}`)
@@ -84,7 +78,9 @@ const AdminCoursesEdit = () => {
         .then(() => {
             dispatch(getAllCourses())
         })
+        .catch(err => console.log(err))
     };
+
 
     const handleInput = (e) => {
         setForm({
@@ -96,12 +92,13 @@ const AdminCoursesEdit = () => {
 
     return (
         <div>
+            <Admin />
             <Container className="marginContent">
-                <div className="centrarTitulo">
+                <div className="subtitulo">
                     <Row>
                         
                         <Col>
-                            <h4> EDITAR CURSO </h4>
+                            <h1> EDITAR CURSO: </h1>
                         </Col>
                     </Row>
                 </div>
@@ -112,7 +109,7 @@ const AdminCoursesEdit = () => {
                             return (
                                 <Row>
                                     <Col>
-                                        <Button variant="outline-dark" onClick={() => editToggle(course.id)} type='button'>
+                                        <Button className="buttonSubsecciones" variant="outline-secondary" onClick={() => editToggle(course.id)} type='button'>
                                             {course.title}
                                         </Button>
                                     </Col>
@@ -133,6 +130,7 @@ const AdminCoursesEdit = () => {
                                         className="input"
                                         name="title"
                                         onChange={handleInput}
+                                        required
                                     />
                                     
                                     <Form.Control
@@ -143,6 +141,7 @@ const AdminCoursesEdit = () => {
                                         rows={3}
                                         name="description"
                                         onChange={handleInput}
+                                        required
                                     />
                                     
                                     <Form.Control 
@@ -152,6 +151,7 @@ const AdminCoursesEdit = () => {
                                         placeholder="Profesor a cargo" 
                                         name="professor"
                                         onChange={handleInput}
+                                        
                                     />
                                     
                                     <Form.Control 
@@ -161,6 +161,7 @@ const AdminCoursesEdit = () => {
                                         placeholder="Imagen del curso" 
                                         name="image"
                                         onChange={handleInput}
+                                        required
                                     />
                                     
                                     <Form.Control 
@@ -171,15 +172,7 @@ const AdminCoursesEdit = () => {
                                         placeholder="Reviews" 
                                         name="review"
                                         onChange={handleInput}
-                                    />
-                                    
-                                    <Form.Control 
-                                        value={form.rating} 
-                                        className="input"
-                                        type="text" 
-                                        placeholder="Rating" 
-                                        name="rating"
-                                        onChange={handleInput}
+                                        required
                                     />
                                     
                                     <Form.Control
@@ -189,6 +182,7 @@ const AdminCoursesEdit = () => {
                                         placeholder="Precio" 
                                         name="price"
                                         onChange={handleInput}
+                                        required
                                     />
                                     
                                     <Form.Control
@@ -198,6 +192,7 @@ const AdminCoursesEdit = () => {
                                         placeholder="Duración"
                                         name="duration"
                                         onChange={handleInput}
+                                        required
                                     />
                                     
                                     <Form.Control
@@ -207,6 +202,7 @@ const AdminCoursesEdit = () => {
                                         placeholder="Link de acceso"
                                         name="accessLink"
                                         onChange={handleInput}
+                                        required
                                     />
                                     
                                     <Form.Control
@@ -216,6 +212,7 @@ const AdminCoursesEdit = () => {
                                         placeholder="Preview del video"
                                         name="videoPreview"
                                         onChange={handleInput}
+                                        required
                                     />
                                 </Form.Group>
                         

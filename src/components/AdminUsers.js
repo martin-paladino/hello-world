@@ -1,38 +1,115 @@
-import React      from "react";
-import { Link }   from "react-router-dom";
-import { Button, Container, Row, Col} from "react-bootstrap";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import axios from "axios";
+import Admin from "./Admin"
+import { useNavigate } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import { Button, Table, Container, Row, Col} from "react-bootstrap";
 import "../assets/styles/admin.css";
 
 
 const AdminUsers = () => {
-    const users  = useSelector((state) => state.users);
+    const userLoggeado = useSelector(state => state.user)
+    const [users, setUsers] = useState([]);
+    const [rol, setRol]     = useState(0)
+    const navigate          = useNavigate();
+
+    console.log("USER LOGGEADO PRI", userLoggeado.id)
+
+    useEffect(() => {
+        axios.get("/api/admin")
+        .then((res) => res.data)
+        .then((data) => {
+            setUsers(data);
+          });
+    }, []);
+
+
+    const handleRol = (e) => {
+        setRol(e.target.value)
+    };
+
+    const handleEdit = (id) => {
+        console.log("USER LOGGEADO SEC", userLoggeado.id)
+        console.log("USER DEL MAP", id)
+
+        if(userLoggeado.id == id) {
+            alert("No se puede auto-revocar su permiso.")
+        }
+        else{
+            axios.put(`/api/users/${id}`, {isAdmin: Boolean(Number(rol)) })
+            .then( () => alert("Usuario modificado."))
+            .then(() => navigate('/admin'))
+        }
+    };
+
+    const handleDelete = (id) => {
+        axios.delete(`/api/admin/${id}`)
+        .then( () => alert("Usuario eliminado."))
+        .then(() => navigate('/admin'))
+    };
+
 
 
     return (
-        <div>
-            <Container className="marginContent">
-                <div className="centrarTitulo">
-                    <Row>
-                        <Col><h4> ADMINISTRAR USUARIOS </h4></Col>
-                    </Row>
-                </div>
+    <div>
+        <Admin />
+        <Container className="marginContent">
+            <div className="subtitulo">
                 <Row>
-                <Col>
-                        {courses.map(course => {
-                            return (
-                                <Row>
-                                    <Col>
-                                        <Button variant="outline-dark" onClick={() => editToggle(course.id)} type='button'>
-                                            {course.title}
-                                        </Button>
-                                    </Col>
-                                </Row>
-                            )
-                        })}
-                    </Col>
+                    <Col><h1> ADMINISTRAR USUARIOS: </h1></Col>
                 </Row>
-            </Container>
-        </div>
+            </div>
+            <Row>
+                <Col>
+                    {users.map(user => {
+                        return(
+                            <div>
+                            <Table striped bordered hover variant="warning">
+                                <thead>
+                                    <tr>
+                                        <th> Id </th>
+                                        <th> Fullname </th>
+                                        <th> E-mail </th>
+                                        <th> Rol </th>
+                                        <th colSpan="2">  </th>
+                                        <th>  </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td> {user.id} </td>
+                                        <td> {user.fullname} </td>
+                                        <td> {user.email} </td>
+                                        {user.isAdmin? (
+                                            <td> Administrador </td>
+                                        ) : (
+                                            <td> Usuario </td>
+                                        )}
+                                        <td> 
+                                            <select onChange={handleRol}>
+                                                <option> Selecciona un rol </option>
+                                                <option value="1"> Admin </option>
+                                                <option value="0"> User </option>
+                                            </select>
+                                        
+                                        </td>
+                                        <td>  
+                                            <Button size="sm" onClick={() => handleEdit(user.id)} type='button'> Cambiar rol </Button>
+                                        </td>
+                                        <td>      
+                                            <Button onClick={() => handleDelete(user.id)} type="button" variant="danger" size="sm"> Eliminar usuario </Button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </Table>
+                            </div>
+                        )})
+                    }
+                </Col>
+            </Row>
+        </Container>
+    </div>
     )
 };
 
