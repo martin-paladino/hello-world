@@ -13,6 +13,10 @@ const AdminCategoriesAdd = () => {
     const name     = useInputStr();
     const navigate = useNavigate();
 
+    function alertMsg(msg){
+        document.getElementById('msgBody').style.visibility="visible";
+        document.getElementById('msgText').innerHTML=msg;
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,7 +24,7 @@ const AdminCategoriesAdd = () => {
             name: name.value,
         })
         .then(res => res.data)
-        .then( () => alert("Categoría agregado."))
+        .then( () => alertMsg("Categoría agregado."))
         .then( () => navigate("/admin/categories"))
         .catch(err => console.log(err))
     };

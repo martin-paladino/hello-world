@@ -25,6 +25,10 @@ const AdminCoursesAdd = () => {
 
     const navigate = useNavigate();
 
+    function alertMsg(msg){
+        document.getElementById('msgBody').style.visibility="visible";
+        document.getElementById('msgText').innerHTML=msg;
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -40,7 +44,7 @@ const AdminCoursesAdd = () => {
             videoPreview: videoPreview.value,
         })
         .then(res => res.data)
-        .then( () => alert("Curso agregado."))
+        .then( () => alertMsg("Curso agregado."))
         .then( () => navigate("/admin/courses"))
         .catch(err => console.log(err))
     };

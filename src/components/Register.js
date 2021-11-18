@@ -25,8 +25,8 @@ const Register = () => {
     axios
       .post("/api/auth/register", body)
       .then(() => {
-        setVari("primary");
-        setMessage("Bienvenidx a nuestra comunidad, " + email + ".")
+        document.getElementById('msgBody').style.visibility="visible";
+        document.getElementById('msgText').innerHTML="Usuarix registradx.";
       })
       .then(() => navigate("/login")) //M: redirecciona
       .catch((err) => {
@@ -127,7 +127,7 @@ const Register = () => {
           >
             Registrarme
           </Button> {/* M: el boton decia "loguearme" */}
-          <Alert variant={vari}>{message}</Alert>
+          <div id="alerta">{message}</div>
         </div>
       </Col><Col></Col></Row>
     </Container>

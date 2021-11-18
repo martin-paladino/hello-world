@@ -43,6 +43,8 @@ const Cart = () => {
 
   const removeUserItem = (course) => {
     dispatch(deleteCourseFromCart(course.id));
+    document.getElementById('msgBody').style.visibility="visible";
+    document.getElementById('msgText').innerHTML="Curso removido del carrito.";
   };
 
   let totalPrice =
