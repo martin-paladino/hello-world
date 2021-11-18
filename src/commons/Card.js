@@ -42,6 +42,7 @@ function Card({ course }) {
           <Rcard.Title>{course.title}</Rcard.Title>
           <Rcard.Text>{course.description}</Rcard.Text>
         </div>
+        <div >
         <div>${course.price}</div>
         <div id="cardFooter">
           {user.id ? (
@@ -57,6 +58,7 @@ function Card({ course }) {
             <Button variant="primary">Ir al carrito</Button>
           </Link>
           </div>
+      </div>
       </div>
     </div>
   );
