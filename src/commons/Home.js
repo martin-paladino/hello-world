@@ -13,6 +13,7 @@ function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => dispatch(getAllCourses()), []);
+
  
   return (
  

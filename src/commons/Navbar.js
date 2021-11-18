@@ -17,7 +17,8 @@ function Navbar({ onSubmitHandler }) {
   const category = useSelector(state => state.category)
   const dispatch = useDispatch()
   
-console.log(user.id)
+console.log("USER NAVBAR ", user.id)
+console.log("USER NAVBAR ", user.isAdmin)
 
   const handleLogout = () => {
     dispatch(setCart([]));
@@ -95,7 +96,7 @@ console.log(user.id)
         </div>
       )}
 
-      {user.id ? (
+      {user.isAdmin ? (
         <>
           <Link to="/admin">
             <Button className="boton"> Admin </Button>

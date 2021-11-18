@@ -19,7 +19,14 @@ class CategoriesController {
         .then(() => res.sendStatus(202))
         .catch(next)
     }
-
+    static updateCategory(req, res, next) {
+        Category.update(req.body, {
+            where: { id: req.params.id },
+            returning: true
+        })
+        .then(updatedCategory => res.status(200).send(updatedCategory[1][0]))
+        .catch(next)
+    }
 }
 
 module.exports = CategoriesController
