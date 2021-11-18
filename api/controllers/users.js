@@ -1,4 +1,4 @@
-const { User, Course } = require("../models");
+const { User, Course, UserCourse } = require("../models");
 const { Op } = require("sequelize");
 
 class UsersController {
@@ -21,13 +21,20 @@ class UsersController {
         };
       })
       .then(({ coursesPromise, user }) => {
-        coursesPromise.then((courses) => {
+       return coursesPromise.then((courses) => {
           user.addCourses(courses);
           res.status(201).send(courses);
         });
       })
       .catch(next);
   }
+  //en el body le mando userId, courseId, purchased
+  /* static addCoursesToUserOrders(req, res, next) {
+    UserCourse.create(req.body)
+    .then(newOrder => res.status(201).send(newOrder))
+    .catch(next)
+  } */
+
 }
 
 module.exports = UsersController;

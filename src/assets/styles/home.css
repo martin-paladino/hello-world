@@ -7,7 +7,11 @@
     align-items: center;
     justify-items: center;
   }
-  
+
+  .margin-div{
+    margin-bottom: 80px;
+  }
+
   main#carousel {
     grid-row: 1 / 2;
     grid-column: 1 / 8;

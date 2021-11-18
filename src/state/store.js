@@ -7,6 +7,7 @@ import coursesReducer from "./courses";
 import courseReducer from "./course";
 import categoryReducer from "./category";
 import categoriesReducer from "./categories";
+import ordersReducer from "./orders";
 
 const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
@@ -17,7 +18,8 @@ const store = configureStore({
     courses: coursesReducer,
     cart: cartReducer,
     category: categoryReducer,
-    categories: categoriesReducer
+    categories: categoriesReducer,
+    orders: ordersReducer
   },
 });
 
