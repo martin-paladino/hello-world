@@ -46,7 +46,7 @@ const Login = () => {
       setVari("danger");
       setMessage("Correo invalido!");
     } else {
-      if (password.length > 5) {
+      if (password.length >= 5) {
         loguear(email, password);
       } else {
         setVari("danger");

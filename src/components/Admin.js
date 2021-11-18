@@ -22,7 +22,7 @@ const Admin = () => {
             <Container className="marginContent">
                 <div className="centrarTitulo">
                     <Row>
-                        <Col><h4> PERFIL DEL ADMIN </h4></Col>
+                        <Col><h2> PERFIL DEL ADMIN </h2></Col>
                     </Row>
                 </div>
                 <Row>
@@ -41,11 +41,7 @@ const Admin = () => {
                             <Button variant="dark" className="button"> Administrar Categorías </Button>
                         </Link>
                     </Col>
-                    <Col>
-                        <Link to="/admin/orders">
-                            <Button variant="dark" className="button"> Historial de Órdenes </Button>
-                        </Link>
-                    </Col>
+                   
                 </Row>
             </Container>
         </div>

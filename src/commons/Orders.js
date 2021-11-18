@@ -26,10 +26,10 @@ const Orders = () => {
                     <h5>Estado</h5>
                     <h5>Fecha y hora</h5>
                 </ListGroup.Item>
-                {orders.map((order, i) =>
+                {orders && orders.map((order, i) =>
                 (<ListGroup.Item as="li" style={{justifyContent: "space-between"}}
                     className="d-flex justify-content-between align-items-start">
-                    <p>{courses[i].title}</p>
+                    <p>{courses[i] && courses[i].title}</p>
                     <p>{order.purchased ? "Comprado" : "Cancelado"}</p>
                     <p>{order.createdAt}</p>
                 </ListGroup.Item>))}

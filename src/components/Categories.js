@@ -18,8 +18,10 @@ console.log(categories,"CATEGORIAS")
 
 return(
     <div>
+
        <DropdownButton id="dropdown-basic-button" title="Categorias" variant="secondary">
-    {categories.map((category)=>(
+       {/* <Dropdown.Item href="#/action-1">{category.name}</Dropdown.Item>
+ */}    {categories.map((category)=>(
 
  <Link to=  {`/courses/${category.name}`}> <Dropdown.Item href="#/action-1">{category.name}</Dropdown.Item></Link>
 

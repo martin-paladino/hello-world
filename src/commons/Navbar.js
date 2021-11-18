@@ -80,9 +80,11 @@ console.log("USER NAVBAR ", user.isAdmin)
       </div>
       {user.id ? (
         <div>
-          <Button variant="secondary" className="boton">
+          <Link to="/me">
+          <Button  variant="secondary" className="boton">
             {user.fullname}
           </Button>
+          </Link>
           <Link to="/">
             <Button variant="secondary" onClick={handleLogout}>
               Logout
@@ -111,7 +113,7 @@ console.log("USER NAVBAR ", user.isAdmin)
       {user.isAdmin ? (
         <>
           <Link to="/admin">
-            <Button className="boton"> Admin </Button>
+            <Button className="boton"> Admin  </Button>
           </Link>
         </>
       ) : null}

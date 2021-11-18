@@ -63,8 +63,8 @@ const Cart = () => {
                 className="d-flex justify-content-between align-items-start"
               >
                 <div className="ms-2 me-auto">
-                  <div className="fw-bold">{course.name}</div>
-                  {course.description}
+                  <div className="fw-bold">{course.title}</div>
+                  
                 </div>
                 <Badge variant="primary" pill>
                   US$ {course.price}

@@ -46,7 +46,7 @@ const Register = () => {
       setMessage("Correo invalido!");
     } else {
       console.log(password)
-      if (password.length > 5) {
+      if (password.length >= 5) {
         if (!password.includes(' ')) {
           if (password === rPassword) {
             register();
