@@ -3,6 +3,8 @@ import Carousel from "react-elastic-carousel";
 import Card from "../commons/Card";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllCourses } from "../state/courses";
+//import { getMyCourses } from "../state/orders";
+
 
 import "../assets/styles/general.css";
 import "../assets/styles/home.css";
@@ -12,7 +14,9 @@ function Home() {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  useEffect(() => dispatch(getAllCourses()), []);
+  useEffect(() => {
+    dispatch(getAllCourses())
+  }, []);
 
   const breakPoints = [
     { width: 1, itemsToShow: 1 },

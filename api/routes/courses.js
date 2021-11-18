@@ -10,6 +10,7 @@ router.get("/:courseTitle", CoursesController.getCoursesFromTitle)
 router.post("/add", CoursesController.addCourse)
 router.put("/:id", CoursesController.updateCourse)
 router.delete("/:id", CoursesController.deleteCourse)
+router.get("/checkifpurchased/:courseId", CoursesController.checkIfPurchased)
 
 //rutas p/asignar categorias a los cursos y acceder a cursos x categ
 router.post("/addcategory/:courseId/:categoryId", CoursesController.addCategoryToCourse)

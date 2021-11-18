@@ -97,6 +97,13 @@ class UsersController {
     .catch(next)
   }
 
+  static getMyCourses(req, res, next) {
+    UserCourse.findAll({where: { userId: req.params.userId, purchased: true }})
+    .then(myCourses => {
+      res.status(200).send(myCourses)})
+    .catch(next)
+  }
+
 }
 
 module.exports = UsersController;

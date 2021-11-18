@@ -12,13 +12,16 @@ const Orders = () => {
     const orders = useSelector(state => state.orders)
     
     useEffect(() => {
-        dispatch(getUserOrders(user.id))
-        dispatch(getCoursesFromOrders(user.id))
-    }, [])
+        if(user.id) {
+            dispatch(getUserOrders(user.id))
+            dispatch(getCoursesFromOrders(user.id))
+        }
+    }, [user])
 
     return (
         <div>
-            <h1>Historial de órdenes</h1>
+            <h1>Historial de órdenes</h1><br/>
+            {orders.length === 0 && (<p>Tu historial está vacío. No realizaste ninguna transacción.</p>)}
             <ListGroup as="ol" numbered>
                 <ListGroup.Item  variant="primary"
                     className="d-flex justify-content-between align-items-start">

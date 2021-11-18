@@ -3,18 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { addCourseToCart } from "../state/cart";
 
+
 import { setCourse } from "../state/course";
-
-
 
 import "../assets/styles/general.css";
 import "../assets/styles/card.css";
-
 
 function Card({ course }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
+  
+  
 
   const handleClick = () => {
     dispatch(setCourse(course));
@@ -34,6 +34,7 @@ function Card({ course }) {
   const userHandleCartClick = () => {
     dispatch(addCourseToCart(course.id));
   };
+
   return (
     <div>
       <div className="card">
@@ -43,22 +44,18 @@ function Card({ course }) {
           <Rcard.Text>{course.description}</Rcard.Text>
         </div>
         <div >
-        <div>${course.price}</div>
-        <div id="cardFooter">
-          {user.id ? (
-            <Button onClick={userHandleCartClick} variant="primary">
-              Agregar 
-            </Button>
-          ) : (
-            <Button onClick={handleCartClick} variant="primary">
+          <div>${course.price}</div>
+          {!course.purchased ?
+          <div id="cardFooter">
+            <Button onClick={user.id ? userHandleCartClick : handleCartClick} variant="primary">
               Agregar
             </Button>
-          )}
-          <Link to="/cart">
-            <Button variant="primary">Ir al carrito</Button>
-          </Link>
-          </div>
-      </div>
+            <Link to="/cart">
+              <Button variant="primary">Ir al carrito</Button>
+            </Link>
+          </div> : 
+          <Button onClick={handleClick} variant="success">Ver mi curso</Button>}
+        </div>
       </div>
     </div>
   );
