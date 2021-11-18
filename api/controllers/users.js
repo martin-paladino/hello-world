@@ -71,7 +71,7 @@ class UsersController {
           }
         });
       }).catch(err=>console.log(err))
-  }
+    }
     
 
   
