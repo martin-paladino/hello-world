@@ -31,7 +31,7 @@ User.init({
         defaultValue: false
     }
 
-}, {sequelize: db, modelName: "user"});
+}, {sequelize: db, modelName: "user", timestamps: false});
 
 
 // Instance Method.

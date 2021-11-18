@@ -19,6 +19,11 @@ import AdminCoursesAdd from "./components/AdminCoursesAdd";
 import AdminCoursesEdit from "./components/AdminCoursesEdit";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+import AdminUsers from "./components/AdminUsers";
+import AdminCategories    from "./components/AdminCategories";
+import AdminCategoriesAdd from "./components/AdminCategoriesAdd";
+import AdminCategoriesEdit from "./components/AdminCategoriesEdit";
+
 import "./assets/styles/app.css"
 function App() {
 const dispatch=useDispatch()  
@@ -49,6 +54,10 @@ dispatch(meRequest())
         <Route exact path="/admin/courses" element={<AdminCourses />} />
         <Route exact path="/admin/courses/add" element={<AdminCoursesAdd />} />
         <Route exact path="/admin/courses/edit" element={<AdminCoursesEdit />} />
+        <Route exact path="/admin/users" element={<AdminUsers />} />
+        <Route exact path="/admin/categories" element={<AdminCategories />} />
+        <Route exact path="/admin/categories/add" element={<AdminCategoriesAdd />} />
+        <Route exact path="/admin/categories/edit" element={<AdminCategoriesEdit />} />
         <Route exact path="/orders" element={<Orders/>}/>
       </Routes>
       </div>

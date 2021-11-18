@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { Container, Row, Col} from "react-bootstrap";
 import axios from "axios";
+import Admin from "./Admin"
 import useInputStr from "../hooks/useInputStr";
 import useInputNum from "../hooks/useInputNum";
 import { useNavigate } from "react-router-dom"
@@ -47,10 +48,11 @@ const AdminCoursesAdd = () => {
 
     return (
         <div>
+            <Admin />
             <Container className="marginContent">
-                <div className="centrarTitulo">
+                <div className="subtitulo">
                     <Row>
-                        <Col><h4> AGREGAR CURSO </h4></Col>
+                        <Col><h1> AGREGAR CURSO: </h1></Col>
                     </Row>
                 </div>
                 <Row>
@@ -61,7 +63,8 @@ const AdminCoursesAdd = () => {
                                     {...title}
                                     className="input" 
                                     type="text" 
-                                    placeholder="Título del Curso" 
+                                    placeholder="Título del Curso"
+                                    required
                                 />
                                 
                                 <Form.Control 
@@ -70,6 +73,7 @@ const AdminCoursesAdd = () => {
                                     as="textarea" 
                                     rows={3} 
                                     placeholder="Descripción" 
+                                    required
                                 />
                                 
                                 <Form.Control 
@@ -77,6 +81,7 @@ const AdminCoursesAdd = () => {
                                     className="input" 
                                     type="text" 
                                     placeholder="Profesor a cargo" 
+                                    required
                                 />
                                 
                                 <Form.Control 
@@ -84,6 +89,7 @@ const AdminCoursesAdd = () => {
                                     className="input" 
                                     type="text" 
                                     placeholder="Imagen del curso" 
+                                    required
                                 />
                                 
                                 <Form.Control 
@@ -91,35 +97,40 @@ const AdminCoursesAdd = () => {
                                     className="input" 
                                     as="textarea" 
                                     rows={3} 
-                                    placeholder="Reviews" 
+                                    placeholder="Reviews"
+                                    required
                                 />
                                 
                                 <Form.Control 
                                     {...price} 
                                     className="input" 
                                     type="text" 
-                                    placeholder="Precio" 
+                                    placeholder="Precio"
+                                    required
                                 />
                                 
                                 <Form.Control 
                                     {...duration} 
                                     className="input" 
                                     type="text" 
-                                    placeholder="Duración" 
+                                    placeholder="Duración"
+                                    required
                                 />
                                 
                                 <Form.Control 
                                     {...accessLink} 
                                     className="input" 
                                     type="text" 
-                                    placeholder="Link de acceso" 
+                                    placeholder="Link de acceso"
+                                    required
                                 />
                                 
                                 <Form.Control 
                                     {...videoPreview} 
                                     className="input" 
                                     type="text" 
-                                    placeholder="Preview del video" 
+                                    placeholder="Preview del video"
+                                    required
                                 />
                             </Form.Group>
                             <Button variant="primary" type="submit"> Agregar </Button>

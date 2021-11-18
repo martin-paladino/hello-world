@@ -41,6 +41,6 @@ Course.init({
         allowNull: false
     }
 }, 
-{ sequelize: db, modelName: "course" })
+{ sequelize: db, modelName: "course", timestamps: false})
 
 module.exports = Course
