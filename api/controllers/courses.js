@@ -56,11 +56,10 @@ class CoursesController {
     }
 
     static getCoursesFromCategory(req, res, next) {
-        Category.findOne({ where: { name: req.params.category } })
-            .then(category => category.getCourses())
-            .then(courses => res.status(200).send(courses))
-            .catch(next)
-
+        Category.findOne({ where: { name: req.params.category }})
+        .then(category => category ? category.getCourses() : [])
+        .then(courses => res.status(200).send(courses))
+        .catch(next)
     }
 
     static addCategoryToCourse(req, res, next) {

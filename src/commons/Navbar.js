@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCoursesFromUserCart, setCart } from "../state/cart";
 import { sendLogoutRequest } from "../state/user";
 import { setCategory } from "../state/category";
+import  Message from "./Message";
 
 // estilos
 
@@ -12,23 +13,38 @@ import "../assets/styles/navbar.css";
 import Categories from "../components/Categories";
 
 
-function Navbar({ onSubmitHandler, onChangeHandler }) {
+function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
   
   const user = useSelector(state => state.user)
   const category = useSelector(state => state.category)
   const dispatch = useDispatch()
   
-console.log("USER NAVBAR ", user.id)
-console.log("USER NAVBAR ", user.isAdmin)
+
 
   const handleLogout = () => {
     dispatch(setCart([]));
     dispatch(sendLogoutRequest());
+    document.getElementById('msgBody').style.visibility="visible";
+    document.getElementById('msgText').innerHTML="Usuario deslogueado.";
   };
+  
 
+  function visib (e){
+    e.preventDefault();
+    document.getElementById('msgBody').style.visibility="hidden";
+
+  }
   return (
-    <div className="navbar">
+    <div>
+      <div className="msgCont">
+      <div id="msgBody">
+        <div id="msgText">mensaje</div>
+        <Form onSubmit={(e)=> visib(e)}><Button type="submit">Ok</Button></Form>
+      </div>
       
+    </div>
+    <div className="navbar">
+        
         <div>
           <Link to="/" > <img
             style={{ width: "40px", height: "auto" }}
@@ -37,24 +53,25 @@ console.log("USER NAVBAR ", user.isAdmin)
           />
           </Link>
         </div>
+        
 
       <div>
-        <Form className="d-flex" onSubmit={(e)=> onSubmitHandler(e)}>
+        <Form  className="d-flex" >
+          
           <Form.Control
-            
+            value={inputSearch}
             onChange={onChangeHandler}
             type="search"
-            placeholder="Curso o categoria.."
+            placeholder="Curso o categoria..."
             className="me-2"
             aria-label="Search"
             id="searchinput"
-            
-          />{/* si la barra de search esta vacia el boton no debe hacer nada */}
-            <Link to="/search">
-          <Button variant="secondary" type="submit">
+          />
+           
+          <Button  onClick={onSubmitHandler} variant="secondary" type="submit" >
             Buscar
           </Button>
-          </Link>
+          
           
         </Form>
       </div>
@@ -117,6 +134,9 @@ console.log("USER NAVBAR ", user.isAdmin)
           </Link>
         </>
       ) : null}
+    </div>
+    
+      
     </div>
   );
 }
