@@ -16,10 +16,11 @@ function Card({ course }) {
   
   
 
-  /* const handleClick = () => {
+  const handleClick = () => {
     dispatch(setCourse(course));
     navigate(`/course/${course.id}`);
-  }; */
+  }; 
+
   const handleCartClick = () => {
     // courses queda en NULL o con un ARR con contenido
     let courses = JSON.parse(localStorage.getItem("courses"));
@@ -38,7 +39,7 @@ function Card({ course }) {
   return (
     <div>
       <div className="card">
-      <Link to= {`/course/${course.id}`}> <div id="cardImgCont"><img id="cardImg" /* onClick={handleClick} */ variant="top" src={course.image} /></div></Link>
+      <Link to= {`/course/${course.id}`}> <div id="cardImgCont"><img id="cardImg" onClick={handleClick} variant="top" src={course.image} /></div></Link>
         <div id="cardDesc">
           <Rcard.Title>{course.title}</Rcard.Title>
           <Rcard.Text>{course.description}</Rcard.Text>
