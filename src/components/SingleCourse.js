@@ -18,7 +18,7 @@ const SingleCourse = () => {
 
       <p>{course.description}</p>
       <h2>{course.rating}</h2>
-      <h3>{course.price}</h3>
+      <h3>US$ {course.price}</h3>
     </div>
   );
 };
