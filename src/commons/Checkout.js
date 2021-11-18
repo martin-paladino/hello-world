@@ -2,23 +2,29 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ListGroup, Badge, Button, Card, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { addCoursesToUser } from "../state/user";
+import { addCoursesToUser, addCoursesToUserOrders } from "../state/user";
 import { deleteCoursesFromCart } from "../state/cart";
 
 function Checkout() {
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user);
 
   const handleConfirmClick = () => {
-    const body = {cart, purchased: true}
-    dispatch(addCoursesToUser(body)); //envia los cursos comprados a la tabla de ordenes ("userCourses") con la prop purchased=true
+    const body = cart.map(course => {
+      return {courseId: course.id, userId: user.id, purchased: true}
+    })
+    dispatch(addCoursesToUserOrders(body)); //envia los cursos comprados a la tabla de ordenes ("userCourses") con la prop purchased=true
     dispatch(deleteCoursesFromCart());
   };
   const totalPrice = cart && cart.reduce((sum, value) => sum + Number(value.price), 0);
 
   const handleCancel = () => {
-    dispatch(addCoursesToUser(cart)) //envia los cursos cancelados a la tabla de ordenes ("userCourses") con la prop purchased=false
+    const body = cart.map(course => {
+      return {courseId: course.id, userId: user.id, purchased: false}
+    })
+    dispatch(addCoursesToUserOrders(body)) //envia los cursos cancelados a la tabla de ordenes ("userCourses") con la prop purchased=false
     dispatch(deleteCoursesFromCart());
   };
   return (

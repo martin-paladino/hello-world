@@ -1,15 +1,24 @@
 import {
-    createAction,
-    createReducer,
-    createAsyncThunk,
+  createAction,
+  createReducer,
+  createAsyncThunk,
 } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const setOrders = createAction("SET_ORDERS")
+export const setOrders = createAction("SET_ORDERS");
+
+export const getUserOrders = createAsyncThunk(
+  "GET_USER_ORDERS", userId => {
+    return axios
+      .get(`/api/users/getuserorders/${userId}`)
+      .then(res => res.data)
+      .catch((err) => console.log({ err }));
+  }
+);
 
 const ordersReducer = createReducer([], {
-    [setOrders]: (state, action) => action.payload
-})
+  [setOrders]: (state, action) => action.payload,
+  [getUserOrders.fulfilled]: (state, action) => action.payload,
+});
 
-export default ordersReducer
-
+export default ordersReducer;
