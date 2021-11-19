@@ -54,6 +54,7 @@ function Card({ course }) {
             <Link to="/cart">
               <Button variant="primary">Ir al carrito</Button>
             </Link>
+            
           </div> : 
           <Button onClick={handleClick} variant="success">Ver mi curso</Button>}
         </div>

@@ -15,3 +15,9 @@
     width: 310px;
     height: 670px;
 }
+.boton{
+    
+    display: flex;
+   
+    margin: 0 auto;
+}

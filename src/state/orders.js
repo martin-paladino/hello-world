@@ -25,6 +25,15 @@ export const getUserOrders = createAsyncThunk(
 
 }) */
 
+export const addCoursesToUserOrders = createAsyncThunk("ADD_COURSES_TO_USER_ORDER", (body) => {
+  return axios
+  .post("/api/users/adduserorders", body)
+  .then(res => res.data )
+  .catch((err) => {
+    console.log({ err });
+  });
+})
+
 //funcion para traer los cursos comprados (purchased=true)
 export const getMyCourses = createAsyncThunk("GET_MY_COURSES", userId => {
   return axios
@@ -37,6 +46,7 @@ const ordersReducer = createReducer([], {
   [setOrders]: (state, action) => action.payload,
   [getUserOrders.fulfilled]: (state, action) => action.payload,
   [getMyCourses.fulfilled]: (state, action) => action.payload,
+  [addCoursesToUserOrders.fulfilled]: (state, action) => action.payload
   /*   [purchasedCourse.fulfilled]: (state, action) => action.payload
  */ 
 });

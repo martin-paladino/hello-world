@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, ListGroup, Badge, Container } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   addCoursesToCart,
   deleteCourseFromCart,
@@ -11,6 +11,7 @@ import {
 
 // Este componente sirve para Carrito y tambien para historial.
 const Cart = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const [update, setUpdate] = useState([]);
 
@@ -53,6 +54,7 @@ const Cart = () => {
 
   return (
     <div>
+      <Container>
       <ListGroup as="ol" numbered>
         {!currentCart ? (
           <h3>Tu carrito de compras está vacío!</h3>
@@ -97,6 +99,8 @@ const Cart = () => {
           </div>
         </Container>
       )}
+      <Button onClick={() =>navigate(-1)}> Volver</Button>
+    </Container>
     </div>
   );
 };
