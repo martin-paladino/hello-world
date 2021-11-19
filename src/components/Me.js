@@ -2,9 +2,12 @@ import { useSelector } from 'react-redux'
 import { Link }        from "react-router-dom"
 import { Button }      from "react-bootstrap" //agregado por M.
 import "../assets/styles/general.css"
+import React, { useEffect } from "react";
+
 
 const Me = () => {
     const user     = useSelector(state => state.user)
+
 
     return (
         <div id="contMargin">

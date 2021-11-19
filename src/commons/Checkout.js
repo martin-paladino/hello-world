@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ListGroup, Badge, Button, Card, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { addCoursesToUser, addCoursesToUserOrders } from "../state/user";
 import { deleteCoursesFromCart } from "../state/cart";
 import { sendMail } from "../state/user";
-import { setUser }     from '../state/user'
-
 
 
 function Checkout() {
@@ -14,7 +12,7 @@ function Checkout() {
   const cart     = useSelector((state) => state.cart);
   const user     = useSelector((state) => state.user);
 
-  
+
   const handleConfirmClick = () => {
     const body = cart.map(course => {
       return {courseId: course.id, userId: user.id, purchased: true}
@@ -26,7 +24,6 @@ function Checkout() {
 
     document.getElementById('msgBody').style.visibility="visible";
     document.getElementById('msgText').innerHTML="Compra confirmada.";
-   
   };
 
 

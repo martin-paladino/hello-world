@@ -1,8 +1,10 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { getCourse } from "../state/course";
+import { useDispatch, useSelector } from "react-redux";
 import "../assets/styles/general.css";
+import "../assets/styles/singleCourse.css";
+import { Container, Col, Row } from "react-bootstrap";
 
 const SingleCourse = () => {
   const { courseId } = useParams()
@@ -17,18 +19,36 @@ const SingleCourse = () => {
 
   return (
     <div id="contMargin">
-      {user.id ? (
-        <h1>{course.title}</h1>
-      ) : (
-        <h2>{course.professor}</h2>)}
-      <iframe
-        src={course.purchased ? course.accessLink : course.videoPreview}
-        width="540"
-        height="310"
-      />
+      <Container>
+        <Row>
+          <Col>
+            <h1 id="title"> {course.title} </h1>
+            <p> ¿Qué vas a aprender? Mirá este video! </p>
+          
+            <div>
+              <iframe
+                src={course.purchased ? course.accessLink : course.videoPreview}
+                width="540"
+                height="310"
+              />
+            </div>
+          </Col>
+        </Row>
+        
+      </Container>
+      <Container>
+        <Row>
+          <Col>
+            <h2> Requisitos </h2>
+            <p> Acceso a una computadora con conexión a internet. </p>
+          </Col>
+        </Row>
+      </Container>
+
+{/*       <h2>{course.professor}</h2>
       <p>{course.description}</p>
-      <h2>{course.rating}</h2>
-      <h3>US$ {course.price}</h3>
+      <p>{course.review}</p> */}
+    
     </div>
   )
 };
