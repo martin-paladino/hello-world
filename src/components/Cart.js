@@ -9,6 +9,10 @@ import {
   getCoursesFromUserCart,
 } from "../state/cart";
 
+import "../assets/styles/general.css"
+import "../assets/styles/cart.css"
+
+// Este componente sirve para Carrito y tambien para historial.
 const Cart = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch();
@@ -52,11 +56,11 @@ const Cart = () => {
     currentCart.reduce((sum, value) => sum + Number(value.price), 0);
 
   return (
-    <div>
-      <div>
+    <div id="contMargin">
+      <h1>Bienvenidx a tu carrito de compras:</h1><br></br>
       <ListGroup as="ol" numbered>
         {!currentCart ? (
-          <h3>Tu carrito de compras está vacío!</h3>
+          <h2>Tu carrito de compras está vacío!</h2>
         ) : (
           currentCart.map((course) => {
             return (
@@ -88,7 +92,7 @@ const Cart = () => {
         )}
       </ListGroup>
       {currentCart && (
-        <Container style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
           {/* el style mandarlo a un css y pasar la clase */}
           <Link to={user.id ? "/checkout" : "/login"}>
             <Button>Pagar</Button>
@@ -96,12 +100,10 @@ const Cart = () => {
           <div>
             <h3>Total a pagar: US$ {totalPrice}</h3>
           </div>
-        </Container>
+        </div>
       )}
       <Button onClick={() =>navigate(-1)}> Volver</Button>
-    </div>
-    </div>
-  );
+    </div>)
 };
 
 export default Cart;

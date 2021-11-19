@@ -6,7 +6,6 @@ import { getAllCourses } from "../state/courses";
 import Card from "../commons/Card";
 import "../assets/styles/general.css"
 
-
 const Me = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.user)

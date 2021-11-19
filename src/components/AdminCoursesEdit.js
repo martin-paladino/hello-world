@@ -35,6 +35,9 @@ const AdminCoursesEdit = () => {
     function alertMsg(msg){
         document.getElementById('msgBody').style.visibility="visible";
         document.getElementById('msgText').innerHTML=msg;
+        setTimeout(()=>{
+            document.getElementById('msgBody').style.visibility="hidden";
+        }, 3000);
     }
     
     useEffect(() => {
@@ -113,7 +116,7 @@ const AdminCoursesEdit = () => {
                         <Row>
                             
                             <Col>
-                                <h1> EDITAR CURSO: </h1>
+                                <h1> Editar curso: </h1>
                             </Col>
                         </Row>
                     </div>

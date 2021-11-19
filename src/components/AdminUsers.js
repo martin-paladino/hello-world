@@ -6,6 +6,8 @@ import { useNavigate }              from "react-router";
 import { useSelector }              from "react-redux";
 import NotFound                     from "../commons/NotFound";
 import { Button, Table, Container, Row, Col} from "react-bootstrap";
+
+import "../assets/styles/general.css";
 import "../assets/styles/admin.css";
 
 
@@ -32,6 +34,9 @@ const AdminUsers = () => {
     function alertMsg(msg){
         document.getElementById('msgBody').style.visibility="visible";
         document.getElementById('msgText').innerHTML=msg;
+        setTimeout(()=>{
+            document.getElementById('msgBody').style.visibility="hidden";
+        }, 3000);
     }
     
     const handleRol = (e) => {
@@ -62,19 +67,17 @@ const AdminUsers = () => {
 
     if(authorized) {
         return (
-        <div>
+        <div id="contMargin">
             <Admin />
-            <Container className="marginContent">
+            <div id="contTable">
                 <div className="subtitulo">
-                    <Row>
-                        <Col><h1> ADMINISTRAR USUARIOS: </h1></Col>
-                    </Row>
+                    <div className="row">
+                        <div className="column"><h1> Administrar usuarios: </h1></div>
+                    </div>
                 </div>
-                <Row>
-                    <Col>
-                        {users.map(user => {
-                            return(
-                                <div>
+                <div>
+                    <div>
+                    <div>
                                 <Table striped bordered hover variant="warning">
                                     <thead>
                                         <tr>
@@ -87,6 +90,10 @@ const AdminUsers = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
+                        
+                        {users.map(user => {
+                            return(
+                             
                                         <tr>
                                             <td> {user.id} </td>
                                             <td> {user.fullname} </td>
@@ -111,14 +118,15 @@ const AdminUsers = () => {
                                                 <Button onClick={() => handleDelete(user.id)} type="button" variant="danger" size="sm"> Eliminar usuario </Button>
                                             </td>
                                         </tr>
-                                    </tbody>
-                                </Table>
-                                </div>
+                                    
                             )})
                         }
-                    </Col>
-                </Row>
-            </Container>
+                        </tbody>
+                                </Table>
+                                </div>
+                    </div>
+                </div>
+            </div>
         </div>
         )
     }

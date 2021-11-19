@@ -27,6 +27,9 @@ const AdminCategoriesEdit = () => {
     function alertMsg(msg){
         document.getElementById('msgBody').style.visibility="visible";
         document.getElementById('msgText').innerHTML=msg;
+        setTimeout(()=>{
+            document.getElementById('msgBody').style.visibility="hidden";
+        }, 3000);
     }
     
     useEffect(() => {
@@ -96,7 +99,7 @@ const AdminCategoriesEdit = () => {
                 <Container className="marginContent">
                     <div className="subtitulo">
                         <Row>
-                            <Col><h1> EDITAR CATEGORÍA: </h1></Col>
+                            <Col><h1> Editar categoría: </h1></Col>
                         </Row>
                     </div>
                     <Row>
