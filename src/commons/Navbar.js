@@ -22,18 +22,11 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
   const category = useSelector((state) => state.category);
   const dispatch = useDispatch();
 
-  function alertMsg(msg) {
-    document.getElementById("msgBody").style.visibility = "visible";
-    document.getElementById("msgText").innerHTML = msg;
-    setTimeout(() => {
-      document.getElementById("msgBody").style.visibility = "hidden";
-    }, 3000);
-  }
-
   const handleLogout = () => {
     dispatch(setCart([]));
     dispatch(sendLogoutRequest());
-    alertMsg("Usuarix deslogueado.");
+    document.getElementById("msgBody").style.visibility = "visible";
+    document.getElementById("msgText").innerHTML = "Usuario deslogueado.";
   };
 
   function visib(e) {
@@ -142,7 +135,8 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
         </div>
       </div>
     </div>
-  );
+  )
+  
 }
 
 export default Navbar;
