@@ -95,14 +95,14 @@ const Cart = () => {
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           {/* el style mandarlo a un css y pasar la clase */}
           <Link to={user.id ? "/checkout" : "/login"}>
-            <Button>Pagar</Button>
+            <Button    >Pagar</Button>
           </Link>
           <div>
             <h3>Total a pagar: US$ {totalPrice}</h3>
           </div>
         </div>
       )}
-      <Button onClick={() =>navigate(-1)}> Volver</Button>
+      <Button onClick={() =>navigate(-1)} style={{width:"5%"}}> Volver</Button>
     </div>)
 };
 
