@@ -4,6 +4,7 @@ import { getUserOrders } from "../state/orders"
 import { getCoursesFromOrders } from "../state/courses"
 import { ListGroup } from "react-bootstrap"
 
+import "../assets/styles/general.css"
 
 const Orders = () => {
     const dispatch = useDispatch()
@@ -19,19 +20,20 @@ const Orders = () => {
     }, [user])
 
     return (
-        <div>
+        <div id="contMargin">
             <h1>Historial de órdenes</h1><br/>
             {orders.length === 0 && (<p>Tu historial está vacío. No realizaste ninguna transacción.</p>)}
             <ListGroup as="ol" numbered>
                 <ListGroup.Item  variant="primary"
-                    className="d-flex justify-content-between align-items-start">
+                    className="d-flex justify-content-between ">
+                    <h5>#</h5>
                     <h5>Curso</h5>
                     <h5>Estado</h5>
                     <h5>Fecha y hora</h5>
                 </ListGroup.Item>
                 {orders && orders.map((order, i) =>
-                (<ListGroup.Item as="li" style={{justifyContent: "space-between"}}
-                    className="d-flex justify-content-between align-items-start">
+                (<ListGroup.Item as="li" 
+                    className="d-flex justify-content-between">
                     <p>{courses[i] && courses[i].title}</p>
                     <p>{order.purchased ? "Comprado" : "Cancelado"}</p>
                     <p>{order.createdAt}</p>
