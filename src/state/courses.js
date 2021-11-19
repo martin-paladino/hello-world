@@ -21,12 +21,10 @@ export const getAllCourses = createAsyncThunk("GET_ALL_COURSES", () => {
     .then(({ courses, booleanArrPromise }) =>
       booleanArrPromise
         .then(booleanArr => {
-          console.log("BOOLEANARR", booleanArr, "COURSES", courses)
           const finalCourses = courses.map((course, i) => {
             course.purchased = booleanArr[i]
             return course
           })
-          console.log(finalCourses)
           return finalCourses
         })
     )
@@ -47,12 +45,10 @@ export const getCoursesFromCategory = createAsyncThunk("GET_COURSES_FROM_CATEGOR
     .then(({ courses, booleanArrPromise }) =>
       booleanArrPromise
         .then(booleanArr => {
-          console.log("BOOLEANARR", booleanArr, "COURSES", courses)
           const finalCourses = courses.map((course, i) => {
             course.purchased = booleanArr[i]
             return course
           })
-          console.log(finalCourses)
           return finalCourses
         })
     )
