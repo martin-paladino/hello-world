@@ -61,14 +61,7 @@ export const sendMail = createAsyncThunk("SEND_EMAIL", (courses, thunkAPI) => {
     });
 });
 
-export const addCoursesToUserOrders = createAsyncThunk("ADD_COURSES_TO_USER_ORDER", (body) => {
-  return axios
-  .post("/api/users/adduserorders", body)
-  .then(res => res.data)
-  .catch((err) => {
-    console.log({ err });
-  });
-})
+
 
 
 const userReducer = createReducer(
@@ -79,7 +72,7 @@ const userReducer = createReducer(
     [meRequest.fulfilled]: (state, action) => action.payload,
     [addCoursesToUser.fulfilled]: (state, action) => action.payload,
     [sendMail.fulfilled]: (state, action) => action.payload,
-    [addCoursesToUserOrders.fulfilled]: (state, action) => action.payload
+    
   }
 );
 
