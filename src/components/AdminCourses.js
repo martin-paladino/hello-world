@@ -26,7 +26,7 @@ const AdminCourses = () => {
 
     if(authorized) {
         return (
-            <div id="contMargin">
+            <div>
                 <Admin />
                 <div id="contTable">
                     
