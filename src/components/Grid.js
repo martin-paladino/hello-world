@@ -23,7 +23,7 @@ const Grid = () => {
   }, [category]);
 
   return (
-    <div>
+    <div id="contMargin">
       <div>
         {courses.length === 0 ? (
           <h1>No se encontraron resultados!</h1>
