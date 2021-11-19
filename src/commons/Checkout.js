@@ -15,17 +15,17 @@ function Checkout() {
   const [update, setUpdate] = useState("")
 
 
-  dispatch(addCoursesToUserOrders(body));//envia los cursos comprados a la tabla de ordenes ("userCourses") con la prop purchased=true
-  dispatch(sendMail(cart));
-  dispatch(deleteCoursesFromCart())
-
+  
   const totalPrice = cart.length > 0 && cart.reduce((sum, value) => sum + Number(value.price), 0);
-
+  
   const handleConfirmClick = () => {
     const body = cart.map(course => {
       return { courseId: course.id, userId: user.id, purchased: true }
     });
-
+    
+    dispatch(addCoursesToUserOrders(body));//envia los cursos comprados a la tabla de ordenes ("userCourses") con la prop purchased=true
+    dispatch(sendMail(cart));
+    dispatch(deleteCoursesFromCart())
     document.getElementById('msgBody').style.visibility = "visible";
     document.getElementById('msgText').innerHTML = "Compra confirmada.";
   };

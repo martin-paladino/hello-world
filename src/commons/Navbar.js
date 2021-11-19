@@ -4,6 +4,7 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { setCart } from "../state/cart"
 
 import { sendLogoutRequest } from "../state/user";
 
