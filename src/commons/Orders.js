@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux"
 import { getUserOrders } from "../state/orders"
 import { getCoursesFromOrders } from "../state/courses"
 import { ListGroup } from "react-bootstrap"
-
 import "../assets/styles/general.css"
 
 const Orders = () => {
