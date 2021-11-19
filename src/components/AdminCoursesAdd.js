@@ -41,6 +41,9 @@ const AdminCoursesAdd = () => {
     function alertMsg(msg){
         document.getElementById('msgBody').style.visibility="visible";
         document.getElementById('msgText').innerHTML=msg;
+        setTimeout(()=>{
+            document.getElementById('msgBody').style.visibility="hidden";
+        }, 3000);
     }
 
     const handleSubmit = (e) => {

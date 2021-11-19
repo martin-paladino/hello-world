@@ -14,6 +14,14 @@ function Card({ course }) {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
   
+  function alertMsg(msg){
+    document.getElementById('msgBody').style.visibility="visible";
+    document.getElementById('msgText').innerHTML=msg;
+    setTimeout(()=>{
+        document.getElementById('msgBody').style.visibility="hidden";
+    }, 3000);
+  }
+
   const handleClick = () => {
     dispatch(setCourse(course));
     navigate(`/course/${course.id}`);
@@ -23,6 +31,7 @@ function Card({ course }) {
     // courses queda en NULL o con un ARR con contenido
     let courses = JSON.parse(localStorage.getItem("courses"));
     if (!courses) {
+      alertMsg("Sumando al carrito.")
       localStorage.setItem(`courses`, JSON.stringify([course]));
     } else {
       courses.push(course);
@@ -32,6 +41,7 @@ function Card({ course }) {
 
   const userHandleCartClick = () => {
     dispatch(addCourseToCart(course.id));
+    alertMsg("Sumando al carrito.")
   };
 
   return (

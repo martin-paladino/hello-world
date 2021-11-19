@@ -19,13 +19,18 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
   const category = useSelector(state => state.category)
   const dispatch = useDispatch()
   
-
+  function alertMsg(msg){
+    document.getElementById('msgBody').style.visibility="visible";
+    document.getElementById('msgText').innerHTML=msg;
+    setTimeout(()=>{
+        document.getElementById('msgBody').style.visibility="hidden";
+    }, 3000);
+}
 
   const handleLogout = () => {
     dispatch(setCart([]));
     dispatch(sendLogoutRequest());
-    document.getElementById('msgBody').style.visibility="visible";
-    document.getElementById('msgText').innerHTML="Usuario deslogueado.";
+    alertMsg("Usuarix deslogueado.")
   };
   
 
@@ -38,8 +43,10 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
     <div>
       <div className="msgCont">
       <div id="msgBody">
+        <div className="contCerrar">
+          <Form onSubmit={(e)=> visib(e)}><button className="cerrar" type="submit"> x </button></Form>
+        </div>
         <div id="msgText">mensaje</div>
-        <Form onSubmit={(e)=> visib(e)}><Button type="submit">Ok</Button></Form>
       </div>
       
     </div>
@@ -69,7 +76,7 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
           />
            
           <Button  onClick={onSubmitHandler} variant="secondary" type="submit" >
-            Buscar
+            <img id="searchButton" src="/lupa.png"></img>
           </Button>
           
           

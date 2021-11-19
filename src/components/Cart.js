@@ -9,6 +9,9 @@ import {
   getCoursesFromUserCart,
 } from "../state/cart";
 
+import "../assets/styles/general.css"
+import "../assets/styles/cart.css"
+
 // Este componente sirve para Carrito y tambien para historial.
 const Cart = () => {
   const dispatch = useDispatch();
@@ -52,10 +55,11 @@ const Cart = () => {
     currentCart.reduce((sum, value) => sum + Number(value.price), 0);
 
   return (
-    <div>
+    <div id="contMargin">
+      <h1>Bienvenidx a tu carrito de compras:</h1><br></br>
       <ListGroup as="ol" numbered>
         {!currentCart ? (
-          <h3>Tu carrito de compras está vacío!</h3>
+          <h2>Tu carrito de compras está vacío!</h2>
         ) : (
           currentCart.map((course) => {
             return (
