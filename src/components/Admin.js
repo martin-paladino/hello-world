@@ -55,8 +55,7 @@ const Admin = () => {
                   <img id="avatar" src="/courses.png"></img>
                   <br></br>
                   <Button variant="dark" className="button">
-                    {" "}
-                    Administrar Cursos{" "}
+                    Administrar Cursos
                   </Button>
                 </Link>
               </div>

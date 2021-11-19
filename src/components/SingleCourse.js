@@ -16,6 +16,7 @@ const SingleCourse = () => {
   const course = useSelector((state) => state.course);
   const user = useSelector((state) => state.user)
   const navigate = useNavigate()
+  console.log("el navigate", {navigate})
 
   useEffect(() => {
     dispatch(getCourse(courseId))
@@ -103,7 +104,7 @@ const SingleCourse = () => {
         </Container>
 
         <Container id="ultContainer">
-          <Button onClick={() => navigate(-2)}> Volver</Button>
+          <Button onClick={() => navigate(-1)}> Volver</Button>
         </Container>
       </div>
     </div>

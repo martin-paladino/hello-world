@@ -9,8 +9,6 @@ import {getUserOrders} from "../state/orders"
 
 import "../assets/styles/general.css"
 
-
-
 const Me = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.user)
