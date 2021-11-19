@@ -106,7 +106,7 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
             </div>
           ) : (
             <div>
-              <div>
+              
                 <Link to="/login">
                   <Button
                     variant="secondary"
@@ -118,7 +118,7 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
                 <Link to="/register">
                   <Button as="input" type="submit" value="Register" />
                 </Link>
-              </div>
+              
             </div>
           )}
           {user.isAdmin && (

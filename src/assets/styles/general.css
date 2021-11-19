@@ -12,7 +12,7 @@
 body {
 
 background: rgb(255,255,255);
-background: radial-gradient(circle, rgb(131, 131, 131) 0%, rgba(255,255,255,1) 71%, rgb(255, 246, 246) 100%);
+background: radial-gradient(circle, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 71%, rgb(255, 255, 255) 100%);
 font-family: Noto Sans, sans-serif;
 
 }
