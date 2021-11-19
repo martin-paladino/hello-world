@@ -89,7 +89,7 @@ const Cart = () => {
           </div>
         </div>
       )}
-      <Button onClick={() =>navigate(-1)}> Volver</Button>
+      <Button style={{width:"5%"}} onClick={() =>navigate(-1)}> Volver</Button>
     </div>)
 };
 
