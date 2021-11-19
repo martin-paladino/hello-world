@@ -16,10 +16,13 @@ const SingleCourse = () => {
   const course = useSelector((state) => state.course);
   const user = useSelector((state) => state.user)
   const navigate = useNavigate()
+  console.log("el navigate", {navigate})
 
   useEffect(() => {
     dispatch(getCourse(courseId))
   }, [])
+
+  console.log("CURSO COMPORADOOO",course)
 
   return (
     <div id="contMargin">
@@ -28,7 +31,7 @@ const SingleCourse = () => {
           <Row>
             <Col>
               <h1 id="title"> {course.title} </h1>
-              <p> ¿Qué vas a aprender? ¡Mirá este video! </p>
+              {!course.purchased ?  <p> ¿Qué vas a aprender? ¡Mirá este video! </p> :  <p> ¡Empezá tu curso ahora! </p>}
 
               <div>
                 <iframe
@@ -46,8 +49,15 @@ const SingleCourse = () => {
                 <p> {course.professor} </p>
                 <label> Duración </label>
                 <p> {course.duration} horas </p>
-                <label> Precio </label>
-                <p> US$ {course.price} </p>
+                {!course.purchased ? (
+                    <div>
+                    <label> Precio </label>
+                    <p> US$ {course.price} </p>
+                    </div>
+                  ) : (
+                    null
+                  )
+                } 
               </div>
             </Col>
           </Row>
@@ -94,15 +104,9 @@ const SingleCourse = () => {
         </Container>
 
         <Container id="ultContainer">
-          <Button onClick={() => navigate(-2)}> Volver</Button>
+          <Button onClick={() => navigate(-1)}> Volver</Button>
         </Container>
       </div>
-      {/*       <h2>{course.professor}</h2>
-      <p>{course.description}</p>
-      <h2>{course.rating}</h2>
-      <h3>US${course.price}</h3>
-      <Button onClick={() =>navigate(-2)}> Volver</Button>
-      <p>{course.review}</p> */}
     </div>
   );
 };

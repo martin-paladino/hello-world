@@ -36,7 +36,7 @@ function Checkout() {
 user.id && setUpdate(cart)
   }, [user])
  */
-  const totalPrice = cart && cart.reduce((sum, value) => sum + Number(value.price), 0);
+  const totalPrice = cart.length > 0 && cart.reduce((sum, value) => sum + Number(value.price), 0);
 
   
   const handleCancel = () => {
