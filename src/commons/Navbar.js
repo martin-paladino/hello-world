@@ -51,7 +51,7 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
         </div>
 
         <div>
-          <Form className="d-flex" >
+          <Form onSubmit={(e)=> e.preventDefault()} className="d-flex" >
             <Form.Control
               value={inputSearch}
               onChange={onChangeHandler}
