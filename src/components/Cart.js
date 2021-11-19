@@ -9,7 +9,6 @@ import {
   getCoursesFromUserCart,
 } from "../state/cart";
 
-// Este componente sirve para Carrito y tambien para historial.
 const Cart = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch();
@@ -54,7 +53,7 @@ const Cart = () => {
 
   return (
     <div>
-      <Container>
+      <div>
       <ListGroup as="ol" numbered>
         {!currentCart ? (
           <h3>Tu carrito de compras está vacío!</h3>
@@ -100,7 +99,7 @@ const Cart = () => {
         </Container>
       )}
       <Button onClick={() =>navigate(-1)}> Volver</Button>
-    </Container>
+    </div>
     </div>
   );
 };

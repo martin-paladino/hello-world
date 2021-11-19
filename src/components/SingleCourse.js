@@ -4,11 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom"
 import { getCourse } from "../state/course";
-import {Button} from "react-bootstrap"
 import "../assets/styles/general.css";
 import "../assets/styles/singleCourse.css";
 import { Container, Col, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+
 
 const SingleCourse = () => {
   const { courseId } = useParams();
@@ -16,6 +15,7 @@ const SingleCourse = () => {
   const course = useSelector((state) => state.course);
   const user = useSelector((state) => state.user)
   const navigate = useNavigate()
+  console.log("el navigate", {navigate})
 
   useEffect(() => {
     dispatch(getCourse(courseId))
@@ -47,7 +47,9 @@ const SingleCourse = () => {
           </Col>
         </Row>
       </Container>
-      <Button onClick={() => navigate(-2)}> Volver</Button>
+      <Button onClick={() => {navigate(-1)
+      console.log(navigate)}
+      }> Volver</Button>
 
       {/*       <h2>{course.professor}</h2>
       <p>{course.description}</p>
