@@ -25,7 +25,7 @@ function Home() {
   ];
   return (
     <div>
-      <div id="contMargin" className="margin-div">
+      <div id="contMargin">
         <h1 id="big">¡Bienvenidx a Hello World {user.fullname}!</h1>
         <h3 id="big">¡Tenemos los mejores cursos de programación para vos!</h3>
       </div>

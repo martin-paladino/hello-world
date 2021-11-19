@@ -18,6 +18,14 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  function alertMsg(msg){
+    document.getElementById('msgBody').style.visibility="visible";
+    document.getElementById('msgText').innerHTML=msg;
+    setTimeout(()=>{
+        document.getElementById('msgBody').style.visibility="hidden";
+    }, 3000);
+}
+
   function loguear() {
     let body = { email, password };
     setMessage("Logueando...");
@@ -26,8 +34,7 @@ const Login = () => {
       .then((response) => dispatch(setUser(response.data)))
       .then(() => {
         
-        document.getElementById('msgBody').style.visibility="visible";
-        document.getElementById('msgText').innerHTML="Usuarix logueadx.";
+        alertMsg("Usuarix logueadx.")
         
         navigate(!localStorage.getItem("courses") ? "/me" : "/cart"); //M: redirecciono
       })
