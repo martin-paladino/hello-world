@@ -62,7 +62,7 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
                 value={inputSearch}
                 onChange={onChangeHandler}
                 type="search"
-                placeholder="Curso o categoria..."
+                placeholder="Curso o Categoría..."
                 className="me-2"
                 aria-label="Search"
                 id="searchinput"
@@ -94,12 +94,13 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
           {user.id ? (
             <div>
               <Link to="/me">
-                <Button variant="secondary" className="boton">
+                <Button variant="secondary">
                   {user.fullname}
                 </Button>
               </Link>
+
               <Link to="/">
-                <Button variant="secondary" onClick={handleLogout}>
+                <Button variant="outline-secondary" onClick={handleLogout} style={{"color":"white", "border-color": "#6c757d"}}>
                   Logout
                 </Button>
               </Link>
@@ -122,11 +123,9 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
             </div>
           )}
           {user.isAdmin && (
-            <div>
               <Link to="/admin">
                 <Button className="boton"> Admin </Button>
               </Link>
-            </div>
           )}
         </div>
         <div className="msgCont">
