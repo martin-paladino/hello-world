@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom"
 import { getCourse } from "../state/course";
-import {Button} from "react-bootstrap"
+
 import "../assets/styles/general.css";
 import "../assets/styles/singleCourse.css";
 import { Container, Col, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+
 
 const SingleCourse = () => {
   const { courseId } = useParams();

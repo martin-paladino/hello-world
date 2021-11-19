@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap"
 import { getAllCourses } from "../state/courses";
 import Card from "../commons/Card";
 import "../assets/styles/general.css"
-import React, { useEffect } from "react";
+
 
 
 const Me = () => {
