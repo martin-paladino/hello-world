@@ -1,31 +1,222 @@
 {
     "course": [
-      {
-        "name": "Javascript",
-        "description": "Aprende Javascript desde 0",
-        "price": 10
+       {
+    "title": "JavaScript: de cero hasta los detalles (ES5) ",
+    "description":
+      "JavaScript es un lenguaje de programación moderno, quizá el más utilizado a nivel mundial cuando de web se trata. Pero no olvidemos que hoy en día existen tecnologías y frameworks cuya base es Javascript, tal es el caso de MongoDB, AngularJS, jQuery, ionic, NodeJS, entre otras.Este curso te hará comprender profundamente esta tecnología de programación, brindándote la base sólida que necesitas para entrar con paso firme a cualquier herramienta basada en JavaScript.",
+    "professor": "Fernando Herrera",
+    "image":
+      "https://www.hostinger.es/tutoriales/wp-content/uploads/sites/7/2018/08/que-es-javascript-1280x720.jpg",
+    "review":
+      "Está explicado de una forma sencilla, clara y entendible, los ejemplos usados son sencillos lo cual hace que se entienda el tema sin enredarnos. Aunque ya se tenga conocimiento previo, es muy probable que se aprenda algo nuevo. ",
+    "rating": 4.6,
+    "price": 74.99,
+    "duration": 8,
+    "accessLink":
+      "https://www.youtube.com/embed/z95mZVUcJ-E",
+    "videoPreview":
+      "https://www.youtube.com/embed/riZbwRFMFuw"
+  
       },
       {
-        "name": "C++",
-        "description": "Aprende C++ desde 0",
-        "price": 12
+        "title": "JavaScript Moderno: Guía para dominar el lenguaje ",
+    "description":
+      "Bienvenido al curso de JavaScript moderno. El objetivo principal del curso es enseñarte JavaScript actual, empezando de cero conocimiento en JavaScript hasta llevarte a un nivel avanzado y competitivo en el mercado laboral actual",
+    "professor": "Fernando Herrera",
+    "image":
+      "https://conceptodefinicion.de/wp-content/uploads/2017/10/Javascript2.jpg",
+    "review":
+      "Excelente curso, sin duda, muy buen contenido, he aprendido bastante y me siento preparado para seguir escalando, muchas gracias Fernando. ",
+    "rating": 4.8,
+    "price": 9.99,
+    "duration": 9,
+    "accessLink":
+      "https://www.youtube.com/embed/W6NZfCO5SIk",
+    "videoPreview":
+      "https://www.youtube.com/embed/1HakS7KsbCk"
       },
       {
-        "name": "PHP",
-        "description": "Aprende PHP desde 0",
-        "price": 14
+        
+        "title": "Entrenamiento acelerado de JavaScript ",
+    "description":
+      "Aprenda uno de los lenguajes más importantes en el desarrollo web, ¡desde cero de forma rápida! JavaScript es una de las partes más importantes de todas las páginas web o aplicaciones modernas, reactivas y fáciles de usar. A pesar de eso, es posible que usted mismo conozca muchos tutoriales que le dejan muchas preguntas abiertas o que son buenos, ¡pero también que tienen un par de años!",
+    "professor": "Maximilian Schwarzmüller",
+    "image":
+      "https://dejanstojanovic.net/media/131814/16x9.png",
+    "review":
+      "Muy al grano y muy informativo. ¡Realmente disfruté este curso!",
+    "rating": 4.5,
+    "price": 9.99,
+    "duration": 9,
+    "accessLink":
+      "https://www.youtube.com/embed/W6NZfCO5SIk",
+    "videoPreview":
+      "https://www.youtube.com/embed/1HakS7KsbCk"
       },
     
       {
-        "name": "Html",
-        "description": "Aprende Html desde 0",
-        "price": 15
+        "title": "Domina CSS desde Cero ",
+        "description":
+          "En este curso aprenderás desde lo que es CSS y como es realmente importante en cualquier sitio y app web. Cuando termines veras que dichos conocimientos te abrirán un mundo de posibilidades donde tu imaginación y creatividad seran tu limite, ya que podrás aplicar todo ese conocimiento tanto en CSS, Styled-Components de ReactJS, CSS en VueJS y otras tecnologías que requieran de CSS puro o bien entender frameworks como TailwindCSS y mas.",
+        "professor": "Elvis Gómez",
+        "image":
+          "https://lyften.com/uploads/posts/css3-in-all-its-glory.png",
+        "review":
+          "Me gusto mucho , explica muy bien, y aunque ya sabia algo de CSS aprendi mucho mas , enseña cosas interesantes",
+        "rating": 4.4,
+        "price": 9.99,
+        "duration": 9,
+        "accessLink":
+          "https://www.youtube.com/embed/wRNinF7YQqQ",
+        "videoPreview":
+          "https://www.youtube.com/embed/e-r-ctQbq20"
       },
       {
-        "name": "Python",
-        "description": "Aprende Python desde 0",
-        "price": 16
-      }
+        "title": "Aprende CSS Completo 2021 ",
+        "description":
+          "Curso de CSS completo en el que veremos muchos temas: Enlazar archivos, clases,selectores,modelo de caja,bordes,fuentes, unidades de medida,colores ,fondos,degradados,pseudoclases,pseudoelementos,menus desplegables,imagenes,posicionamiento,responsive,flotados,flexbox,grid,variables,importaciones,filtros,BEM,clippath,transiciones y animaciones.",
+        "professor": "Manuel Gomez Martinez",
+        "image":
+          "https://www.tutorialmonsters.com/wp-content/uploads/2012/05/css3.jpg",
+        "review":
+          "¡Muy buen contenido! Recién estoy empezando con esto, así que fue todo excelente, fácil de entender.",
+        "rating": 4.5,
+        "price": 9.99,
+        "duration": 9,
+        "accessLink":
+          "https://www.youtube.com/embed/wRNinF7YQqQ",
+        "videoPreview":
+          "https://www.youtube.com/embed/e-r-ctQbq20"
+      },
+      {
+        "title": "CSS: la guía completa 2022 (incluye Flexbox, Grid y Sass)",
+        "description":
+          "Este curso lo cubre todo : comenzamos con los conceptos básicos (¿Qué es CSS? ¿Cómo funciona? ¿Cómo se usa)? y sumergirse gradualmente más y más profundamente. Y lo hacemos mostrando tanto ejemplos prácticos como la teoría que lo respalda.",
+        "professor": "Academind por Maximilian Schwarzmüller ",
+        "image":
+          "http://blog.aulaformativa.com/wp-content/uploads/2016/09/definicion-usos-ventajas-lenguaje-css3-que-es.jpg",
+        "review":
+          "Excelentes explicaciones de la forma en que funciona CSS y todas las características básicas que posiblemente necesitará. ¡Fácil de seguir y con muchas oportunidades de aplicar lo aprendido!",
+        "rating": 4.7,
+        "price": 9.99,
+        "duration": 9,
+        "accessLink":
+          "https://www.youtube.com/embed/wRNinF7YQqQ",
+        "videoPreview":
+          "https://www.youtube.com/embed/e-r-ctQbq20"
+      },
+      {
+        "title": "HTML: Desde cero (Aprende y domina HTML5) + Infografias",
+        "description":
+          "Aprende uno de los lenguajes más importantes de internet, desde cero sin ningún conocimiento previo hasta dominarlo.",
+        "professor": "Jordan Alexander ",
+        "image":
+          "https://www.bbvaapimarket.com/wp-content/uploads/2014/09/115a8_html_strong.jpg",
+        "review":
+          "Contenido muy Importante para las personas que se están iniciando, y que mejor manera que hacerlo de la mano de Jordán",
+        "rating": 4.7,
+        "price": 9.99,
+        "duration": 9,
+        "accessLink":
+          "https://www.youtube.com/embed/HD13eq_Pmp8",
+        "videoPreview":
+          "https://www.youtube.com/embed/B5VjL2f1IQg"
+      },
+      {
+        "title": "Aprende HTML5 2021",
+        "description":
+          "Curso completo de html5 donde veremos. Definición html, instalaciones,estructura de un documento html,encabezados,etiquetas de texto,etiquetas contenedoras,enlaces, class and id , imagenes, elementos de bloque y linea, listas ,tablas, formularios, iframe,video y audio..",
+        "professor": "Manuel Gomez Martinez",
+        "image":
+          "https://cdn-icons-png.flaticon.com/512/1216/1216733.png",
+        "review":
+          "Es un muy buen curso y bastante bien explicado. Me gustó mucho la forma de dar la clase por parte del instructor. Se abarcan muy bien los temas y sirve muy bien para iniciar en el mundo de la programación web.",
+        "rating": 4.4,
+        "price": 9.99,
+        "duration": 9,
+        "accessLink":
+          "https://www.youtube.com/embed/HD13eq_Pmp8",
+        "videoPreview":
+          "https://www.youtube.com/embed/B5VjL2f1IQg"
+      },
+      {
+        "title": "Curso de Html: Introduccion completa a Html y Html 5  ",
+        "description":
+          "Este curso trata sobre Html desde las bases, veremos los elementos fundamentales como la declaración DOCTYPE, el atributo Charset, lo que es un editor de código y cual usaremos para el curso.",
+        "professor": "Andres Sosa Arevalo",
+        "image":
+          "https://blog.ida.cl/wp-content/uploads/sites/5/2012/05/encabezado1.jpg",
+        "review":
+          "Me ha gustado. Ha sido claro en todo, a excepción de cuando reescribe el código para enseñar al alumno en uno de los videos a saltado una parte. Por lo demás todo perfecto. Muchas gracias ",
+        "rating": 4.4,
+        "price": 9.99,
+        "duration": 9,
+        "accessLink":
+          "https://www.youtube.com/embed/HD13eq_Pmp8",
+        "videoPreview":
+          "https://www.youtube.com/embed/B5VjL2f1IQg"
+      },
+      {
+        "title": "Python 3. Curso completo de Python.Aprende Python desde cero",
+        "description":
+          "Este curso es completamente práctico, donde todas las lecciones están explicadas mediante ejemplos, para que se puedan entender fácilmente y además podrás practicar con los ejercicios propuestos en cada tema.",
+        "professor": "Redait Media",
+        "image":
+          "https://cosasdedevs.com/media/sections/images/python.png",
+        "review":
+          "Un curso excepcional muy bien exlpicado y con el cual sin duda he aprendido mucho",
+        "rating": 4.3,
+        "price": 9.99,
+        "duration": 9,
+        "accessLink":
+          "https://www.youtube.com/embed/rfscVS0vtbw",
+        "videoPreview":
+          "https://www.youtube.com/embed/9ojhJsXNWCI"
+      },
+        {
+
+          "title": "Python 2021 desde 0",
+          "description":
+            "Bases de datos Sqlite, Interfaces graficas, Clases y objetos, Scripts.",
+          "professor": "Brian De Vita",
+          "image":
+            "https://www.freecodecamp.org/espanol/news/content/images/2021/02/Python-language-1-.png",
+          "review":
+            "Excelente curso.La manera en que explica los temas hace que sean faciales de entender y utiliza diversos ejemplos para reforzar su explicación.",
+          "rating": 4.4,
+          "price": 9.99,
+          "duration": 9,
+          "accessLink":
+            "https://www.youtube.com/embed/rfscVS0vtbw",
+          "videoPreview":
+            "https://www.youtube.com/embed/9ojhJsXNWCI"
+
+
+        },
+        {
+
+          "title": "De 0 a Programador: Python desde 0  ",
+          "description":
+            "En este curso De 0 a Programador: Python desde 0 aprenderás  los secretos para pensar como un ´programador profesional. Si no sabes por dónde empezar o aún te cuesta avanzar en tus proyectos. Este curso es perfecto para ti. Aprenderás a pensar de manera lógica y estructurada en tiempo record, gracias a prácticas de pseudocódigo aplicadas en Python, uno de los lenguajes más poderosos que existen en la actualidad.",
+          "professor": "Wilmer Planchez",
+          "image":
+            "https://assets2-programarya-com.juandmegon.com/img/Cursos/Python/Python-header.png",
+          "review":
+            "Excelente la forma en la que explico todo el curso, lo hizo bien detallado y como instalar y utilizar cada herramienta externa que se vio en el curso  ",
+          "rating": 4.4,
+          "price": 9.99,
+          "duration": 9,
+          "accessLink":
+            "https://www.youtube.com/embed/rfscVS0vtbw",
+          "videoPreview":
+            "https://www.youtube.com/embed/9ojhJsXNWCI"
+
+
+
+
+
+
+        }
     ]
   }
   
