@@ -36,7 +36,7 @@ dispatch(meRequest())
 
 
   return (
-    <div>
+    <div >
       <div className="margin_bottom">
       <NavbarContainer />
       <Routes>

@@ -3,6 +3,10 @@ import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../commons/Card";
 import { getCoursesFromCategory, getAllCourses } from "../state/courses"
+import { Button , Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+
+
 
 // estilos
 import "../assets/styles/general.css"
@@ -29,6 +33,8 @@ const Grid = () => {
       </div>))}
     </div>
     </div>
+              <Button className="boton" onClick={() =>navigate(-1)}> Volver</Button>
+              </div>
   )
 };
 

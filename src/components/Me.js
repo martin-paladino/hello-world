@@ -5,6 +5,8 @@ import { Button } from "react-bootstrap"
 import { getAllCourses } from "../state/courses";
 import Card from "../commons/Card";
 import "../assets/styles/general.css"
+import React, { useEffect } from "react";
+
 
 const Me = () => {
     const dispatch = useDispatch()
@@ -14,6 +16,7 @@ const Me = () => {
     useEffect(() => {
         dispatch(getAllCourses())
     }, [])
+
 
     return (
         <div id="contMargin">

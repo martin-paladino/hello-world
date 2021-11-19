@@ -30,7 +30,9 @@ class CoursesController {
 
     static getCoursesFromTitle(req, res, next) {
         Course.findAll({ where: { title: req.params.courseTitle } })
-            .then(courses => res.status(200).send(courses))
+
+            
+            .then(courses => res.status(200).send(courses) )
             .catch(next)
     }
 
@@ -56,6 +58,7 @@ class CoursesController {
     }
 
     static getCoursesFromCategory(req, res, next) {
+        // Category.findOne({ where: {title:{ [Op.substring]: '%' + req.params.category + '%'}}}) no funciona ?????
         Category.findOne({ where: { name: req.params.category }})
         .then(category => category ? category.getCourses() : [])
         .then(courses => res.status(200).send(courses))
