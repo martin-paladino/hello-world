@@ -106,7 +106,7 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
             </div>
           ) : (
             <div>
-              
+            
                 <Link to="/login">
                   <Button
                     variant="secondary"
