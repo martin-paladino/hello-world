@@ -16,7 +16,7 @@ const Grid = () => {
   const orders = useSelector(state => state.orders)
   const navigate = useNavigate()
   return (
-    <Container>
+    <div>
 
     <div id="contGrid">
       {courses == false ? <h1>No se encontraron resultados!</h1> : courses.map(course =>  
@@ -30,7 +30,7 @@ const Grid = () => {
               ))}
     </div>
               <Button className="boton" onClick={() =>navigate(-1)}> Volver</Button>
-              </Container>
+              </div>
   )
 };
 
