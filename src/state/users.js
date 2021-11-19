@@ -2,9 +2,9 @@ import {
     createAction,
     createAsyncThunk,
     createReducer,
-  } from "@reduxjs/toolkit";
-  import axios from "axios";
-  
+} from "@reduxjs/toolkit";
+import axios from "axios";
+
 export const setUsers = createAction("SET_USERS");
 
 const initialState = {
@@ -17,13 +17,11 @@ const initialState = {
 export const getAllUsers = createAsyncThunk("GET_ALL_USERS", () => {
     return axios
         .get("/api/admin")
-        .then(res => res.data) 
+        .then(res => res.data)
         .catch(err => console.log({ err }))
 });
 
-
-const usersReducer = createReducer(
-    {},
+const usersReducer = createReducer({},
     {
         [setUsers]: (state, action) => action.payload,
         [getAllUsers.fulfilled]: (state, action) => action.payload,

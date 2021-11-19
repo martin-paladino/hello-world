@@ -2,23 +2,20 @@ const { Course, Cart } = require("../models");
 const { Op } = require("sequelize");
 
 class CartController {
-  //para agregar un curso al carrito
+
   static addToCart(req, res, next) {
-    //chequea si existe un carro con el userId que le llega como req
-    //si no existe, lo crea
     Cart.findOrCreate({
       where: { userId: req.params.userId },
-      defaults: { status: req.body.status }, //si se crea, le asigna un valor a status
+      defaults: { status: req.body.status }, 
     })
       .then((cart) => {
-        //una vez creado el carro, busca el curso pasado por req.param y retorna la promesa que devuelve
         return {
           coursePromise: Course.findOne({ where: { id: req.params.courseId } }),
-          cart: cart[0], //tambien retorna la instancia del carro encontrado o creado [0] ->carro, [1]->se fue creado o encontrado (true/false)
+          cart: cart[0], 
         };
       })
       .then(({ coursePromise, cart }) => {
-        coursePromise //la promesa devuelve el curso encontrado
+        coursePromise 
           .then((course) => cart.addCourse(course))
           .then(() => cart.getCourses())
           .then((courses) => res.status(201).send(courses));
@@ -26,7 +23,6 @@ class CartController {
       .catch(next);
   }
 
-  //body: arreglo de objetos(cursos) [{title, id, price, duration, etc}]
   static addCoursesToCart(req, res, next) {
     const courses = req.body.map(course => {
       delete course.CategoryCourse
@@ -53,22 +49,18 @@ class CartController {
       .catch(next);
   }
 
-  //para borrar un curso especifico del carrito
+
   static removeCourseFromCart(req, res, next) {
-    //busca el carrito del user a partir del userid pasado por req.param
     Cart.findOne({ where: { userId: req.params.userId } })
       .then((cart) => {
-        //encuentra el carro
-        //busca el curso pasado por req.param y retorna la promesa que devuelve
         return {
           coursePromise: Course.findOne({ where: { id: req.params.courseId } }),
-          cart, //tambien se retorna el carrito del user
+          cart,
         };
       })
       .then(({ coursePromise, cart }) => {
         coursePromise.then((course) => {
-          //la promesa devuelve el curso encontrado
-          cart.removeCourse(course); //y lo borra del carrito
+          cart.removeCourse(course); 
           res.sendStatus(202);
         });
       })
@@ -86,9 +78,7 @@ class CartController {
       .then(({ coursePromise, cart }) => {
         coursePromise
           .then((courses) => {
-            
-            //la promesa devuelve el curso encontrado
-            return cart.removeCourses(courses); //y lo borra del carrito
+            return cart.removeCourses(courses);
           })
           .then(() => {
             res.sendStatus(202);
@@ -96,6 +86,7 @@ class CartController {
       })
       .catch(next);
   }
+  
   //para encontrar todos los productos del carrito de un user
   static getCoursesFromCart(req, res, next) {
     Cart.findOne({ where: { userId: req.params.userId } })

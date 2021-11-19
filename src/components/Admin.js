@@ -11,6 +11,7 @@ import "../assets/styles/general.css";
 import "../assets/styles/admin.css";
 
 const Admin = () => {
+
   const [authorized, setAuthorized] = useState(false);
   const dispatch = useDispatch();
 
@@ -32,8 +33,8 @@ const Admin = () => {
       <div id="contMargin">
         <div className="wrapper">
           <div className="row">
-          <div className="column">
-            <h1> Perfil del Admin: </h1>
+            <div className="column">
+              <h1> Perfil del Admin: </h1>
             </div>
           </div>
           <div className="row">
@@ -48,8 +49,8 @@ const Admin = () => {
                   </Button>
                 </Link>
               </div>
-              </div>
-              <div className="column">
+            </div>
+            <div className="column">
               <div className="column1">
                 <Link to="/admin/courses">
                   <img id="avatar" src="/courses.png"></img>
@@ -59,8 +60,8 @@ const Admin = () => {
                   </Button>
                 </Link>
               </div>
-              </div>
-              <div className="column">
+            </div>
+            <div className="column">
               <div className="column1">
                 <Link to="/admin/categories">
                   <img id="avatar" src="/categories.png"></img>
@@ -69,12 +70,10 @@ const Admin = () => {
                     {" "}
                     Administrar Categorías{" "}
                   </Button>
-                  
                 </Link>
               </div>
-              </div>
             </div>
-          
+          </div>
         </div>
       </div>
     );

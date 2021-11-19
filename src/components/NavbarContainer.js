@@ -8,30 +8,26 @@ function NavbarContainer() {
   const dispatch = useDispatch();
   const category = useSelector((state) => state.category);
   const navigate = useNavigate();
-  const [targetValue , setTargetValue] = useState("")
+  const [targetValue, setTargetValue] = useState("")
   const [inputSearch, setInputSearch] = useState("");
 
   const onChangeHandler = (e) => {
     setInputSearch(e.target.value)
     setTargetValue(e.target.value)
-    //dispatch(getCoursesFromTitle(e.target.value));
   };
-  // funcion para mostrar cursos de una categoria
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(getCoursesFromCategory(targetValue.trim()))
-    if(inputSearch.trim()){
+    if (inputSearch.trim()) {
       setInputSearch("");
       navigate("/search")
-
-    } else {
-      
     }
   };
 
   return (
     <Navbar
-    inputSearch={inputSearch}
+      inputSearch={inputSearch}
       onSubmitHandler={(e) => onSubmitHandler(e)}
       onChangeHandler={onChangeHandler}
     />

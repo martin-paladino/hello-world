@@ -3,15 +3,15 @@ import { Container, Form, Button, Col, Row, Alert } from "react-bootstrap";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-import {Link} from "react-router-dom"
 
 import "../assets/styles/general.css";
 import "../assets/styles/register.css";
 
 const Register = () => {
+
   const navigate = useNavigate()
   const [fullname, setFullname] = useState("")
-  const [email, setEmail] = useState("") //M: decia user, pero en realidad es mail
+  const [email, setEmail] = useState("") 
   const [password, setPassword] = useState("");
   const [rPassword, setRPassword] = useState("");
   const [vari, setVari] = useState("light");
@@ -35,7 +35,7 @@ const Register = () => {
       .then(() => {
         alertMsg("Usuarix registradx");
       })
-      .then(() => navigate("/login")) //M: redirecciona
+      .then(() => navigate("/login")) 
       .catch((err) => {
         console.log({ err });
         setVari("danger")
@@ -66,7 +66,6 @@ const Register = () => {
           setVari("danger")
           setMessage("Tu clave no puede tener espacios.");
         }
-
       } else {
         setVari("danger")
         setMessage("Tu clave debe como mínimo poseer 5 caracteres.");
@@ -82,7 +81,7 @@ const Register = () => {
           <h2>Crea tu cuenta en Hello World!</h2>
           <Form.Group>
             <Form.Control
-              value={fullname} //M: agrego values en cada input
+              value={fullname}
               onChange={(e) => setFullname(e.target.value)}
               type="text"
               size="lg"
@@ -92,7 +91,6 @@ const Register = () => {
             />
           </Form.Group>
           <Form.Group>
-
             <Form.Control
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -133,7 +131,7 @@ const Register = () => {
             onClick={(e) => handleSubmit(e)}
           >
             Registrarme
-          </Button> {/* M: el boton decia "loguearme" */}
+          </Button> 
           <div id="alerta">{message}</div>
         </div>
       </Col><Col></Col></Row>

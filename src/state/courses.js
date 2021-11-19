@@ -53,55 +53,30 @@ export const getCoursesFromCategory = createAsyncThunk("GET_COURSES_FROM_CATEGOR
         })
     )
     .catch(err => console.log({ err }))
-  })
+})
 
 export const getCoursesFromOrders = createAsyncThunk("COURSES_FROM_ORDERS", (userId) => {
   return axios
-  .get(`/api/users/getcoursesfromorders/${userId}`)
-  .then(res => res.data)
-  .catch(err => console.log({ err }))
+    .get(`/api/users/getcoursesfromorders/${userId}`)
+    .then(res => res.data)
+    .catch(err => console.log({ err }))
 })
 
 
+export const getCoursesFromTitle = createAsyncThunk("GET_COURSES_FROM_TITLE", (title) => {
+  return axios
+    .get(`/api/courses/${title}`)
+    .then(res => res.data || [])
+    .catch(err => console.log({ err }))
+})
+
+const coursesReducer = createReducer([], {
+  [setCourses]: (state, action) => action.payload,
+  [getAllCourses.fulfilled]: (state, action) => action.payload,
+  [getCoursesFromCategory.fulfilled]: (state, action) => action.payload,
+  [getCoursesFromOrders.fulfilled]: (state, action) => action.payload,
+  [getCoursesFromTitle.fulfilled]: (state, action) => action.payload
+});
 
 
-  export const getCoursesFromTitle = createAsyncThunk("GET_COURSES_FROM_TITLE", (title) => {
-    return axios
-      .get(`/api/courses/${title}`)
-      .then(res => res.data || [])
-      .catch(err => console.log({ err }))
-  })
-
-  
-
-
-
-  const coursesReducer = createReducer([], {
-    [setCourses]: (state, action) => action.payload,
-    [getAllCourses.fulfilled]: (state, action) => action.payload,
-    [getCoursesFromCategory.fulfilled]: (state, action) => action.payload,
-    [getCoursesFromOrders.fulfilled]: (state, action) => action.payload,
-    [getCoursesFromTitle.fulfilled]: (state, action) => action.payload
-  });
-
-
-
-
-  export default coursesReducer;
-
-
-
-
-
-
-
-
-/* /agrego al carrito y envio el curso seleccionado a la db, la db me devuelve todos los cursos de ese ID
-  export const addToCart = createAsyncThunk("COURSE", (course, id) =>{
-    return axios
-    .post(`api/:${id}`, (course)) //de donde sacariamos el id??
-    .then((res) => res.data)
-    .catch((err) => {
-      console.log({ err });
-    });
-  }) */
+export default coursesReducer;

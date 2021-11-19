@@ -11,11 +11,11 @@ import { getCoursesFromUserCart, setCart } from "../state/cart";
 import { sendLogoutRequest } from "../state/user";
 import { setCategory } from "../state/category";
 import Message from "./Message";
+import Categories from "../components/Categories";
 
 // estilos
 import "../assets/styles/general.css";
 import "../assets/styles/navbar.css";
-import Categories from "../components/Categories";
 
 function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
   const user = useSelector((state) => state.user);

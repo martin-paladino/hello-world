@@ -1,54 +1,52 @@
-import React                   from "react";
+import React from "react";
 import { useState, useEffect } from "react";
-import Admin                   from "./Admin"
-import axios                   from "axios";
-import { useNavigate }         from "react-router-dom"
-import { useSelector }         from "react-redux";
-import { useDispatch }         from "react-redux";
-import { Button, Form }        from "react-bootstrap";
-import { Container, Row, Col}  from "react-bootstrap";
-import { getAllCategories }    from "../state/categories";
-import { setCategories }       from "../state/categories";
-import NotFound                from "../commons/NotFound";
+import Admin from "./Admin"
+import axios from "axios";
+import { useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { Button, Form } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import { getAllCategories } from "../state/categories";
+import { setCategories } from "../state/categories";
+import NotFound from "../commons/NotFound";
 import "../assets/styles/admin.css";
 import "../assets/styles/adminCoursesAdd.css";
 
 
 const AdminCategoriesEdit = () => {
-    const categories      = useSelector((state) => state.categories);
-    const dispatch        = useDispatch();
-    const navigate        = useNavigate();
-    const [id, setId]     = useState();
+
+    const categories = useSelector((state) => state.categories);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [id, setId] = useState();
     const [form, setForm] = useState({
         name: "",
     });
     const [authorized, setAuthorized] = useState(false);
-  
-    function alertMsg(msg){
-        document.getElementById('msgBody').style.visibility="visible";
-        document.getElementById('msgText').innerHTML=msg;
-        setTimeout(()=>{
-            document.getElementById('msgBody').style.visibility="hidden";
+
+    function alertMsg(msg) {
+        document.getElementById('msgBody').style.visibility = "visible";
+        document.getElementById('msgText').innerHTML = msg;
+        setTimeout(() => {
+            document.getElementById('msgBody').style.visibility = "hidden";
         }, 3000);
     }
-    
+
     useEffect(() => {
         axios.get("/api/admin")
-        .then((res) => res.data)
-        .then(() => {
-            setAuthorized(true);
-            dispatch(getAllCategories())
-        })
-        .catch((error) => {
-            setAuthorized(false);
-        });
-  }, []);
-
+            .then(res => res.data)
+            .then(() => {
+                setAuthorized(true);
+                dispatch(getAllCategories())
+            })
+            .catch((error) => setAuthorized(false));
+    }, []);
 
     const editToggle = (idCategory) => {
         setId(idCategory);
         categories.map(category => {
-            if(category.id === idCategory) {
+            if (category.id === idCategory) {
                 setForm({
                     ...form,
                     name: category.name,
@@ -58,41 +56,37 @@ const AdminCategoriesEdit = () => {
         document.getElementById('EditCategory').style.display = document.getElementById('EditCategory').style.display === 'none' ? 'block' : 'none'
     };
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.put(`/api/categories/${id}`, form)
-        .then(res => res.data)
-        .then(() => {
-            dispatch(setCategories())
-            dispatch(getAllCategories())
-        })
-        .then( () => alertMsg("Categoría modificada."))
-        .then( () => navigate("/admin/categories"))
-        .catch(err => console.log(err))
+            .then(res => res.data)
+            .then(() => {
+                dispatch(setCategories())
+                dispatch(getAllCategories())
+            })
+            .then(() => alertMsg("Categoría modificada."))
+            .then(() => navigate("/admin/categories"))
+            .catch(err => console.log(err))
     };
-
 
     const handleDelete = () => {
         axios.delete(`/api/categories/${id}`)
-        .then( () => alertMsg("Categoría eliminada."))
-        .then(() => {
-            dispatch(getAllCategories())
-        })
-        .then( () => navigate("/admin/categories"))
-        .catch(err => console.log(err))
+            .then(() => alertMsg("Categoría eliminada."))
+            .then(() => {
+                dispatch(getAllCategories())
+            })
+            .then(() => navigate("/admin/categories"))
+            .catch(err => console.log(err))
     };
 
-    
     const handleInput = (e) => {
         setForm({
             ...form,
             [e.target.name]: e.target.value,
-          });
+        });
     };
 
-
-    if(authorized) {
+    if (authorized) {
         return (
             <div>
                 <Admin />
@@ -116,10 +110,8 @@ const AdminCategoriesEdit = () => {
                                 )
                             })}
                         </Col>
-
                         <Col>
-                            <div style={{display: 'none'}} id='EditCategory'>
-                            
+                            <div style={{ display: 'none' }} id='EditCategory'>
                                 <Form className="centrarForm" onSubmit={handleSubmit}>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
                                         <Form.Control
@@ -131,15 +123,11 @@ const AdminCategoriesEdit = () => {
                                             onChange={handleInput}
                                         />
                                     </Form.Group>
-                            
                                     <Button variant="primary" type="submit"> Editar </Button>
                                     <Button variant="danger" onClick={handleDelete}> Eliminar </Button>
-
                                 </Form>
                             </div>
                         </Col>
-
-
                     </Row>
                 </Container>
             </div>

@@ -11,8 +11,6 @@ router.post("/sendmail/:userId", UsersController.sendMail)
 router.post("/adduserorders", UsersController.addCoursesToUserOrders)
 router.get("/getuserorders/:userId", UsersController.getUserOrders)
 router.get("/getcoursesfromorders/:userId", UsersController.getCoursesFromOrders)
-/* router.get("/purchasedcourse/:courseId/:userId",UsersController.purchasedCourse)
- */
 router.get("/getmycourses/:userId", UsersController.getMyCourses)
 
 module.exports=router

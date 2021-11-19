@@ -6,10 +6,10 @@ import { getAllCourses } from "../state/courses";
 import Card from "../commons/Card";
 import {getUserOrders} from "../state/orders"
 
-
 import "../assets/styles/general.css"
 
 const Me = () => {
+
     const dispatch = useDispatch()
     const user = useSelector(state => state.user)
     const courses = useSelector(state => state.courses)
@@ -20,14 +20,12 @@ const Me = () => {
         dispatch(getUserOrders(user.id))
     }, [])
 
-
     return (
         <div id="contMargin">
             <h1>Bienvenidx {user.fullname}</h1>
             <Link to="/orders">
                 <Button>Mi historial de compras</Button>
             </Link>
-
             {orders.length === 0? (
                 <div>
                     Todavía no tienes cursos comprados. 

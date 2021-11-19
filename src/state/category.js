@@ -7,9 +7,6 @@ import axios from "axios";
 
 export const setCategory = createAction("SET_CATEGORY")
 
-
-
-
 const categoryReducer = createReducer([], {
     [setCategory]: (state, action) => action.payload,
     

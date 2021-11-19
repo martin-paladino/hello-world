@@ -2,8 +2,6 @@ import { Card as Rcard, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { addCourseToCart } from "../state/cart";
-
-
 import { setCourse } from "../state/course";
 
 import "../assets/styles/general.css";
@@ -28,7 +26,6 @@ function Card({ course }) {
   }
 
   const handleCartClick = () => {
-    // courses queda en NULL o con un ARR con contenido
     let courses = JSON.parse(localStorage.getItem("courses"));
     if (!courses) {
       alertMsg("Sumando al carrito.")
