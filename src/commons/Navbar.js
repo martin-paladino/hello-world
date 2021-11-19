@@ -1,16 +1,12 @@
 import {
-  Container,
   Form,
   Button,
-  Dropdown,
-  DropdownButton,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getCoursesFromUserCart, setCart } from "../state/cart";
+
 import { sendLogoutRequest } from "../state/user";
-import { setCategory } from "../state/category";
-import Message from "./Message";
+
 import Categories from "../components/Categories";
 
 // estilos
