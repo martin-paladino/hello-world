@@ -1,6 +1,8 @@
-import Card from "../commons/Card";
+import { useEffect } from "react"
+import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-
+import Card from "../commons/Card";
+import { getCoursesFromCategory, getAllCourses } from "../state/courses"
 
 // estilos
 import "../assets/styles/general.css"
@@ -8,21 +10,24 @@ import "../assets/styles/grid.css"
 
 const Grid = () => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user)
+  const { category } = useParams()
   const courses = useSelector(state => state.courses)
-  const orders = useSelector(state => state.orders)
-  
+ 
+  useEffect(() => {
+    category ? dispatch(getCoursesFromCategory(category)) : dispatch(getAllCourses())
+  }, [category])
+
   return (
+    <div>
+      <h1>Resultados para {category ? category : "Ver todos"}:</h1>
     <div id="contGrid">
-      {courses.map(course => { 
-        return (
-                <div id="espacio">
-                <div key={course.id}>
-                <Card key={course.id} course={course} />
-                </div>
-                </div>
-              
-        )})}
+      {courses.map(course =>
+      (<div id="espacio">
+        <div key={course.id}>
+          <Card key={course.id} course={course} />
+        </div>
+      </div>))}
+    </div>
     </div>
   )
 };

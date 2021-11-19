@@ -19,7 +19,6 @@ import AdminCoursesAdd from "./components/AdminCoursesAdd";
 import AdminCoursesEdit from "./components/AdminCoursesEdit";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import CategoryContainer from "./components/CategoryContainer";
 import AdminUsers from "./components/AdminUsers";
 import AdminCategories    from "./components/AdminCategories";
 import AdminCategoriesAdd from "./components/AdminCategoriesAdd";
@@ -33,7 +32,6 @@ const dispatch=useDispatch()
   
 useEffect(()=>  {
 dispatch(meRequest())
-
 },[])
 
 
@@ -53,8 +51,8 @@ dispatch(meRequest())
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/me" element={<Me />} />
         <Route exact path="/admin" element={<Admin />} />
-        <Route exact path="/courses/:category" element= {<CategoryContainer/>}/>
-        <Route exact path="/courses/vertodos" element=  {<Grid/> }/>
+        <Route exact path="/courses/:category" element={<Grid/>}/>
+        <Route exact path="/courses/vertodos" element={<Grid/>}/>
         <Route exact path="/admin/courses" element={<AdminCourses />} />
         <Route exact path="/admin/courses/add" element={<AdminCoursesAdd />} />
         <Route exact path="/admin/courses/edit" element={<AdminCoursesEdit />} />
