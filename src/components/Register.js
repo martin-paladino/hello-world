@@ -17,6 +17,14 @@ const Register = () => {
   const [vari, setVari] = useState("light");
   const [message, setMessage] = useState("");
 
+  function alertMsg(msg){
+    document.getElementById('msgBody').style.visibility="visible";
+    document.getElementById('msgText').innerHTML=msg;
+    setTimeout(()=>{
+        document.getElementById('msgBody').style.visibility="hidden";
+    }, 3000);
+}
+
   function register() {
     let body = { "fullname": fullname, "email": email, "password": password };
     setVari("primary")
@@ -25,8 +33,7 @@ const Register = () => {
     axios
       .post("/api/auth/register", body)
       .then(() => {
-        document.getElementById('msgBody').style.visibility="visible";
-        document.getElementById('msgText').innerHTML="Usuarix registradx.";
+        alertMsg("Usuarix registradx");
       })
       .then(() => navigate("/login")) //M: redirecciona
       .catch((err) => {

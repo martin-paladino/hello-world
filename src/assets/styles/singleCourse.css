@@ -1,12 +1,55 @@
-.container {
+.container1 {
     display: flex;
+    margin-bottom: 80px;
+}
+
+.container2 {
+    margin: auto;
+}
+
+.card2 {
+    border:2px solid rgb(204, 204, 204);
+    margin-top: 50px;
+    padding: 10%;
+    width: 80%;
+    background-color: whitesmoke;
+}
+
+.card3 {
+    border:2px solid rgb(204, 204, 204);
+    margin-top: 10px;
+    margin-bottom: 80px;
+    padding: 2%;
+    width: 100%;
+    background-color: rgb(226, 226, 226);
+}
+
+.card4 {
+    border:2px solid rgb(204, 204, 204);
+    margin-top: 10px;
+    padding: 2%;
+    width: 100%;
+    background-color: rgb(248, 248, 248);
+}
+
+label {
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+#comentario {
+    font-style: italic;
 }
 
 #title {
-    font-size: 30px;
-    margin-bottom: 30px;
+    font-weight: 800;
+    text-decoration: underline;
 }
 
-.videoPreview {
+#FAQ {
+    margin-bottom: 20px;
+}
 
+#ultContainer{
+    margin-top: 30px;
 }

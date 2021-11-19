@@ -16,26 +16,35 @@ const Grid = () => {
   const courses = useSelector((state) => state.courses);
   const navigate = useNavigate();
 
+  console.log("====>>>", category);
+
   useEffect(() => {
-    category
-      ? dispatch(getCoursesFromCategory(category))
-      : dispatch(getAllCourses());
+    category === "vertodos"
+      ? dispatch(getAllCourses())
+      : dispatch(getCoursesFromCategory(category));
   }, [category]);
 
   return (
     <div>
       <div>
-        <h1>Resultados para {category ? category : "Ver todos"}:</h1>
-        <div id="contGrid">
-          {courses.map((course) => (
-            <div id="espacio">
-              <div key={course.id}>
-                <Card key={course.id} course={course} />
-              </div>
+        {courses.length === 0 ? (
+          <h1>No se encontraron resultados!</h1>
+        ) : (
+          <>
+            <h1>Resultados para {category ? category : "Ver todos"}:</h1>
+            <div id="contGrid">
+              {courses.map((course) => (
+                <div id="espacio">
+                  <div key={course.id}>
+                    <Card key={course.id} course={course} />
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </>
+        )}
       </div>
+
       <Button className="boton" onClick={() => navigate(-1)}>
         Volver
       </Button>

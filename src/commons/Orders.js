@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { getUserOrders } from "../state/orders"
 import { getCoursesFromOrders } from "../state/courses"
 import { ListGroup } from "react-bootstrap"
-
+import "../assets/styles/general.css"
 
 const Orders = () => {
     const dispatch = useDispatch()
@@ -19,7 +19,7 @@ const Orders = () => {
     }, [user])
 
     return (
-        <div>
+        <div id="contMargin">
             <h1>Historial de órdenes</h1><br/>
             {orders.length === 0 && (<p>Tu historial está vacío. No realizaste ninguna transacción.</p>)}
             <ListGroup as="ol" numbered>

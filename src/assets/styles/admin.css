@@ -1,6 +1,4 @@
-.marginContent{
-    margin: 100px;
-}
+
 
 .centrarTitulo {
     display: flex;
@@ -30,3 +28,42 @@
     font-size: 40px;
 }
 
+#avatar {
+    width: 200px;
+    height: auto;
+}
+
+.wrapper {
+    margin: 15px;
+    
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 3;
+    margin: 0 auto;
+    justify-content: center;
+    text-align:center;
+  }
+  
+  .column1 {
+    
+    height: 100px;
+    margin: 0 auto;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  #contTable {
+      width: 100%;
+  }
+  

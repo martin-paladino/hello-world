@@ -5,6 +5,8 @@ import Admin               from "./Admin"
 import axios               from "axios";
 import NotFound            from "../commons/NotFound";
 import { Button, Container, Row, Col} from "react-bootstrap";
+
+import "../assets/styles/general.css";
 import "../assets/styles/admin.css";
 
 
@@ -26,28 +28,28 @@ const AdminCourses = () => {
         return (
             <div>
                 <Admin />
-                <Container className="marginContent">
-                    <div className="subtitulo">
-                        <Row>
-                            <Col><h1> ADMINISTRAR CURSOS: </h1></Col>
-                        </Row>
-                    </div>
-                    <Row>
-                        <Col>
+                <div id="contTable">
+                    
+                       
+                            <div><h1> Administrar cursos: </h1></div>
+                        
+                    
+                    <div>
+                        <div>
                             <Link to="/admin/courses/add">
                                 <Button variant="warning" className="button" className="buttonSubsecciones"> Agregar un Curso </Button>
                             </Link>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
                             <Link to="/admin/courses/edit">
                                 <Button variant="warning" className="button" className="buttonSubsecciones"> Editar un Curso </Button>
                             </Link>
-                        </Col>
+                        </div>
 
-                    </Row>
-                </Container>
+                    </div>
+                </div>
             </div>
         )
     }

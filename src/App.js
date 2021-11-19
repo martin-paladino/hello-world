@@ -52,7 +52,6 @@ dispatch(meRequest())
         <Route exact path="/me" element={<Me />} />
         <Route exact path="/admin" element={<Admin />} />
         <Route exact path="/courses/:category" element={<Grid/>}/>
-        <Route exact path="/courses/vertodos" element={<Grid/>}/>
         <Route exact path="/admin/courses" element={<AdminCourses />} />
         <Route exact path="/admin/courses/add" element={<AdminCoursesAdd />} />
         <Route exact path="/admin/courses/edit" element={<AdminCoursesEdit />} />
