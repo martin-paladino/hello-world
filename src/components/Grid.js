@@ -16,7 +16,7 @@ const Grid = () => {
   const courses = useSelector((state) => state.courses);
   const navigate = useNavigate();
 
-  console.log("====>>>", category);
+ 
 
   useEffect(() => {
     category === "vertodos"
@@ -25,7 +25,7 @@ const Grid = () => {
   }, [category]);
 
   return (
-    <div>
+    <div id="contMargin">
       <div>
         {courses.length === 0 ? (
           <h1>No se encontraron resultados!</h1>

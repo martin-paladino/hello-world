@@ -22,11 +22,19 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
   const category = useSelector((state) => state.category);
   const dispatch = useDispatch();
 
+  function alertMsg(msg){
+    document.getElementById('msgBody').style.visibility="visible";
+    document.getElementById('msgText').innerHTML=msg;
+    setTimeout(()=>{
+        document.getElementById('msgBody').style.visibility="hidden";
+    }, 3000);
+  }
+
   const handleLogout = () => {
     dispatch(setCart([]));
     dispatch(sendLogoutRequest());
-    document.getElementById("msgBody").style.visibility = "visible";
-    document.getElementById("msgText").innerHTML = "Usuario deslogueado.";
+    alertMsg("Usuario deslogueado")
+
   };
 
   function visib(e) {
@@ -85,21 +93,22 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
 
           
           {user.id ? (
-            <div>
+            <div style={{display: "flex"}}>
               <Link to="/me">
                 <Button variant="secondary" className="boton">
                   {user.fullname}
                 </Button>
               </Link>
               <Link to="/">
-                <Button variant="secondary" onClick={handleLogout}>
+                <Button style={{marginLeft: "10px"}} variant="primary" onClick={handleLogout}>
                   Logout
                 </Button>
               </Link>
             </div>
           ) : (
+            <div style={{display: 'flex'}}>
             <div>
-            
+           
                 <Link to="/login">
                   <Button
                     variant="secondary"
@@ -108,11 +117,15 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
                     value="Login"
                   />
                 </Link>
+              </div>
+              <div>
+
                 <Link to="/register">
-                  <Button as="input" type="submit" value="Register" />
+                  <Button style={{marginLeft: "10px"}} as="input" type="submit" value="Register" />
                 </Link>
               
             </div>
+          </div>
           )}
           {user.isAdmin && (
             <div>
