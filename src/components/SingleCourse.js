@@ -2,36 +2,53 @@ import { useEffect } from "react";
 import { Image, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import "../assets/styles/general.css";
 import { getCourse } from "../state/course";
-import {useNavigate} from "react-router-dom"
-import { getUserOrders, purchasedCourse } from "../state/orders";
+import "../assets/styles/general.css";
+import "../assets/styles/singleCourse.css";
+import { Container, Col, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const SingleCourse = () => {
   const { courseId } = useParams();
+  const dispatch = useDispatch();
   const course = useSelector((state) => state.course);
   const user = useSelector((state) => state.user);
-  const order = useSelector((state) => state.orders);
-  const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(getCourse(courseId));
-    /* dispatch(getUserOrders(user.id))
-     */
-    /* dispatch(purchasedCourse( {courseId,userId:user.id }))
-     */
   }, []);
+
   return (
     <div id="contMargin">
-      {user.id ? <h1>{course.title} </h1> : <h2>{course.professor}</h2>}
-      <iframe src={course.videoPreview} width="540" height="310" />
+      <Container>
+        <Row>
+          <Col>
+            <h1 id="title"> {course.title} </h1>
+            <p> ¿Qué vas a aprender? Mirá este video! </p>
 
+            <div>
+              <iframe
+                src={course.purchased ? course.accessLink : course.videoPreview}
+                width="540"
+                height="310"
+              />
+            </div>
+          </Col>
+        </Row>
+      </Container>
+      <Container>
+        <Row>
+          <Col>
+            <h2> Requisitos </h2>
+            <p> Acceso a una computadora con conexión a internet. </p>
+          </Col>
+        </Row>
+      </Container>
+      <Button onClick={() => navigate(-2)}> Volver</Button>
+
+      {/*       <h2>{course.professor}</h2>
       <p>{course.description}</p>
-      <h2>{course.rating}</h2>
-      <h3>US$ {course.price}</h3>
-      
-        <Button onClick={() =>navigate(-2)}> Volver</Button>
-      
+      <p>{course.review}</p> */}
     </div>
   );
 };

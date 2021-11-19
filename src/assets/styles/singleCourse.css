@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+}
+
+#title {
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.videoPreview {
+
+}

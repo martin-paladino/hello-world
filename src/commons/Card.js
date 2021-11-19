@@ -14,12 +14,10 @@ function Card({ course }) {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
   
-  
-
   const handleClick = () => {
     dispatch(setCourse(course));
     navigate(`/course/${course.id}`);
-  }; 
+  }
 
   const handleCartClick = () => {
     // courses queda en NULL o con un ARR con contenido
