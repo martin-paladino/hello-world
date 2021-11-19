@@ -52,7 +52,7 @@ const courses = [
     rating: 4.5,
     price: 9.99,
     duration: 5,
-    accessLink: "https://www.youtube.com/watch?v=RqQ1d1qEWlE&ab_channel=Fazt",
+    accessLink: "https://www.youtube.com/embed/RqQ1d1qEWlE",
     videoPreview: "https://www.youtube.com/embed/eVr3hXiapBc"
     
   },
@@ -69,7 +69,7 @@ const courses = [
     price: 10.99,
     duration: 4,
     accessLink:
-      "https://www.youtube.com/watch?v=DLikpfc64cA&ab_channel=freeCodeCampEspa%C3%B1ol",
+      "https://www.youtube.com/embed/DLikpfc64cA",
     videoPreview:
     `https://www.youtube.com/embed/CjmzDHMHxwU`
       //"https://www.youtube.com/watch?v=CjmzDHMHxwU&ab_channel=codigofacilito",
@@ -87,7 +87,7 @@ const courses = [
     price: 8.99,
     duration: 3,
     accessLink:
-      "https://www.youtube.com/watch?v=Z8zAKYLZBqc&ab_channel=LucasMoy",
+      "https://www.youtube.com/embed/Z8zAKYLZBqc",
     videoPreview:
     "https://www.youtube.com/embed/nXgyVfVch1w"
       //"https://www.youtube.com/watch?v=nXgyVfVch1w&ab_channel=AprenderProgramacion",
@@ -105,7 +105,7 @@ const courses = [
     price: 11.99,
     duration: 7,
     accessLink:
-      "https://www.youtube.com/watch?v=zIY87vU33aA&t=9758s&ab_channel=Fazt",
+      "https://www.youtube.com/embed/zIY87vU33aA",
     videoPreview:
     "https://www.youtube.com/embed/Mi3toIqESMc"
     //"https://www.youtube.com/watch?v=Mi3toIqESMc&ab_channel=codigofacilito",
@@ -121,7 +121,7 @@ const courses = [
     rating: 4.9,
     price: 14.99,
     duration: 10,
-    accessLink: "https://www.youtube.com/watch?v=BhvLIzVL8_o&ab_channel=Fazt",
+    accessLink: "https://www.youtube.com/embed/BhvLIzVL8_o",
     videoPreview:
     "https://www.youtube.com/embed/JZMZJhTajaY"  
 //    "https://www.youtube.com/watch?v=JZMZJhTajaY&ab_channel=KODOTI",
@@ -139,7 +139,7 @@ const courses = [
     price: 29.99,
     duration: 8,
     accessLink:
-      "https://www.youtube.com/watch?v=VG_upBADlRg&ab_channel=VidaMRR-Dise%C3%B1oydesarrolloweb",
+      "https://www.youtube.com/embed/VG_upBADlRg",
     videoPreview:
     "https://www.youtube.com/embed/iWfncDG3M90"
     //"https://www.youtube.com/watch?v=iWfncDG3M90&ab_channel=Platzi",
@@ -156,7 +156,7 @@ const courses = [
     rating: 4.6,
     price: 84.99,
     duration: 8,
-    accessLink: "https://www.youtube.com/watch?v=pn2v9lPakHQ&ab_channel=Fazt",
+    accessLink: "https://www.youtube.com/embed/pn2v9lPakHQ",
     videoPreview:
     "https://www.youtube.com/embed/1g7FFB-eaGI"
      // "https://www.youtube.com/watch?v=1g7FFB-eaGI&ab_channel=OpenWebinars",
@@ -174,7 +174,7 @@ const courses = [
     price: 84.99,
     duration: 8,
     accessLink:
-      "https://www.youtube.com/watch?v=i-oYrcNtc2s&ab_channel=DominiCode",
+      "https://www.youtube.com/embed/i-oYrcNtc2s",
     videoPreview:
     "https://www.youtube.com/embed/0IxXZPJA3mU"
     //  "https://www.youtube.com/watch?v=0IxXZPJA3mU&ab_channel=Develoteca",
@@ -191,7 +191,7 @@ const courses = [
     rating: 4.8,
     price: 84.99,
     duration: 8,
-    accessLink: "https://www.youtube.com/watch?v=hXDMWeD0ERM&ab_channel=Fazt",
+    accessLink: "https://www.youtube.com/embed/hXDMWeD0ERM",
     videoPreview:
     "https://www.youtube.com/embed/YkYIZDoZhYw"
       //"https://www.youtube.com/watch?v=YkYIZDoZhYw&ab_channel=C%C3%B3digoconJuan",
@@ -211,7 +211,7 @@ const courses = [
     price: 19.99,
     duration: 8,
     accessLink:
-      "https://www.youtube.com/watch?v=OWKXEJN67FE&ab_channel=SoyDalto",
+      "https://www.youtube.com/embed/OWKXEJN67FE",
     videoPreview:
     "https://www.youtube.com/embed/8cSo0ijtkzU"
       //"https://www.youtube.com/watch?v=8cSo0ijtkzU&ab_channel=BitechStudio",
@@ -229,7 +229,7 @@ const courses = [
     price: 59.99,
     duration: 8,
     accessLink:
-      "https://www.youtube.com/watch?v=kN1XP-Bef7w&ab_channel=SoyDalto",
+      "https://www.youtube.com/embed/kN1XP-Bef7w",
     videoPreview:
     "https://www.youtube.com/embed/10GHKjgQIR0"
       //"https://www.youtube.com/watch?v=10GHKjgQIR0&ab_channel=BitechStudio",
