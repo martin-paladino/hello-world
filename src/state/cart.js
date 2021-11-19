@@ -68,6 +68,7 @@ export const deleteCoursesFromCart = createAsyncThunk(
   "DELETE_COURSES_FROM_CART",
   ( courses,thunkAPI) => {
     const { user } = thunkAPI.getState()
+    console.log("UUUUUUUUUUSER!", user)
     return axios
       .delete(`/api/cart/${user.id}`, courses)
       .then(() => axios.get(`/api/cart/${user.id}/courses`))

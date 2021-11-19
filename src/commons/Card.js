@@ -13,13 +13,11 @@ function Card({ course }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
-  
-  
 
   const handleClick = () => {
     dispatch(setCourse(course));
     navigate(`/course/${course.id}`);
-  }; 
+  }
 
   const handleCartClick = () => {
     // courses queda en NULL o con un ARR con contenido
@@ -39,24 +37,23 @@ function Card({ course }) {
   return (
     <div>
       <div className="card">
-      <Link to= {`/course/${course.id}`}> <div id="cardImgCont"><img id="cardImg" onClick={handleClick} variant="top" src={course.image} /></div></Link>
+        <Link to={`/course/${course.id}`}> <div id="cardImgCont"><img id="cardImg" onClick={handleClick} variant="top" src={course.image} /></div></Link>
         <div id="cardDesc">
           <Rcard.Title>{course.title}</Rcard.Title>
           <Rcard.Text>{course.description}</Rcard.Text>
         </div>
         <div >
           <div>${course.price}</div>
-          {!course.purchased ?
-          <div id="cardFooter">
-            <Button onClick={user.id ? userHandleCartClick : handleCartClick} variant="primary">
-              Agregar
-            </Button>
-            <Link to="/cart">
-              <Button variant="primary">Ir al carrito</Button>
-            </Link>
-            
-          </div> : 
-          <Button onClick={handleClick} variant="success">Ver mi curso</Button>}
+          {user.id && course.purchased ?
+            <Button onClick={handleClick} variant="success">Ver mi curso</Button> :
+            <div id="cardFooter">
+              <Button onClick={user.id ? userHandleCartClick : handleCartClick} variant="primary">
+                Agregar
+              </Button>
+              <Link to="/cart">
+                <Button variant="primary">Ir al carrito</Button>
+              </Link>
+            </div>}
         </div>
       </div>
     </div>

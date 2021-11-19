@@ -1,20 +1,38 @@
-import { useSelector } from 'react-redux'
-import { Link }        from "react-router-dom"
-import { Button }      from "react-bootstrap" //agregado por M.
+import { useEffect } from "react"
+import { useSelector, useDispatch } from 'react-redux'
+import { Link } from "react-router-dom"
+import { Button } from "react-bootstrap"
+import { getAllCourses } from "../state/courses";
+import Card from "../commons/Card";
 import "../assets/styles/general.css"
 
+
+
 const Me = () => {
-    const user     = useSelector(state => state.user)
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.user)
+    const courses = useSelector(state => state.courses)
+
+    useEffect(() => {
+        dispatch(getAllCourses())
+    }, [])
+
 
     return (
         <div id="contMargin">
             <h1>Bienvenidx {user.fullname}</h1>
-            <h2>Estos son tus cursos:</h2>
             <Link to="/orders">
-            <Button>Historial de compras</Button>
+                <Button>Mi historial de compras</Button>
             </Link>
-
-            {/* Mostrar los cursos del usuario */}
+            <h2>Estos son tus cursos:</h2>
+            <div id="contGrid">
+                {courses.map(course =>
+                (course.purchased && <div id="espacio">
+                    <div key={course.id}>
+                        <Card course={course} />
+                    </div>
+                </div>))}
+            </div>
         </div>
     )
 }
