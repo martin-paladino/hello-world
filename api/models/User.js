@@ -34,12 +34,10 @@ User.init({
 }, {sequelize: db, modelName: "user", timestamps: false});
 
 
-// Instance Method.
 User.prototype.createHash = function(plainPass, salt) {
     return bcrypt.hash(plainPass, salt)
 };
 
-// Hook.
 User.addHook("beforeCreate", (user) => {
     return bcrypt.genSalt(16)
     .then(salt => {

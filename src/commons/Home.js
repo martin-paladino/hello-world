@@ -3,8 +3,6 @@ import Carousel from "react-elastic-carousel";
 import Card from "../commons/Card";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllCourses } from "../state/courses";
-//import { getMyCourses } from "../state/orders";
-
 
 import "../assets/styles/general.css";
 import "../assets/styles/home.css";
@@ -23,13 +21,13 @@ function Home() {
     { width: 550, itemsToShow: 2 },
     { width: 768, itemsToShow: 3 },
   ];
+
   return (
     <div>
       <div id="contMargin">
         <h1 id="big">¡Bienvenidx a Hello World {user.fullname}!</h1>
         <h3 id="big">¡Tenemos los mejores cursos de programación para vos!</h3>
       </div>
-
       <div className="bodyCar">
         <main id="carousel" style={{ width: "100%", height: "800px" }}>
           <Carousel breakPoints={breakPoints}>

@@ -7,7 +7,6 @@ import axios from "axios";
 
 export const setCart = createAction("SET_CART");
 
-//devuelve todos los cursos del carrito de un user (pendiente)//
 export const getCoursesFromUserCart = createAsyncThunk("GET_COURSES_FUSER_CART", (_, thunkAPI) => {
   const { user } = thunkAPI.getState()
   return axios
@@ -17,15 +16,6 @@ export const getCoursesFromUserCart = createAsyncThunk("GET_COURSES_FUSER_CART",
       console.log({ err });
     });
 });
-
-/* export const getCourse = createAsyncThunk("GET_COURSE", (courseId) => {
-  return axios
-    .get(`/api/courses/${courseId}`)
-    .then((res) => res.data)
-    .catch((err) => {
-      console.log({ err });
-    });
-}); */
 
 export const addCourseToCart = createAsyncThunk(
   "ADD_COURSE_TO_CART",
@@ -89,7 +79,6 @@ const cartReducer = createReducer([], {
   [deleteCourseFromCart.fulfilled]: (state, action) => action.payload,
   [addCourseToCart.fulfilled]: (state, action) => action.payload,
   [setCart]: (state, action) => action.payload,
-  //[getCourse.fulfilled] : (state, action) => action.payload,
   [addCoursesToCart.fulfilled]: (state, action) => action.payload,
   [deleteCoursesFromCart.fulfilled]: (state, action) => action.payload,
 });

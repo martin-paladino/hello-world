@@ -12,6 +12,7 @@ import "../assets/styles/general.css";
 import "../assets/styles/login.css";
 
 const Login = () => {
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -36,7 +37,7 @@ const Login = () => {
         
         alertMsg("Usuarix logueadx.")
         
-        navigate(!localStorage.getItem("courses") ? "/me" : "/cart"); //M: redirecciono
+        navigate(!localStorage.getItem("courses") ? "/me" : "/cart");
       })
       .catch((err) => {
         console.log({ err });
@@ -45,7 +46,6 @@ const Login = () => {
   }
 
   function handleSubmit(e) {
-    
     let comprobado =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
         email
@@ -63,7 +63,6 @@ const Login = () => {
 
   return (
     <div id="contMargin">
-
       <Container className="d-grid h-100" id="main-container">
         <Row>
           <Col></Col>
@@ -72,7 +71,7 @@ const Login = () => {
               <h2>Por favor, ingrese su usuario:</h2>
               <Form.Group>
                 <Form.Control
-                  value={email} //M: defini los values
+                  value={email} 
                   onChange={(e) => setEmail(e.target.value)}
                   type="email"
                   size="lg"
@@ -103,8 +102,7 @@ const Login = () => {
               >
                 Logueame
               </Button>
-              <div id="alerta">{message}</div>
-              
+              <div id="alerta">{message}</div>    
             </div>
           </Col>
           <Col></Col>

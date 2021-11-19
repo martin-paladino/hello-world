@@ -16,7 +16,7 @@ class UsersController {
       .catch(next);
   }
 
-  //esta no se usó al final, la de abajo si
+  
   static addCoursesToUser(req, res, next) {
     const courses = req.body.map((course) => {
       delete course.CartCourse;
@@ -50,7 +50,6 @@ class UsersController {
             pass: "tqvgurvykfppveee",
           },
         });
-        console.log("DATATTTTTTT:",user.dataValues.email);
         let preciofinal = 0;
         let texto = "Gracias " + user.dataValues.fullname + ", por tu compra.\n\nRecibo:\n";
         let a = req.body.map((curso, i) => {
@@ -76,18 +75,17 @@ class UsersController {
           if (error) {
               res.status(500).send(error.message);
           } else {
-            //console.log("mail enviado");
             res.status(200).jsonp(req.body);
           }
         }
       );
-    }).catch(err=>console.log(err))
+    }).catch(next)
   }
     
 
   //----------controllers para las órdenes(userCourses) del user----------
 
-  //en el body le mando userId, courseId, purchased
+
   static addCoursesToUserOrders(req, res, next) {
     UserCourse.bulkCreate(req.body)
       .then((newOrder) => res.status(201).send(newOrder))
@@ -113,17 +111,6 @@ class UsersController {
       res.status(200).send(myCourses)})
     .catch(next)
   }
-
-  /* static purchasedCourse(req, res, next) {
-    UserCourse.findOne({
-      where: {
-        courseId: req.params.courseId,
-        userId: req.params.userId,
-      },
-    })
-      .then((course) => res.send(course))
-      .catch(next);
-  } */
 }
 
 module.exports = UsersController;

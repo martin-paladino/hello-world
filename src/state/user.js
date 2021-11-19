@@ -15,17 +15,12 @@ const initialState = {
   isAdmin: null,
 };
 
-
 export const meRequest=createAsyncThunk("ME",()=> {
 return axios
 .get("/api/auth/me")
 .then((res)=>res.data)
 .catch((err)=>  {console.log( {err})})
-
-
 })
-
-
 
 export const sendLogoutRequest = createAsyncThunk("LOGOUT", () => {
   return axios
@@ -38,7 +33,7 @@ export const sendLogoutRequest = createAsyncThunk("LOGOUT", () => {
     });
 });
 
-//esta no se usó al final, la de abajo si
+
 export const addCoursesToUser = createAsyncThunk("ADD_COURSES_TO_USER", (body , thunkAPI) => {
   const {user} = thunkAPI.getState()
   return axios
@@ -60,9 +55,6 @@ export const sendMail = createAsyncThunk("SEND_EMAIL", (courses, thunkAPI) => {
       console.log({ err });
     });
 });
-
-
-
 
 const userReducer = createReducer(
   {},

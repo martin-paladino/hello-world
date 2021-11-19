@@ -10,9 +10,9 @@ const Orders = () => {
     const user = useSelector(state => state.user)
     const courses = useSelector(state => state.courses)
     const orders = useSelector(state => state.orders)
-    
+
     useEffect(() => {
-        if(user.id) {
+        if (user.id) {
             dispatch(getUserOrders(user.id))
             dispatch(getCoursesFromOrders(user.id))
         }
@@ -20,10 +20,10 @@ const Orders = () => {
 
     return (
         <div id="contMargin">
-            <h1>Historial de órdenes</h1><br/>
+            <h1>Historial de órdenes</h1><br />
             {orders.length === 0 && (<p>Tu historial está vacío. No realizaste ninguna transacción.</p>)}
             <ListGroup as="ol" numbered>
-                <ListGroup.Item  variant="primary"
+                <ListGroup.Item variant="primary"
                     className="d-flex justify-content-between ">
                     <h5>#</h5>
                     <h5>Curso</h5>
@@ -31,7 +31,7 @@ const Orders = () => {
                     <h5>Fecha y hora</h5>
                 </ListGroup.Item>
                 {orders && orders.map((order, i) =>
-                (<ListGroup.Item as="li" 
+                (<ListGroup.Item as="li"
                     className="d-flex justify-content-between">
                     <p>{courses[i] && courses[i].title}</p>
                     <p>{order.purchased ? "Comprado" : "Cancelado"}</p>
