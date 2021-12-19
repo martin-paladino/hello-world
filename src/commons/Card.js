@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { addCourseToCart } from "../state/cart";
 import { setCourse } from "../state/course";
+import { BsFillCartPlusFill } from "react-icons/bs"
 
 import "../assets/styles/general.css";
 import "../assets/styles/card.css";
@@ -55,11 +56,8 @@ function Card({ course }) {
             <Button onClick={handleClick} variant="success">Ver mi curso</Button> :
             <div id="cardFooter">
               <Button onClick={user.id ? userHandleCartClick : handleCartClick} variant="primary">
-                Agregar
+                <BsFillCartPlusFill /> Agregar
               </Button>
-              <Link to="/cart">
-                <Button variant="primary">Ir al carrito</Button>
-              </Link>
             </div>}
         </div>
       </div>

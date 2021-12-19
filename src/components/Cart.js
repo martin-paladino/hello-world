@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, ListGroup, Badge, Container } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { addCoursesToCart, deleteCourseFromCart, getCourses, getCoursesFromUserCart } from "../state/cart";
-
 import "../assets/styles/general.css"
 import "../assets/styles/cart.css"
 
@@ -11,10 +10,8 @@ const Cart = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch();
   const [update, setUpdate] = useState([]);
-
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user);
-
   let courses = cart.length > 0 ? cart : JSON.parse(localStorage.getItem("courses"));
   let currentCart = courses;
 
@@ -29,13 +26,13 @@ const Cart = () => {
     }
   }, []);
 
-  const removeLocalStorageItem = (course) => {
+  const removeLocalStorageItem = course => {
     courses.splice(courses.indexOf(course), 1);
     localStorage.setItem("courses", JSON.stringify(courses));
     setUpdate(localStorage.getItem("courses"));
   };
 
-  const removeUserItem = (course) => {
+  const removeUserItem = course => {
     dispatch(deleteCourseFromCart(course.id));
     document.getElementById('msgBody').style.visibility="visible";
     document.getElementById('msgText').innerHTML="Curso removido del carrito.";
@@ -50,7 +47,7 @@ const Cart = () => {
         {!currentCart ? (
           <h2>Tu carrito de compras está vacío!</h2>
         ) : (
-          currentCart.map((course) => {
+          currentCart.map(course => {
             return (
               <ListGroup.Item
                 key={course.id}

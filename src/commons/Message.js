@@ -1,4 +1,3 @@
-import React from 'react'
 import "../assets/styles/message.css";
 
 const Message = (msg) => {

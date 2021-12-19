@@ -16,5 +16,4 @@ router.get("/checkifpurchased/:courseId", CoursesController.checkIfPurchased)
 router.post("/addcategory/:courseId/:categoryId", CoursesController.addCategoryToCourse)
 router.get("/category/:category", CoursesController.getCoursesFromCategory)
 
-
 module.exports = router

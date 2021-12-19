@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { Button, Form } from "react-bootstrap";
-import { Container, Row, Col } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { Button, Form, Container, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import Admin from "./Admin"
 import useInputStr from "../hooks/useInputStr";
@@ -12,10 +10,8 @@ import "../assets/styles/admin.css";
 import "../assets/styles/adminCoursesAdd.css";
 
 const AdminCoursesAdd = () => {
-
     const [authorized, setAuthorized] = useState(false);
     const navigate = useNavigate();
-
     const title = useInputStr();
     const description = useInputStr();
     const professor = useInputStr();
@@ -26,14 +22,11 @@ const AdminCoursesAdd = () => {
     const accessLink = useInputStr();
     const videoPreview = useInputStr();
 
-
     useEffect(() => {
         axios.get("/api/admin")
             .then(res => res.data)
-            .then(() => {
-                setAuthorized(true);
-            })
-            .catch((error) => setAuthorized(false));
+            .then(() => setAuthorized(true))
+            .catch(() => setAuthorized(false));
     }, []);
 
     function alertMsg(msg) {
@@ -62,7 +55,6 @@ const AdminCoursesAdd = () => {
             .then(() => navigate("/admin/courses"))
             .catch(err => console.log(err))
     };
-
 
     if (authorized) {
         return (

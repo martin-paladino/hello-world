@@ -40,7 +40,6 @@ Course.init({
         type: S.STRING(1000),
         allowNull: false
     }
-}, 
-{ sequelize: db, modelName: "course", timestamps: false})
+}, { sequelize: db, modelName: "course", timestamps: false})
 
 module.exports = Course

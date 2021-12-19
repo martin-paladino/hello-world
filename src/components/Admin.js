@@ -1,31 +1,26 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 import { getAllUsers } from "../state/users";
-import NotFound from "../commons/NotFound";
 import { Button, Container, Row, Col } from "react-bootstrap";
-
+import NotFound from "../commons/NotFound";
+import axios from "axios";
 import "../assets/styles/general.css";
 import "../assets/styles/admin.css";
 
 const Admin = () => {
-
   const [authorized, setAuthorized] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
     axios
       .get("/api/admin")
-      .then((res) => res.data)
+      .then(res => res.data)
       .then(() => {
         setAuthorized(true);
         dispatch(getAllUsers());
       })
-      .catch((error) => {
-        setAuthorized(false);
-      });
+      .catch(() => setAuthorized(false));
   }, []);
 
   if (authorized) {

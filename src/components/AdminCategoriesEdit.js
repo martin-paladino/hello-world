@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import Admin from "./Admin"
 import axios from "axios";
@@ -13,16 +12,12 @@ import NotFound from "../commons/NotFound";
 import "../assets/styles/admin.css";
 import "../assets/styles/adminCoursesAdd.css";
 
-
 const AdminCategoriesEdit = () => {
-
     const categories = useSelector((state) => state.categories);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [id, setId] = useState();
-    const [form, setForm] = useState({
-        name: "",
-    });
+    const [form, setForm] = useState({name: ""});
     const [authorized, setAuthorized] = useState(false);
 
     function alertMsg(msg) {
@@ -40,7 +35,7 @@ const AdminCategoriesEdit = () => {
                 setAuthorized(true);
                 dispatch(getAllCategories())
             })
-            .catch((error) => setAuthorized(false));
+            .catch(() => setAuthorized(false));
     }, []);
 
     const editToggle = (idCategory) => {
@@ -72,19 +67,12 @@ const AdminCategoriesEdit = () => {
     const handleDelete = () => {
         axios.delete(`/api/categories/${id}`)
             .then(() => alertMsg("Categoría eliminada."))
-            .then(() => {
-                dispatch(getAllCategories())
-            })
+            .then(() => dispatch(getAllCategories()))
             .then(() => navigate("/admin/categories"))
             .catch(err => console.log(err))
     };
 
-    const handleInput = (e) => {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value,
-        });
-    };
+    const handleInput = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
     if (authorized) {
         return (

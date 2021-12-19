@@ -6,5 +6,4 @@ const useInputStr = () => {
   return { value, onChange };
 }
 
-
 export default useInputStr;

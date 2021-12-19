@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import{ useState, useEffect } from "react";
 import axios from "axios";
 import Admin from "./Admin"
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import NotFound from "../commons/NotFound";
 import { Button, Table, Container, Row, Col } from "react-bootstrap";
-
 import "../assets/styles/general.css";
 import "../assets/styles/admin.css";
 
@@ -24,7 +22,7 @@ const AdminUsers = () => {
                 setAuthorized(true);
                 setUsers(data);
             })
-            .catch((error) => setAuthorized(false));
+            .catch(() => setAuthorized(false));
     }, []);
 
     function alertMsg(msg) {
@@ -35,22 +33,13 @@ const AdminUsers = () => {
         }, 3000);
     }
 
-    const handleRol = (e) => {
-        setRol(e.target.value)
-    };
+    const handleRol = (e) => setRol(e.target.value)
 
     const handleEdit = (id) => {
-        console.log("USER LOGGEADO SEC", userLoggeado.id)
-        console.log("USER DEL MAP", id)
-
-        if (userLoggeado.id == id) {
-            alertMsg("No se puede auto-revocar su permiso.")
-        }
-        else {
+        userLoggeado.id == id ? alertMsg("No se puede auto-revocar su permiso.") : 
             axios.put(`/api/users/${id}`, { isAdmin: Boolean(Number(rol)) })
                 .then(() => alertMsg("Usuario modificado."))
                 .then(() => navigate('/admin'))
-        }
     };
 
     const handleDelete = (id) => {

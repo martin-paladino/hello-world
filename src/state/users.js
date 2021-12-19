@@ -1,8 +1,4 @@
-import {
-    createAction,
-    createAsyncThunk,
-    createReducer,
-} from "@reduxjs/toolkit";
+import { createAction, createReducer, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const setUsers = createAction("SET_USERS");

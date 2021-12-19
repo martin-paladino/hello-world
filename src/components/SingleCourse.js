@@ -1,14 +1,11 @@
 import { useEffect } from "react";
-import { Image, Button } from "react-bootstrap";
+import { Image, Button, Container, Col, Row, Accordion } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom"
 import { getCourse } from "../state/course";
-
 import "../assets/styles/general.css";
 import "../assets/styles/singleCourse.css";
-import { Container, Col, Row, Accordion } from "react-bootstrap";
-
 
 const SingleCourse = () => {
   const { courseId } = useParams();
@@ -16,13 +13,9 @@ const SingleCourse = () => {
   const course = useSelector((state) => state.course);
   const user = useSelector((state) => state.user)
   const navigate = useNavigate()
-  console.log("el navigate", {navigate})
-
   useEffect(() => {
     dispatch(getCourse(courseId))
   }, [])
-
-  console.log("CURSO COMPORADOOO",course)
 
   return (
     <div id="contMargin">
@@ -32,7 +25,6 @@ const SingleCourse = () => {
             <Col>
               <h1 id="title"> {course.title} </h1>
               {!course.purchased ?  <p> ¿Qué vas a aprender? ¡Mirá este video! </p> :  <p> ¡Empezá tu curso ahora! </p>}
-
               <div>
                 <iframe
                   src={course.purchased ? course.accessLink : course.videoPreview}
@@ -70,8 +62,7 @@ const SingleCourse = () => {
               <p id="comentario"className="card4"> "{course.review}" </p>
               <p id="comentario"className="card4"> "El hecho de que tomar cursos en mi propio ritmo ha sido una experiencia espectacular. Puedo aprender cuando quiero y puedo." </p>
               <p id="comentario"className="card4"> "¡Haber descubierto Hello World me salvó la vida! Los profes son muy buenos explicando y puedo mirar y pausar las clases cuantas veces quiera. ¡Curso super recomendable!" </p>
-          </Row>
-            
+          </Row> 
           <Row>
           <label id="FAQ"> Preguntas Frecuentes </label>
             <Accordion defaultActiveKey="0" flush>
@@ -102,7 +93,6 @@ const SingleCourse = () => {
             </Accordion>
           </Row>
         </Container>
-
         <Container id="ultContainer">
           <Button onClick={() => navigate(-1)}> Volver</Button>
         </Container>

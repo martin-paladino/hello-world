@@ -1,8 +1,4 @@
-import {
-  createAsyncThunk,
-  createReducer,
-  createAction,
-} from "@reduxjs/toolkit";
+import { createAsyncThunk, createReducer, createAction} from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const setCategories = createAction("SET_CATEGORIES");
@@ -10,8 +6,8 @@ export const setCategories = createAction("SET_CATEGORIES");
 export const getAllCategories = createAsyncThunk("GET_ALL_CATEGORIES", () => {
   return axios
     .get("/api/categories")
-    .then((res) => res.data)
-    .catch((err) => console.log({ err }));
+    .then(res => res.data)
+    .catch(err => console.log({ err }));
 });
 
 const categoriesReducer = createReducer([], {

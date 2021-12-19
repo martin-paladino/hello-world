@@ -1,8 +1,4 @@
-import {
-  createAction,
-  createReducer,
-  createAsyncThunk,
-} from "@reduxjs/toolkit";
+import { createAction, createReducer, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const setCourses = createAction("SET_COURSES");
@@ -26,12 +22,11 @@ export const getAllCourses = createAsyncThunk("GET_ALL_COURSES", () => {
             return course
           })
           return finalCourses
-        })
-    )
+        }))
     .catch(err => console.log({ err }))
 });
 
-export const getCoursesFromCategory = createAsyncThunk("GET_COURSES_FROM_CATEGORY", (category) => {
+export const getCoursesFromCategory = createAsyncThunk("GET_COURSES_FROM_CATEGORY", category => {
   return axios
     .get(`/api/courses/category/${category}`)
     .then(res => res.data || [])
@@ -55,7 +50,7 @@ export const getCoursesFromCategory = createAsyncThunk("GET_COURSES_FROM_CATEGOR
     .catch(err => console.log({ err }))
 })
 
-export const getCoursesFromOrders = createAsyncThunk("COURSES_FROM_ORDERS", (userId) => {
+export const getCoursesFromOrders = createAsyncThunk("COURSES_FROM_ORDERS", userId => {
   return axios
     .get(`/api/users/getcoursesfromorders/${userId}`)
     .then(res => res.data)
@@ -63,7 +58,7 @@ export const getCoursesFromOrders = createAsyncThunk("COURSES_FROM_ORDERS", (use
 })
 
 
-export const getCoursesFromTitle = createAsyncThunk("GET_COURSES_FROM_TITLE", (title) => {
+export const getCoursesFromTitle = createAsyncThunk("GET_COURSES_FROM_TITLE", title => {
   return axios
     .get(`/api/courses/${title}`)
     .then(res => res.data || [])
@@ -77,6 +72,5 @@ const coursesReducer = createReducer([], {
   [getCoursesFromOrders.fulfilled]: (state, action) => action.payload,
   [getCoursesFromTitle.fulfilled]: (state, action) => action.payload
 });
-
 
 export default coursesReducer;

@@ -1,4 +1,3 @@
-import React from "react";
 import "../assets/styles/admin.css";
 
 const NotFound = () => {

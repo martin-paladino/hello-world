@@ -1,8 +1,4 @@
-import {
-    createAction,
-    createAsyncThunk,
-    createReducer,
-} from "@reduxjs/toolkit";
+import { createAction, createAsyncThunk, createReducer } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const setCourse = createAction("SET_COURSE")
@@ -12,8 +8,7 @@ export const getCourse = createAsyncThunk("GET_COURSE", id => {
         .get(`/api/courses/${id}`)
         .then(res => res.data)
         .then(course => {
-            const isPurchasedPromise = axios
-                .get(`/api/courses/checkifpurchased/${course.id}`)
+            const isPurchasedPromise = axios.get(`/api/courses/checkifpurchased/${course.id}`)
                 .then(res => res.data)
             return { course, isPurchasedPromise }
         })

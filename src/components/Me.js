@@ -5,16 +5,13 @@ import { Button } from "react-bootstrap"
 import { getAllCourses } from "../state/courses";
 import Card from "../commons/Card";
 import {getUserOrders} from "../state/orders"
-
 import "../assets/styles/general.css"
 
 const Me = () => {
-
     const dispatch = useDispatch()
     const user = useSelector(state => state.user)
     const courses = useSelector(state => state.courses)
     const orders = useSelector(state => state.orders)
-
     useEffect(() => {
         dispatch(getAllCourses())
         dispatch(getUserOrders(user.id))

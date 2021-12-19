@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import Admin from "./Admin"
 import axios from "axios";
 import useInputStr from "../hooks/useInputStr";
@@ -10,7 +9,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import "../assets/styles/admin.css";
 import "../assets/styles/adminCoursesAdd.css";
 
-
 const AdminCategoriesAdd = () => {
     const [authorized, setAuthorized] = useState(false);
     const name = useInputStr();
@@ -19,10 +17,8 @@ const AdminCategoriesAdd = () => {
     useEffect(() => {
         axios.get("/api/admin")
             .then(res => res.data)
-            .then(() => {
-                setAuthorized(true);
-            })
-            .catch((error) => setAuthorized(false));
+            .then(() => setAuthorized(true))
+            .catch(() => setAuthorized(false));
     }, []);
 
     function alertMsg(msg) {
@@ -35,15 +31,12 @@ const AdminCategoriesAdd = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post(`/api/categories/add`, {
-            name: name.value,
-        })
+        axios.post(`/api/categories/add`, {name: name.value})
             .then(res => res.data)
             .then(() => alertMsg("Categoría agregado."))
             .then(() => navigate("/admin/categories"))
             .catch(err => console.log(err))
     };
-
 
     if (authorized) {
         return (

@@ -1,16 +1,9 @@
-import {
-  Form,
-  Button,
-} from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../state/cart"
-
 import { sendLogoutRequest } from "../state/user";
-
 import Categories from "../components/Categories";
-
-// estilos
 import "../assets/styles/general.css";
 import "../assets/styles/navbar.css";
 
@@ -31,7 +24,6 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
     dispatch(setCart([]));
     dispatch(sendLogoutRequest());
     alertMsg("Usuario deslogueado")
-
   };
 
   function visib(e) {
@@ -146,7 +138,6 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
       </div>
     </div>
   )
-  
 }
 
 export default Navbar;

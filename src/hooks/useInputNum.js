@@ -6,5 +6,4 @@ const useInputNum = () => {
   return { value, onChange };
 }
 
-
 export default useInputNum;

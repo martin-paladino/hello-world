@@ -1,7 +1,6 @@
 const { Category } = require("../models")
 
 class CategoriesController {
-
     static addCategory(req, res, next) {
         Category.create(req.body)
         .then(newCategory => res.status(201).send(newCategory))

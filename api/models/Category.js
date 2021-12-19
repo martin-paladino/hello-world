@@ -8,7 +8,6 @@ Category.init({
         type: S.STRING,
         allowNull: false
     }
-},
-{ sequelize: db, modelName: "category", timestamps: false })
+}, { sequelize: db, modelName: "category", timestamps: false })
 
 module.exports = Category

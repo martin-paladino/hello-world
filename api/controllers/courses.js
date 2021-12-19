@@ -4,42 +4,38 @@ const { Op } = require("sequelize");
 class CoursesController {
   static getAllCourses(req, res, next) {
     Course.findAll()
-      .then((courses) => res.status(200).send(courses))
+      .then(courses => res.status(200).send(courses))
       .catch(next);
   }
 
   static checkIfPurchased(req, res, next) {
-    if (req.user) {
+    if(req.user) {
       const courseId = parseInt(req.params.courseId);
       UserCourse.findAll({
         where: { userId: req.user.id, purchased: true },
-      }).then((userCourses) => {
-        const userCourse = userCourses.find(
-          (userCourse) => userCourse.courseId === courseId
-        );
+      }).then(userCourses => {
+        const userCourse = userCourses.find(userCourse => userCourse.courseId === courseId);
         res.status(200).send(userCourse ? true : false);
       });
-    } else {
-      res.send(false);
-    }
+    } 
+    else res.send(false)
   }
 
   static getCourse(req, res, next) {
     Course.findOne({ where: { id: req.params.id } })
-      .then((course) => res.status(200).send(course))
+      .then(course => res.status(200).send(course))
       .catch(next);
   }
 
   static getCoursesFromTitle(req, res, next) {
     Course.findAll({ where: { title: req.params.courseTitle } })
-
-      .then((courses) => res.status(200).send(courses))
+      .then(courses => res.status(200).send(courses))
       .catch(next);
   }
 
   static addCourse(req, res, next) {
     Course.create(req.body)
-      .then((newCourse) => res.status(201).send(newCourse))
+      .then(newCourse => res.status(201).send(newCourse))
       .catch(next);
   }
 
@@ -48,7 +44,7 @@ class CoursesController {
       where: { id: req.params.id },
       returning: true,
     })
-      .then((updatedCourse) => res.status(200).send(updatedCourse[1][0]))
+      .then(updatedCourse => res.status(200).send(updatedCourse[1][0]))
       .catch(next);
   }
 
@@ -59,34 +55,29 @@ class CoursesController {
   }
 
   static getCoursesFromCategory(req, res, next) {
-    Category.findAll({
-      where: { name: { [Op.like]: "%" + req.params.category + "%" } },
-    })
-      //Category.findOne({ where: { name: req.params.category }})
-      .then((categories) => {
+    Category.findAll({ where: { name: { [Op.like]: `%${req.params.category}%` }}})
+      .then(categories => {
         const arrPromises = [];
         for (let category of categories) {
           arrPromises.push(category.getCourses());
         }
         return Promise.all(arrPromises);
       })
-      .then((courses) => courses.flatMap((course) => course))
-      .then((courses) => res.status(200).send(courses))
+      .then(courses => courses.flatMap(course => course))
+      .then(courses => res.status(200).send(courses))
       .catch(next);
   }
 
   static addCategoryToCourse(req, res, next) {
     Course.findOne({ where: { id: req.params.courseId } })
-      .then((course) => {
+      .then(course => {
         return {
           course,
-          categoryPromise: Category.findOne({
-            where: { id: req.params.categoryId },
-          }),
+          categoryPromise: Category.findOne({ where: { id: req.params.categoryId }})
         };
       })
       .then(({ course, categoryPromise }) => {
-        categoryPromise.then((category) => {
+        categoryPromise.then(category => {
           course.addCategory(category);
           res.sendStatus(201);
         });

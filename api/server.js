@@ -36,11 +36,9 @@ passport.deserializeUser(function(id, done) {
 
 app.use("/api", routes)
 
-app.use((err,req,res,next)=>    {
-    console.log("ERROR");
-    console.log(err);
-    res.status(500).send(err.message);
-
+app.use((err, req, res, next) => {
+    console.log("ERROR", err)
+    res.status(500).send(err.message)
 })
 
 db.sync({force:false})

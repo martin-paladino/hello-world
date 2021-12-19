@@ -1,28 +1,19 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ListGroup, Badge, Button, Card, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { addCoursesToUserOrders } from "../state/orders";
 import { deleteCoursesFromCart } from "../state/cart";
 import { sendMail } from "../state/user";
-import { useState } from "react";
 
 function Checkout() {
   const navigate = useNavigate()
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user);
-  const [update, setUpdate] = useState("")
-
-
-  
   const totalPrice = cart.length > 0 && cart.reduce((sum, value) => sum + Number(value.price), 0);
   
   const handleConfirmClick = () => {
-    const body = cart.map(course => {
-      return { courseId: course.id, userId: user.id, purchased: true }
-    });
-    
+    const body = cart.map(course => { return { courseId: course.id, userId: user.id, purchased: true }});
     dispatch(addCoursesToUserOrders(body));//envia los cursos comprados a la tabla de ordenes ("userCourses") con la prop purchased=true
     dispatch(sendMail(cart));
     dispatch(deleteCoursesFromCart())
@@ -31,23 +22,19 @@ function Checkout() {
   };
 
   const handleCancel = () => {
-    const body = cart.map(course => {
-      return { courseId: course.id, userId: user.id, purchased: false }
-    });
+    const body = cart.map(course => { return { courseId: course.id, userId: user.id, purchased: false }});
     dispatch(addCoursesToUserOrders(body)) //envia los cursos cancelados a la tabla de ordenes ("userCourses") con la prop purchased=false
     dispatch(deleteCoursesFromCart());
     document.getElementById('msgBody').style.visibility = "visible";
     document.getElementById('msgText').innerHTML = "Compra cancelada.";
   };
 
-
-
   return (
     <div>
       <Container>
         <Card.Text>Confirme su compra</Card.Text>
       </Container>
-      {cart.map((course) => {
+      {cart.map(course => {
         return (
           <Container>
             <ListGroup.Item

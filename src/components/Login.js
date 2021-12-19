@@ -2,17 +2,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Container, Form, Button, Row, Col, Alert } from "react-bootstrap";
 import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../state/user";
 import { Link } from "react-router-dom";
 import Message from "../commons/Message";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/styles/general.css";
 import "../assets/styles/login.css";
 
 const Login = () => {
-  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -32,11 +30,9 @@ const Login = () => {
     setMessage("Logueando...");
     axios
       .post("/api/auth/login", body)
-      .then((response) => dispatch(setUser(response.data)))
+      .then(response => dispatch(setUser(response.data)))
       .then(() => {
-        
         alertMsg("Usuarix logueadx.")
-        
         navigate(!localStorage.getItem("courses") ? "/me" : "/cart");
       })
       .catch((err) => {
@@ -50,15 +46,8 @@ const Login = () => {
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
         email
       );
-    if (!comprobado) {
-      setMessage("Correo invalido!");
-    } else {
-      if (password.length >= 5) {
-        loguear(email, password);
-      } else {
-        setMessage("Password invalido.");
-      }
-    }
+    !comprobado ? setMessage("Correo invalido!") : 
+      password.length >= 5 ? loguear(email, password) : setMessage("Password invalido.")
   }
 
   return (

@@ -1,23 +1,17 @@
-import React from "react";
 import { useState, useEffect } from "react";
-import { Button, Form } from "react-bootstrap";
-import { Container, Row, Col } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { setCourses } from "../state/courses";
+import { Button, Form, Container, Row, Col } from "react-bootstrap";
+import { useSelector, useDispatch  } from "react-redux";
+import { setCourses, getAllCourses } from "../state/courses";
 import Admin from "./Admin"
 import NotFound from "../commons/NotFound";
 import axios from "axios";
-import { getAllCourses } from "../state/courses";
 import "../assets/styles/admin.css";
 import "../assets/styles/adminCoursesAdd.css";
 
 const AdminCoursesEdit = () => {
-
     const [authorized, setAuthorized] = useState(false);
     const courses = useSelector((state) => state.courses);
     const dispatch = useDispatch();
-
     const [id, setId] = useState();
     const [form, setForm] = useState({
         title: "",
@@ -46,10 +40,10 @@ const AdminCoursesEdit = () => {
                 setAuthorized(true);
                 dispatch(getAllCourses())
             })
-            .catch((error) => setAuthorized(false));
+            .catch(() => setAuthorized(false));
     }, []);
 
-    const editToggle = (idCourse) => {
+    const editToggle = idCourse => {
         setId(idCourse);
         courses.map(course => {
             if (course.id === idCourse) {

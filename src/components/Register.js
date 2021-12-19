@@ -1,14 +1,12 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { Container, Form, Button, Col, Row, Alert } from "react-bootstrap";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
-
 import "../assets/styles/general.css";
 import "../assets/styles/register.css";
 
 const Register = () => {
-
   const navigate = useNavigate()
   const [fullname, setFullname] = useState("")
   const [email, setEmail] = useState("") 
@@ -29,12 +27,9 @@ const Register = () => {
     let body = { "fullname": fullname, "email": email, "password": password };
     setVari("primary")
     setMessage("Registrando...");
-
     axios
       .post("/api/auth/register", body)
-      .then(() => {
-        alertMsg("Usuarix registradx");
-      })
+      .then(() => alertMsg("Usuarix registradx"))
       .then(() => navigate("/login")) 
       .catch((err) => {
         console.log({ err });

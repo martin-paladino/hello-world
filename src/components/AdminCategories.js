@@ -1,14 +1,12 @@
-import React, { useState } from "react";
-import Admin from "./Admin"
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import NotFound from "../commons/NotFound";
 import { getAllCategories } from "../state/categories";
 import { Button, Container, Row, Col } from "react-bootstrap";
+import NotFound from "../commons/NotFound";
+import Admin from "./Admin"
+import axios from "axios";
 import "../assets/styles/admin.css";
-
 
 const AdminCategories = () => {
     const [authorized, setAuthorized] = useState(false);
@@ -21,9 +19,8 @@ const AdminCategories = () => {
                 setAuthorized(true);
                 dispatch(getAllCategories())
             })
-            .catch(error => setAuthorized(false));
+            .catch(() => setAuthorized(false));
     }, []);
-
 
     if (authorized) {
         return (

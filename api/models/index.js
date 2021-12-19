@@ -5,7 +5,6 @@ const Category = require("./Category")
 const Course = require("./Course");
 const UserCourse = require("./UserCourse")
 
-
 // Relaciones entre Curso y Categoria
 Course.belongsToMany(Category, {through: "CategoryCourse"});
 Category.belongsToMany(Course, {through: "CategoryCourse"});
@@ -21,9 +20,4 @@ Cart.belongsTo(User);
 Course.belongsToMany(Cart, {through: "CartCourse"})
 Cart.belongsToMany(Course, {through: "CartCourse"})
 
-
-
-
 module.exports = {User, Cart, Category, Course, UserCourse};
-
-

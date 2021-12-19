@@ -1,12 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getCoursesFromCategory, getCoursesFromTitle } from "../state/courses";
+import { getCoursesFromCategory } from "../state/courses";
 import Navbar from "../commons/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 function NavbarContainer() {
   const dispatch = useDispatch();
-  const category = useSelector((state) => state.category);
   const navigate = useNavigate();
   const [targetValue, setTargetValue] = useState("")
   const [inputSearch, setInputSearch] = useState("");

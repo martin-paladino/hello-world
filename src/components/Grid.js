@@ -5,21 +5,17 @@ import Card from "../commons/Card";
 import { getCoursesFromCategory, getAllCourses } from "../state/courses";
 import { Button, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
 import "../assets/styles/general.css";
 import "../assets/styles/grid.css";
 
 const Grid = () => {
-
   const dispatch = useDispatch();
   const { category } = useParams();
   const courses = useSelector((state) => state.courses);
   const navigate = useNavigate();
 
   useEffect(() => {
-    category === "vertodos"
-      ? dispatch(getAllCourses())
-      : dispatch(getCoursesFromCategory(category));
+    category === "vertodos" ? dispatch(getAllCourses()) : dispatch(getCoursesFromCategory(category));
   }, [category]);
 
   return (

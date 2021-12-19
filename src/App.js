@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { useDispatch } from "react-redux";
 import Card from "./commons/Card";
 import NavbarContainer from "./components/NavbarContainer";
 import Grid from "./components/Grid";
@@ -17,18 +18,16 @@ import Admin from "./components/Admin"
 import AdminCourses from "./components/AdminCourses";
 import AdminCoursesAdd from "./components/AdminCoursesAdd";
 import AdminCoursesEdit from "./components/AdminCoursesEdit";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
 import AdminUsers from "./components/AdminUsers";
 import AdminCategories    from "./components/AdminCategories";
 import AdminCategoriesAdd from "./components/AdminCategoriesAdd";
 import AdminCategoriesEdit from "./components/AdminCategoriesEdit";
 import NotFound from "./commons/NotFound";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/styles/app.css"
+
 function App() {
 const dispatch=useDispatch()  
-
 useEffect(()=>  {
 dispatch(meRequest())
 },[])
@@ -62,7 +61,6 @@ dispatch(meRequest())
       </Routes>
       </div>
       <Footer />
-
     </div>
   );
 }
