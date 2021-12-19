@@ -1,5 +1,6 @@
 const { Course, Category, UserCourse } = require("../models");
 const { Op } = require("sequelize");
+
 class CoursesController {
   static getAllCourses(req, res, next) {
     Course.findAll()

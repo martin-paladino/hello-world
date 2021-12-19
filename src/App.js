@@ -29,11 +29,9 @@ import "./assets/styles/app.css"
 function App() {
 const dispatch=useDispatch()  
 
-  
 useEffect(()=>  {
 dispatch(meRequest())
 },[])
-
 
   return (
     <div >
