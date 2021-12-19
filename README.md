@@ -2,7 +2,7 @@
 
 # Hello World - Cursos de programación
 
-Proyecto integrador N° 2 del coding bootcamp de Plataforma5. Consiste en el desarrollo desde cero de un e-commerce.
+Proyecto integrador N° 2 del coding bootcamp de Plataforma5. Consiste en el desarrollo integral de un e-commerce.
 
 ### Características y funcionalidades implementadas:
 
