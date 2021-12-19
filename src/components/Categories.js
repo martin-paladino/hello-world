@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { Dropdown, DropdownButton } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { getAllCategories } from "../state/categories"
 
 const Categories = () => {

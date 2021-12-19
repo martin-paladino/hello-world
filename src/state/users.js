@@ -3,13 +3,6 @@ import axios from "axios";
 
 export const setUsers = createAction("SET_USERS");
 
-const initialState = {
-    email: null,
-    fullname: null,
-    id: null,
-    isAdmin: null,
-};
-
 export const getAllUsers = createAsyncThunk("GET_ALL_USERS", () => {
     return axios
         .get("/api/admin")

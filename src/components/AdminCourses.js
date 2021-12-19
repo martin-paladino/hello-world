@@ -27,14 +27,14 @@ const AdminCourses = () => {
                     <div>
                         <div>
                             <Link to="/admin/courses/add">
-                                <Button variant="warning" className="button" className="buttonSubsecciones"> Agregar un Curso </Button>
+                                <Button variant="warning" className="button buttonSubsecciones"> Agregar un Curso </Button>
                             </Link>
                         </div>
                     </div>
                     <div>
                         <div>
                             <Link to="/admin/courses/edit">
-                                <Button variant="warning" className="button" className="buttonSubsecciones"> Editar un Curso </Button>
+                                <Button variant="warning" className="button buttonSubsecciones"> Editar un Curso </Button>
                             </Link>
                         </div>
                     </div>

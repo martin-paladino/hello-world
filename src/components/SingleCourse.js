@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Image, Button, Container, Col, Row, Accordion } from "react-bootstrap";
+import { Button, Container, Col, Row, Accordion } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom"
@@ -11,7 +11,6 @@ const SingleCourse = () => {
   const { courseId } = useParams();
   const dispatch = useDispatch();
   const course = useSelector((state) => state.course);
-  const user = useSelector((state) => state.user)
   const navigate = useNavigate()
   useEffect(() => {
     dispatch(getCourse(courseId))
@@ -27,6 +26,7 @@ const SingleCourse = () => {
               {!course.purchased ?  <p> ¿Qué vas a aprender? ¡Mirá este video! </p> :  <p> ¡Empezá tu curso ahora! </p>}
               <div>
                 <iframe
+                  title="video del curso"
                   src={course.purchased ? course.accessLink : course.videoPreview}
                   width="540"
                   height="310"

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Button, ListGroup, Badge, Container } from "react-bootstrap";
+import { Button, ListGroup, Badge } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { addCoursesToCart, deleteCourseFromCart, getCourses, getCoursesFromUserCart } from "../state/cart";
+import { addCoursesToCart, deleteCourseFromCart, getCoursesFromUserCart } from "../state/cart";
 import "../assets/styles/general.css"
 import "../assets/styles/cart.css"
 

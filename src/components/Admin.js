@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getAllUsers } from "../state/users";
-import { Button, Container, Row, Col } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import NotFound from "../commons/NotFound";
 import axios from "axios";
 import "../assets/styles/general.css";
@@ -36,7 +36,7 @@ const Admin = () => {
             <div className="column">
               <div className="column1">
                 <Link to="/admin/users">
-                  <img id="avatar" src="/users.png"></img>
+                  <img id="avatar" src="/users.png" alt="usuarios"></img>
                   <br></br>
                   <Button variant="dark" className="button">
                     {" "}
@@ -48,7 +48,7 @@ const Admin = () => {
             <div className="column">
               <div className="column1">
                 <Link to="/admin/courses">
-                  <img id="avatar" src="/courses.png"></img>
+                  <img id="avatar" src="/courses.png" alt="cursos"></img>
                   <br></br>
                   <Button variant="dark" className="button">
                     Administrar Cursos
@@ -59,7 +59,7 @@ const Admin = () => {
             <div className="column">
               <div className="column1">
                 <Link to="/admin/categories">
-                  <img id="avatar" src="/categories.png"></img>
+                  <img id="avatar" src="/categories.png" alt="categorias"></img>
                   <br></br>
                   <Button variant="dark" className="button">
                     {" "}

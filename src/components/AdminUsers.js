@@ -4,7 +4,7 @@ import Admin from "./Admin"
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import NotFound from "../commons/NotFound";
-import { Button, Table, Container, Row, Col } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import "../assets/styles/general.css";
 import "../assets/styles/admin.css";
 

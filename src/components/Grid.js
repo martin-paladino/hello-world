@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../commons/Card";
 import { getCoursesFromCategory, getAllCourses } from "../state/courses";
-import { Button, Container } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../assets/styles/general.css";
 import "../assets/styles/grid.css";

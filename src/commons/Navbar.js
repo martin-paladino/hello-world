@@ -9,7 +9,6 @@ import "../assets/styles/navbar.css";
 
 function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
   const user = useSelector((state) => state.user);
-  const category = useSelector((state) => state.category);
   const dispatch = useDispatch();
 
   function alertMsg(msg){
@@ -41,7 +40,7 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
               <img
                 style={{ width: "40px", height: "auto" }}
                 src="https://i.stack.imgur.com/o2dfh.png"
-                alt=""
+                alt="logo"
               />
             </Link>
           </div>
@@ -63,7 +62,7 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
                 variant="secondary"
                 type="submit"
               >
-                <img id="searchButton" src="/lupa.png"></img>
+                <img id="searchButton" src="/lupa.png" alt="lupa"></img>
               </Button>
             </Form>
           </div>
@@ -75,7 +74,7 @@ function Navbar({ onSubmitHandler, onChangeHandler, inputSearch }) {
           <div>
             <Link to="/cart">
               <Button className="redondo">
-                <img width="20px" src="/cart.png" />
+                <img width="20px" src="/cart.png" alt="carrito"/>
               </Button>
             </Link>
           </div>

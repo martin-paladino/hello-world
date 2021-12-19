@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { Container, Form, Button, Row, Col, Alert } from "react-bootstrap";
+import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUser } from "../state/user";
-import { Link } from "react-router-dom";
-import Message from "../commons/Message";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/styles/general.css";
 import "../assets/styles/login.css";

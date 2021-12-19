@@ -45,7 +45,7 @@ function Card({ course }) {
   return (
     <div>
       <div className="card">
-        <Link to={`/course/${course.id}`}> <div id="cardImgCont"><img id="cardImg" variant="top" src={course.image} /></div></Link>
+        <Link to={`/course/${course.id}`}> <div id="cardImgCont"><img id="cardImg" variant="top" src={course.image} alt="imagen del curso" /></div></Link>
         <div id="cardDesc">
           <Rcard.Title>{course.title}</Rcard.Title>
           <Rcard.Text>{course.description}</Rcard.Text>
